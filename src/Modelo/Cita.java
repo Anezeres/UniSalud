@@ -102,6 +102,14 @@ public class Cita {
     public static void setNumero(int numero) {
         Cita.numero = numero;
     }
+
+    @Override
+    public String toString() {
+        return "Cita{" + "idCita=" + idCita + ", fecha=" + fecha + ", hora=" + hora + ", piso=" + piso + ", sala=" + sala + ", idAfiliado=" + idAfiliado + ", idTrabajador=" + idTrabajador + '}';
+    }
+    
+    
+    
     
     
     

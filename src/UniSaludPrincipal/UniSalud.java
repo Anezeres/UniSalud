@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package UniSaludPrincipal;
 
+import Modelo.Cita;
 import Modelo.ModeloPrincipal;
 import Modelo.Usuario;
 import java.util.List;
@@ -14,18 +11,23 @@ import java.util.List;
  */
 public class UniSalud {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
+        
         ModeloPrincipal modelo = new ModeloPrincipal();
         
         modelo.getInformacion().cargarUsuarios();
+        modelo.getInformacion().cargarCitas();
         
         List<Usuario> usuarios = modelo.getInformacion().getListadoUsuario();
+        List<Cita> citas = modelo.getInformacion().getListadoCitas();
+        
         
         for (Usuario usuario : usuarios) {
             System.out.println(usuario.toString());
+        }
+        
+        for (Cita cita : citas) {
+            System.out.println(cita.toString());
         }
         
     }

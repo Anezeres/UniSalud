@@ -43,7 +43,7 @@ public class Informacion {
     }
     
     public List<Cita> getListadoCitas(){
-        return   this.citaDao.getAllCitas();
+        return this.citaDao.getAllCitas();
     }  
     
     public boolean eliminarCita(Cita cita){
@@ -52,6 +52,23 @@ public class Informacion {
     
     public boolean actualizarCita(Cita cita){
         return this.citaDao.updateCita(cita);
+    }
+    
+    public void cargarCitas(){
+        cargarDatos("Citas");
+    }
+    
+    public void crearCitas(String[] citas){
+        int idCita = (int) Integer.parseInt(citas[0]);
+        String fecha = citas[1];
+        String hora = citas[2];
+        String piso = citas[3];
+        String sala = citas[4];
+        int idAfiliado = (int) Integer.parseInt(citas[5]);
+        int idTrabajador = (int) Integer.parseInt(citas[6]);
+        Cita nuevaCita = new Cita(idCita, fecha, hora, piso, sala, idAfiliado, idTrabajador);
+        
+        agregarCita(nuevaCita);
     }
     
     /* Usuarios */
@@ -72,28 +89,6 @@ public class Informacion {
         return this.usuarioDao.updateUsuario(usuario);
     }
     
-    /* Cuentas */
-    
-    public boolean agregarCuenta(Cuenta cuenta){
-        return this.cuentaDao.addCuenta(cuenta);
-    }
-    
-    public List<Cuenta> getListadoCuentas(){
-        return  this.cuentaDao.getAllCuentas();
-    }  
-    
-    public boolean eliminarUsuario(Cuenta cuenta){
-        return this.cuentaDao.deleteCuenta(cuenta);
-    }
-    
-    public boolean actualizarUsuario(Cuenta cuenta){
-        return this.cuentaDao.updateCuenta(cuenta);
-    }
-    
-    public void cargarUsuarios(){
-        cargarDatos("Usuarios");
-    }
-    
     public void crearUsuarios(String[] usuarios){
         int idUsuario = (int) Integer.parseInt(usuarios[0]);
         String cedula = usuarios[1];
@@ -108,6 +103,28 @@ public class Informacion {
         
         agregarUsuario(nuevoUsuario);
     }
+    
+    public void cargarUsuarios(){
+        cargarDatos("Usuarios");
+    }
+    
+    /* Cuentas */
+    
+    public boolean agregarCuenta(Cuenta cuenta){
+        return this.cuentaDao.addCuenta(cuenta);
+    }
+    
+    public List<Cuenta> getListadoCuentas(){
+        return  this.cuentaDao.getAllCuentas();
+    }  
+    
+    public boolean eliminarCuenta(Cuenta cuenta){
+        return this.cuentaDao.deleteCuenta(cuenta);
+    }
+    
+    public boolean actualizarCuenta(Cuenta cuenta){
+        return this.cuentaDao.updateCuenta(cuenta);
+    }
      
     /* Cargar Datos */
     
@@ -116,46 +133,50 @@ public class Informacion {
         FileReader reader = null;
         BufferedReader buffered = null;
      
-      try {
-        archivo = new File ("src\\Archivos\\"+datosArchivo+".txt");
-        reader = new FileReader (archivo);
-        buffered = new BufferedReader(reader);
-                 
-        String linea="";
-        
-        while((linea=buffered.readLine())!= null){
-            StringTokenizer tokens = new StringTokenizer(linea, ";");
-            int nDatos=tokens.countTokens();
-            
-            String[] datos =new String[nDatos];
-            
-            int i=0;
-            while(tokens.hasMoreTokens()){
-                String str=tokens.nextToken();
-                datos[i]= String.valueOf(str);
-                i++;
-            }
+        try {
+          archivo = new File ("src//Archivos//"+datosArchivo+".txt");
+          reader = new FileReader (archivo);
+          buffered = new BufferedReader(reader);
+          String linea="";
 
-            
-            if("Usuarios".equals(datosArchivo)){
-                crearUsuarios(datos);
-            }
-            
-            System.out.println(linea);
-            
-            System.out.println("EMPIEZA OTRO DATO");
-      }
-       
-      }catch(IOException ioe){
-      }finally{
-         try{                   
-            if( null != reader ){  
-               reader.close();    
-            }                 
-         }catch (IOException e2){
-             System.out.println(e2);
-         }
-      }
+          while((linea=buffered.readLine())!= null){
+              StringTokenizer tokens = new StringTokenizer(linea, ";");
+              int nDatos=tokens.countTokens();
+
+              String[] datos = new String[nDatos];
+
+              int i=0;
+              while(tokens.hasMoreTokens()){
+                  String str = tokens.nextToken();
+                  datos[i]= String.valueOf(str);
+                  i++;
+              }
+
+
+              if("Usuarios".equals(datosArchivo)){
+                  crearUsuarios(datos);
+              }
+
+              else if("Citas".equals(datosArchivo)){
+                  crearCitas(datos);
+              }
+
+              System.out.println(linea);
+
+              System.out.println("EMPIEZA OTRO DATO");
+        }
+
+        }catch(IOException ioe){
+            System.out.println(ioe);
+        }finally{
+           try{                   
+              if( null != reader ){  
+                 reader.close();    
+              }                 
+           }catch (IOException e2){
+               System.out.println(e2);
+           }
+        }
     }
     
     
