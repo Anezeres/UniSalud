@@ -14,13 +14,15 @@ public class Cita {
     private String servicio;
     private String piso;
     private String sala;
+    private final int idCita;
 
-    public Cita(String fecha, String hora, String servicio, String piso, String sala) {
+    public Cita(int idCita, String fecha, String hora, String servicio, String piso, String sala) {
         this.fecha = fecha;
         this.hora = hora;
         this.servicio = servicio;
         this.piso = piso;
         this.sala = sala;
+        this.idCita = idCita;
     }
     
     /* Getters And Setters */
@@ -64,6 +66,12 @@ public class Cita {
     public void setSala(String sala) {
         this.sala = sala;
     }
+
+    public int getIdCita() {
+        return idCita;
+    }
+    
+    
     
     
     

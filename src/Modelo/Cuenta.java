@@ -71,6 +71,14 @@ public class Cuenta {
         return desencriptacion;
     }
     
+    /* Getters and Setters */
+
+    public int getIdCuenta() {
+        return idCuenta;
+    }
+    
+    
+    
     
     
     

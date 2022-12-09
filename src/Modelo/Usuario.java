@@ -10,7 +10,7 @@ package Modelo;
  */
 public class Usuario {
     private static int numero;
-    private final int id;
+    private final int idUsuario;
     private final String cedula;
     private String nombre;
     private String telefono;
@@ -20,7 +20,7 @@ public class Usuario {
     private final String rolUsuario;
 
     public Usuario(int id, String cedula, String nombre, String telefono, String email, String direccion, String sexo, String rolUsuario) {
-        this.id = numero++;
+        this.idUsuario = numero++;
         this.cedula = cedula;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -32,6 +32,12 @@ public class Usuario {
     }
     
     /* Getters and Setters */
+
+    public int getId() {
+        return idUsuario;
+    }
+    
+    
 
     public static int getNumero() {
         return numero;
