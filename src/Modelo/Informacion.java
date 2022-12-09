@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.StringTokenizer;
 
+/* Date date1=new SimpleDateFormat("dd-MM-yyyy").parse(contacto.getFechaNacimiento());   */
+
 /**
  *
  * @author RYZEN
@@ -131,12 +133,11 @@ public class Informacion {
             while(tokens.hasMoreTokens()){
                 String str=tokens.nextToken();
                 datos[i]= String.valueOf(str);
-                //System.out.println(datos[i]);
                 i++;
             }
 
             
-            if(datosArchivo == "Usuarios"){
+            if("Usuarios".equals(datosArchivo)){
                 crearUsuarios(datos);
             }
             

@@ -9,21 +9,37 @@ package Modelo;
  * @author RYZEN
  */
 public class Cita {
+    private final int idCita;
     private String fecha;
     private String hora;
-    private String servicio;
     private String piso;
     private String sala;
-    private final int idCita;
+    private int idAfiliado;
+    private int idTrabajador;
+    private static int numero; 
 
-    public Cita(int idCita, String fecha, String hora, String servicio, String piso, String sala) {
+    public Cita(int idCita, String fecha, String hora, String piso, String sala, int idAfiliado, int idTrabajador) {
+        this.idCita = idCita;
         this.fecha = fecha;
         this.hora = hora;
-        this.servicio = servicio;
         this.piso = piso;
         this.sala = sala;
-        this.idCita = idCita;
+        this.idAfiliado = idAfiliado;
+        this.idTrabajador = idTrabajador;
+        numero++;
     }
+
+    public Cita(String fecha, String hora, String piso, String sala, int idAfiliado, int idTrabajador) {
+        this.fecha = fecha;
+        this.hora = hora;
+        this.piso = piso;
+        this.sala = sala;
+        this.idAfiliado = idAfiliado;
+        this.idTrabajador = idTrabajador;
+        this.idCita = numero++;
+    }
+    
+    
     
     /* Getters And Setters */
 
@@ -42,15 +58,7 @@ public class Cita {
     public void setHora(String hora) {
         this.hora = hora;
     }
-
-    public String getServicio() {
-        return servicio;
-    }
-
-    public void setServicio(String servicio) {
-        this.servicio = servicio;
-    }
-
+    
     public String getPiso() {
         return piso;
     }
@@ -70,6 +78,32 @@ public class Cita {
     public int getIdCita() {
         return idCita;
     }
+
+    public int getIdAfiliado() {
+        return idAfiliado;
+    }
+
+    public void setIdAfiliado(int idAfiliado) {
+        this.idAfiliado = idAfiliado;
+    }
+
+    public int getIdTrabajador() {
+        return idTrabajador;
+    }
+
+    public void setIdTrabajador(int idTrabajador) {
+        this.idTrabajador = idTrabajador;
+    }
+
+    public static int getNumero() {
+        return numero;
+    }
+
+    public static void setNumero(int numero) {
+        Cita.numero = numero;
+    }
+    
+    
     
     
     

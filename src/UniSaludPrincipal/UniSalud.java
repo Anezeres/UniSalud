@@ -23,6 +23,7 @@ public class UniSalud {
         modelo.getInformacion().cargarUsuarios();
         
         List<Usuario> usuarios = modelo.getInformacion().getListadoUsuario();
+        
         for (Usuario usuario : usuarios) {
             System.out.println(usuario.toString());
         }
