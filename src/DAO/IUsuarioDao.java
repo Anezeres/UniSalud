@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface IUsuarioDao{
     
-    public List<Usuario> getAllEmpleados();
+    public List<Usuario> getAllUsuarios();
     public Usuario getUsuario(int usuarioId);
     public boolean addUsuario(Usuario usuario);
     public boolean updateUsuario(Usuario usuario);

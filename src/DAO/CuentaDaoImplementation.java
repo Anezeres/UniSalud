@@ -21,7 +21,7 @@ public class CuentaDaoImplementation implements ICuentaDao{
     }
 
     @Override
-    public List<Cuenta> getAllEmpleados() {
+    public List<Cuenta> getAllCuentas() {
         return cuentas;
     }
 

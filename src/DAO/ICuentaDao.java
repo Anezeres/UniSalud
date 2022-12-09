@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface ICuentaDao {
     
-    public List<Cuenta> getAllEmpleados();
+    public List<Cuenta> getAllCuentas();
     public Cuenta getCuenta(int cuentaId);
     public boolean addCuenta(Cuenta cuenta);
     public boolean updateCuenta(Cuenta cuenta);

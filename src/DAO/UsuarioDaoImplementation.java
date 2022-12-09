@@ -22,7 +22,7 @@ public class UsuarioDaoImplementation implements IUsuarioDao{
     
  
     @Override
-    public List<Usuario> getAllEmpleados() {
+    public List<Usuario> getAllUsuarios() {
         return usuarios;
     }
 
