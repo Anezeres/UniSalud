@@ -1,8 +1,10 @@
 package UniSaludPrincipal;
 
+import Controller.ControllerPrincipal;
 import Modelo.Cita;
 import Modelo.ModeloPrincipal;
 import Modelo.Usuario;
+import Vistas.VistaLogin;
 import java.util.List;
 
 /**
@@ -14,6 +16,10 @@ public class UniSalud {
     public static void main(String[] args) {
         
         ModeloPrincipal modelo = new ModeloPrincipal();
+        VistaLogin vista = new VistaLogin();
+        
+        
+        ControllerPrincipal controller = new ControllerPrincipal(modelo, vista);
         
         modelo.getInformacion().cargarUsuarios();
         modelo.getInformacion().cargarCitas();
