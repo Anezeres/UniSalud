@@ -5,7 +5,11 @@
 package Controller;
 
 import Modelo.ModeloPrincipal;
+import Vistas.VistaDashboard;
 import Vistas.VistaLogin;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  *
@@ -14,14 +18,50 @@ import Vistas.VistaLogin;
 public class ControllerPrincipal {
     
     private ModeloPrincipal modelo;
-    private VistaLogin vista;
+    private VistaLogin vistaLogin;
 
     public ControllerPrincipal(ModeloPrincipal modelo, VistaLogin vista) {
         this.modelo = modelo;
-        this.vista = vista;
+        this.vistaLogin = vista;
         
-        vista.setVisible(true);
-        vista.setLocationRelativeTo(null);
+        agregarListenersBtnDashBoard();
+        
+    }
+    
+    private void agregarListenersBtnDashBoard(){
+        vistaLogin.addBtnEntrarMouseEvent(new MouseListenerController());
+        vistaLogin.addBtnRegistrarseMouseEvent(new MouseListenerController());
+    }
+    
+    public class MouseListenerController implements MouseListener{
+
+        @Override
+        public void mouseClicked(MouseEvent event) {
+            if (event.getSource() == vistaLogin.getBtnEntrar()){
+                vistaLogin.dispose();
+                VistaDashboard vistaDashboard = new VistaDashboard();
+                ControllerDashboard dashboard = new ControllerDashboard(modelo, vistaDashboard);
+                
+            }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            
+        }
         
     }
     

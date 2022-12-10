@@ -5,8 +5,10 @@
 package Vistas;
 
 import java.awt.Color;
+import java.awt.event.MouseListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -19,10 +21,18 @@ public class VistaLogin extends javax.swing.JFrame {
      */
     public VistaLogin() {
         initComponents();
+        setVisible(true);
+        setSize(1363, 765);
+        setLocationRelativeTo(null);
     }
-
     
+    public void addBtnEntrarMouseEvent(MouseListener mouseListenControles){
+        btnEntrar.addMouseListener(mouseListenControles);
+    }
     
+    public void addBtnRegistrarseMouseEvent(MouseListener mouseListenControles){
+        btnRegistrarse.addMouseListener(mouseListenControles);
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -189,6 +199,16 @@ public class VistaLogin extends javax.swing.JFrame {
             }
         });
     }
+
+    public JLabel getBtnEntrar() {
+        return btnEntrar;
+    }
+
+    public JLabel getBtnRegistrarse() {
+        return btnRegistrarse;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnEntrar;
