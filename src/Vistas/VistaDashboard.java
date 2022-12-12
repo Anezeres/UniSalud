@@ -6,6 +6,7 @@ package Vistas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.MouseListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -36,7 +37,13 @@ public class VistaDashboard extends javax.swing.JFrame {
         setSize(1363, 765);
     }
     
-    private void realizarCambioPanelDashboard(JPanel contenidoPanel){
+    public void addBtnAfiliadosListener(MouseListener listener){
+        btnAfiliados.addMouseListener(listener);
+    }
+    
+    
+    
+    public void realizarCambioPanelDashboard(JPanel contenidoPanel){
         ubicarPanelEnDashboard(contenidoPanel);
         agregarPanelSeleccionado(contenidoPanel);
     }
@@ -55,13 +62,13 @@ public class VistaDashboard extends javax.swing.JFrame {
     
     
     private void setColorAzul(String boton, JLabel imagenBoton){
-        Icon btnCitasAzul = new ImageIcon("src\\Imagenes\\BotonesDashboard\\00-Btn"+boton+"Azul-img.png"); 
+        Icon btnCitasAzul = new ImageIcon("src//Imagenes//BotonesDashboard//00-Btn"+boton+"Azul-img.png"); 
         imagenBoton.setIcon(btnCitasAzul);
         activarEstadoBoton(boton);
     }
     
     private void setColorGris(String boton, JLabel imagenBoton){
-        Icon btnCitasGris = new ImageIcon("src\\Imagenes\\BotonesDashboard\\00-Btn"+boton+"Gris-img.png");  
+        Icon btnCitasGris = new ImageIcon("src//Imagenes//BotonesDashboard//00-Btn"+boton+"Gris-img.png");  
         imagenBoton.setIcon(btnCitasGris);
         desactivarEstadoBoton(boton);
     }
@@ -135,7 +142,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     }
     
     private void cambiarImagenPrincipal(String titulo){
-        fondoDashboard.setIcon(new ImageIcon("src\\Imagenes\\ImagenesDashboard\\00-" + titulo + "-img.png"));
+        fondoDashboard.setIcon(new ImageIcon("src//Imagenes//ImagenesDashboard//00-" + titulo + "-img.png"));
     }
 
     
@@ -304,7 +311,7 @@ public class VistaDashboard extends javax.swing.JFrame {
 
     private void btnAfiliadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAfiliadosMouseClicked
         mostrarBotonAfiliadosActivado();
-        realizarCambioPanelDashboard(panelAfiliados);
+        /*realizarCambioPanelDashboard(panelAfiliados);*/
         cambiarImagenPrincipal("Afiliados");
     }//GEN-LAST:event_btnAfiliadosMouseClicked
 
@@ -377,6 +384,13 @@ public class VistaDashboard extends javax.swing.JFrame {
             }
         });
     }
+
+    public JLabel getBtnAfiliados() {
+        return btnAfiliados;
+    }
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAfiliados;

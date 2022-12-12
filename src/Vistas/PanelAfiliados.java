@@ -4,15 +4,24 @@
  */
 package Vistas;
 
+import java.awt.event.MouseListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author RYZEN
  */
 public class PanelAfiliados extends javax.swing.JPanel {
+    
+    DefaultTableModel modelo;
+    private boolean btnVerActivo = false;
+    private boolean btnEditarActivo = false;
+    private boolean btnEliminarActivo = false;
 
     /**
      * Creates new form PanelDashboard
@@ -20,16 +29,56 @@ public class PanelAfiliados extends javax.swing.JPanel {
     public PanelAfiliados() {
         initComponents();
         setSize(1086, 503);
+        
+        modelo = (DefaultTableModel) tablaAfiliados.getModel();
+
+    }
+    
+    
+    
+    public void agregarDatosTabla(String[] datos){
+        modelo.addRow(datos);
+    }
+    
+    public void addTablaAfiliadosListener(MouseListener listener){
+        tablaAfiliados.addMouseListener(listener);
+    }
+    
+    public void activarBotones(){
+        btnEditarActivo = true;
+        btnEditarActivo = true;
+        btnEliminarActivo = true;
+        setBotonInactivo("Eliminar", btnEliminar);
+        setBotonInactivo("Editar", btnEditar);
+        setBotonInactivo("Ver", btnVer);
+        
     }
     
     private void setBotonActivo(String boton, JLabel imagenBoton){
-        Icon btnActivo = new ImageIcon("src\\Imagenes\\BotonesCRUD\\00-"+boton+"Activo.png"); 
-        imagenBoton.setIcon(btnActivo);
+        if(btnEditarActivo){
+            Icon btnActivo = new ImageIcon("src//Imagenes//BotonesCRUD//00-"+boton+"Activo.png"); 
+            imagenBoton.setIcon(btnActivo);
+        }
+        
+        if("Crear".equals(boton)){
+            Icon btnActivo = new ImageIcon("src//Imagenes//BotonesCRUD//00-"+boton+"Activo.png"); 
+            imagenBoton.setIcon(btnActivo);
+        }
+        
+        
     }
     
     private void setBotonInactivo(String boton, JLabel imagenBoton){
-        Icon btnActivo = new ImageIcon("src\\Imagenes\\BotonesCRUD\\00-"+boton+"Inactivo.png"); 
-        imagenBoton.setIcon(btnActivo);
+        if(btnEditarActivo){
+            Icon btnInactivo = new ImageIcon("src//Imagenes//BotonesCRUD//00-"+boton+"Inactivo.png"); 
+            imagenBoton.setIcon(btnInactivo);
+        }
+        
+        if("Crear".equals(boton)){
+            Icon btnInactivo = new ImageIcon("src//Imagenes//BotonesCRUD//00-"+boton+"Inactivo.png"); 
+            imagenBoton.setIcon(btnInactivo);
+        }
+        
     }
 
     /**
@@ -43,7 +92,7 @@ public class PanelAfiliados extends javax.swing.JPanel {
 
         btnCrear = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaAfiliados = new javax.swing.JTable();
         btnEliminar = new javax.swing.JLabel();
         btnEditar = new javax.swing.JLabel();
         btnVer = new javax.swing.JLabel();
@@ -65,23 +114,47 @@ public class PanelAfiliados extends javax.swing.JPanel {
         });
         add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 350, 144, 55));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaAfiliados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Cedula", "Nombre", "Telefono", "Email", "Direccion", "Sexo"
             }
-        ));
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaAfiliados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tablaAfiliados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tablaAfiliados.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablaAfiliados);
+        tablaAfiliados.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tablaAfiliados.getColumnModel().getColumnCount() > 0) {
+            tablaAfiliados.getColumnModel().getColumn(0).setResizable(false);
+            tablaAfiliados.getColumnModel().getColumn(1).setResizable(false);
+            tablaAfiliados.getColumnModel().getColumn(2).setResizable(false);
+            tablaAfiliados.getColumnModel().getColumn(3).setResizable(false);
+            tablaAfiliados.getColumnModel().getColumn(4).setResizable(false);
+            tablaAfiliados.getColumnModel().getColumn(5).setResizable(false);
+            tablaAfiliados.getColumnModel().getColumn(5).setPreferredWidth(5);
+        }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 790, 380));
 
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-EliminarInactivo.png"))); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-EliminarDesactivado.png"))); // NOI18N
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -93,7 +166,7 @@ public class PanelAfiliados extends javax.swing.JPanel {
         });
         add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 280, 144, 55));
 
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-EditarInactivo.png"))); // NOI18N
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-EditarDesactivado.png"))); // NOI18N
         btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -105,7 +178,7 @@ public class PanelAfiliados extends javax.swing.JPanel {
         });
         add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 210, 144, 55));
 
-        btnVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-VerInactivo.png"))); // NOI18N
+        btnVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-VerDesactivado.png"))); // NOI18N
         btnVer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -153,6 +226,18 @@ public class PanelAfiliados extends javax.swing.JPanel {
         setBotonInactivo("Crear", btnCrear);
     }//GEN-LAST:event_btnCrearMouseExited
 
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JTable getTablaAfiliados() {
+        return tablaAfiliados;
+    }
+    
+    
+
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnCrear;
@@ -161,6 +246,6 @@ public class PanelAfiliados extends javax.swing.JPanel {
     private javax.swing.JLabel btnVer;
     private javax.swing.JLabel fondoAfiliados;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaAfiliados;
     // End of variables declaration//GEN-END:variables
 }

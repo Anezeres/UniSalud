@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -35,6 +36,17 @@ public class Informacion {
     }
     
     /* Getters and Setters */
+    
+    public List<Usuario> getAfiliados(){
+        List<Usuario> listaAfiliados = new LinkedList<>();
+        for (Usuario usuario : usuarioDao.getAllUsuarios()) {
+            if("Afiliado".equals(usuario.getRolUsuario())){
+                listaAfiliados.add(usuario);
+            }
+        }
+        
+        return  listaAfiliados;
+    }
     
     /* Citas */
     

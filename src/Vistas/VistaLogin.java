@@ -99,7 +99,6 @@ public class VistaLogin extends javax.swing.JFrame {
 
         btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesLogin/00-EntrarGris-img.png"))); // NOI18N
         btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEntrar.setPreferredSize(new java.awt.Dimension(230, 64));
         btnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEntrarMouseEntered(evt);
@@ -128,22 +127,22 @@ public class VistaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseEntered
-        Icon btnEntrarAzul = new ImageIcon("src\\Imagenes\\BotonesLogin\\00-EntrarAzul-img.png");
+        Icon btnEntrarAzul = new ImageIcon("src//Imagenes//BotonesLogin//00-EntrarAzul-img.png");
         btnEntrar.setIcon(btnEntrarAzul);
     }//GEN-LAST:event_btnEntrarMouseEntered
 
     private void btnEntrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseExited
-        Icon btnEntrarGris = new ImageIcon("src\\Imagenes\\BotonesLogin\\00-EntrarGris-img.png");
+        Icon btnEntrarGris = new ImageIcon("src//Imagenes//BotonesLogin//00-EntrarGris-img.png");
         btnEntrar.setIcon(btnEntrarGris);
     }//GEN-LAST:event_btnEntrarMouseExited
 
     private void btnRegistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarseMouseEntered
-        Icon btnRegistrarseAzul = new ImageIcon("src\\Imagenes\\BotonesLogin\\00-RegistrarseAzul-img.png");
+        Icon btnRegistrarseAzul = new ImageIcon("src//Imagenes//BotonesLogin//00-RegistrarseAzul-img.png");
         btnRegistrarse.setIcon(btnRegistrarseAzul);
     }//GEN-LAST:event_btnRegistrarseMouseEntered
 
     private void btnRegistrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarseMouseExited
-        Icon btnRegistrarseGris = new ImageIcon("src\\Imagenes\\BotonesLogin\\00-RegistrarseGris-img.png");
+        Icon btnRegistrarseGris = new ImageIcon("src//Imagenes//BotonesLogin//00-RegistrarseGris-img.png");
         btnRegistrarse.setIcon(btnRegistrarseGris);
     }//GEN-LAST:event_btnRegistrarseMouseExited
 

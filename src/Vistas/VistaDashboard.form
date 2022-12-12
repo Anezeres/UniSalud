@@ -74,7 +74,7 @@
               <Image iconType="3" name="/Imagenes/BotonesDashboard/00-BtnCitasGris-img.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -94,7 +94,7 @@
               <Image iconType="3" name="/Imagenes/BotonesDashboard/00-BtnTrabajadoresGris-img.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -114,7 +114,7 @@
               <Image iconType="3" name="/Imagenes/BotonesDashboard/00-BtnAfiliadosGris-img.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -134,7 +134,7 @@
               <Image iconType="3" name="/Imagenes/BotonesDashboard/00-BtnDashboardGris-img.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>

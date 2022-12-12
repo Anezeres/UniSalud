@@ -5,43 +5,65 @@
 package Controller;
 
 import Modelo.ModeloPrincipal;
+import Modelo.Usuario;
 import Vistas.PanelAfiliados;
 import Vistas.VistaDashboard;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 
 /**
  *
- * @author RYZEN
+ * @author evalab
  */
-public class ControllerDashboard {
+public class ControllerAfiliados {
     
     private ModeloPrincipal modelo;
-    private VistaDashboard vistaDashboard;
+    private PanelAfiliados vistaAfiliados;
 
-    public ControllerDashboard(ModeloPrincipal modelo, VistaDashboard vista) {
+    public ControllerAfiliados(ModeloPrincipal modelo, PanelAfiliados vista) {
         this.modelo = modelo;
-        this.vistaDashboard = vista;
+        this.vistaAfiliados = vista;
         
         agregarListenersBtnDashBoard();
+        
+        llenarTabla();
         
     }
     
     private void agregarListenersBtnDashBoard(){
         DashboardListener listener = new DashboardListener();
         
-        vistaDashboard.addBtnAfiliadosListener(listener);
+        vistaAfiliados.addTablaAfiliadosListener(listener);
     }
     
+    
+    
+    private void llenarTabla(){
+        List<Usuario> afiliados = modelo.getInformacion().getAfiliados();
+        String[] dato = new String[6];
+        
+        for (Usuario afiliado : afiliados) {
+            dato[0] = afiliado.getCedula();
+            dato[1] = afiliado.getNombre();
+            dato[2] = afiliado.getTelefono();
+            dato[3] = afiliado.getEmail();
+            dato[4] = afiliado.getDireccion();
+            dato[5] = afiliado.getSexo();
+            
+            vistaAfiliados.agregarDatosTabla(dato);
+        }
+        
+    }
     
     class DashboardListener implements MouseListener{
 
         @Override
         public void mouseClicked(MouseEvent me) {
-            if(me.getSource() == vistaDashboard.getBtnAfiliados()){
-                PanelAfiliados panelAfiliados = new PanelAfiliados();
-                vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
-                ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados);
+            if(me.getSource() == vistaAfiliados.getTablaAfiliados()){
+                vistaAfiliados.activarBotones();
+                System.out.println("Hola mundo");
+                
             }
         }
 
@@ -60,7 +82,6 @@ public class ControllerDashboard {
         @Override
         public void mouseExited(MouseEvent me) {
         }
-        
     }
     
 }

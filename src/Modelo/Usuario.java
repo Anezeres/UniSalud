@@ -50,6 +50,12 @@ public class Usuario {
     public int getId() {
         return idUsuario;
     }
+
+    public String getCedula() {
+        return cedula;
+    }
+    
+    
     
     
 
@@ -100,6 +106,12 @@ public class Usuario {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+
+    public String getRolUsuario() {
+        return rolUsuario;
+    }
+    
+    
 
     @Override
     public String toString() {
