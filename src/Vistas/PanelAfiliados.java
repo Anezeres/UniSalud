@@ -119,7 +119,7 @@ public class PanelAfiliados extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Cedula", "Nombre", "Telefono", "Email", "Direccion", "Sexo"
+                "Cedula", "Nombre", "Teléfono", "Correo", "Dirección", "Sexo"
             }
         ) {
             Class[] types = new Class [] {
@@ -137,6 +137,7 @@ public class PanelAfiliados extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaAfiliados.setColumnSelectionAllowed(true);
         tablaAfiliados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tablaAfiliados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tablaAfiliados.getTableHeader().setReorderingAllowed(false);
@@ -225,10 +226,6 @@ public class PanelAfiliados extends javax.swing.JPanel {
     private void btnCrearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseExited
         setBotonInactivo("Crear", btnCrear);
     }//GEN-LAST:event_btnCrearMouseExited
-
-    public JScrollPane getjScrollPane1() {
-        return jScrollPane1;
-    }
 
     public JTable getTablaAfiliados() {
         return tablaAfiliados;
