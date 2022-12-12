@@ -4,6 +4,10 @@
  */
 package Vistas;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  * @author RYZEN
@@ -17,6 +21,16 @@ public class PanelAfiliados extends javax.swing.JPanel {
         initComponents();
         setSize(1086, 503);
     }
+    
+    private void setBotonActivo(String boton, JLabel imagenBoton){
+        Icon btnActivo = new ImageIcon("src\\Imagenes\\BotonesCRUD\\00-"+boton+"Activo.png"); 
+        imagenBoton.setIcon(btnActivo);
+    }
+    
+    private void setBotonInactivo(String boton, JLabel imagenBoton){
+        Icon btnActivo = new ImageIcon("src\\Imagenes\\BotonesCRUD\\00-"+boton+"Inactivo.png"); 
+        imagenBoton.setIcon(btnActivo);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,18 +41,126 @@ public class PanelAfiliados extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        btnCrear = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnEliminar = new javax.swing.JLabel();
+        btnEditar = new javax.swing.JLabel();
+        btnVer = new javax.swing.JLabel();
+        fondoAfiliados = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(102, 255, 204));
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1086, 503));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Estoy en el Panel de Afiliados");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 236, -1, 50));
+        btnCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-CrearInactivo.png"))); // NOI18N
+        btnCrear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCrear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCrearMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCrearMouseExited(evt);
+            }
+        });
+        add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 350, 144, 55));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setViewportView(jTable1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 790, 380));
+
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-EliminarInactivo.png"))); // NOI18N
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseExited(evt);
+            }
+        });
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 280, 144, 55));
+
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-EditarInactivo.png"))); // NOI18N
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditarMouseExited(evt);
+            }
+        });
+        add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 210, 144, 55));
+
+        btnVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-VerInactivo.png"))); // NOI18N
+        btnVer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVerMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVerMouseExited(evt);
+            }
+        });
+        add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 140, 144, 55));
+
+        fondoAfiliados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesPaneles/00-PanelAfiliadosFondo-img.png"))); // NOI18N
+        add(fondoAfiliados, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 1090, 510));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerMouseEntered
+        setBotonActivo("Ver", btnVer);
+    }//GEN-LAST:event_btnVerMouseEntered
+
+    private void btnVerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerMouseExited
+        setBotonInactivo("Ver", btnVer);
+    }//GEN-LAST:event_btnVerMouseExited
+
+    private void btnEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseEntered
+        setBotonActivo("Editar", btnEditar);
+    }//GEN-LAST:event_btnEditarMouseEntered
+
+    private void btnEditarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseExited
+        setBotonInactivo("Editar", btnEditar);
+    }//GEN-LAST:event_btnEditarMouseExited
+
+    private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
+        setBotonActivo("Eliminar", btnEliminar);
+    }//GEN-LAST:event_btnEliminarMouseEntered
+
+    private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
+        setBotonInactivo("Eliminar", btnEliminar);
+    }//GEN-LAST:event_btnEliminarMouseExited
+
+    private void btnCrearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseEntered
+        setBotonActivo("Crear", btnCrear);
+    }//GEN-LAST:event_btnCrearMouseEntered
+
+    private void btnCrearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseExited
+        setBotonInactivo("Crear", btnCrear);
+    }//GEN-LAST:event_btnCrearMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel btnCrear;
+    private javax.swing.JLabel btnEditar;
+    private javax.swing.JLabel btnEliminar;
+    private javax.swing.JLabel btnVer;
+    private javax.swing.JLabel fondoAfiliados;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
