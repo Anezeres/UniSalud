@@ -94,6 +94,23 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
         
     }
     
+    public String[] obtenerInformacion(){
+        String[] datos = new String[6];
+        
+        txtNombre.getText();
+        txtCedula.getText();
+        txtTelefono.getText();
+        txtCorreo.getText();
+        txtDireccion.getText();
+        
+        if(cbxSexo.getSelectedIndex() == 1){
+            
+        }else if(cbxSexo.getSelectedIndex() == 2){
+            
+        }
+        return datos;
+    }
+    
     private void setBotonActivo(String boton, JLabel imagenBoton){
         if(btnAceptarActivo || btnCancelarActivo){
             Icon btnActivo = new ImageIcon("src//Imagenes//BotonesCRUD//00-"+boton+"Activo.png"); 
