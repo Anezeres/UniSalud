@@ -44,6 +44,22 @@ public class PanelAfiliados extends javax.swing.JPanel {
         tablaAfiliados.addMouseListener(listener);
     }
     
+    public void addBtnVerListener(MouseListener listener){
+        btnVer.addMouseListener(listener);
+    }
+    
+    public void addBtnEditarListener(MouseListener listener){
+        btnEditar.addMouseListener(listener);
+    }
+    
+    public void addBtnEliminarListener(MouseListener listener){
+        btnEliminar.addMouseListener(listener);
+    }
+    
+    public void addBtnCrearListener(MouseListener listener){
+        btnCrear.addMouseListener(listener);
+    }
+    
     public void activarBotones(){
         btnEditarActivo = true;
         btnEditarActivo = true;
@@ -103,7 +119,7 @@ public class PanelAfiliados extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-CrearInactivo.png"))); // NOI18N
-        btnCrear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCrear.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCrear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCrearMouseEntered(evt);
@@ -137,12 +153,10 @@ public class PanelAfiliados extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tablaAfiliados.setColumnSelectionAllowed(true);
         tablaAfiliados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tablaAfiliados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tablaAfiliados.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaAfiliados);
-        tablaAfiliados.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (tablaAfiliados.getColumnModel().getColumnCount() > 0) {
             tablaAfiliados.getColumnModel().getColumn(0).setResizable(false);
             tablaAfiliados.getColumnModel().getColumn(1).setResizable(false);
@@ -156,7 +170,7 @@ public class PanelAfiliados extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 790, 380));
 
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-EliminarDesactivado.png"))); // NOI18N
-        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseEntered(evt);
@@ -168,7 +182,7 @@ public class PanelAfiliados extends javax.swing.JPanel {
         add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 280, 144, 55));
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-EditarDesactivado.png"))); // NOI18N
-        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEditarMouseEntered(evt);
@@ -180,7 +194,7 @@ public class PanelAfiliados extends javax.swing.JPanel {
         add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 210, 144, 55));
 
         btnVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-VerDesactivado.png"))); // NOI18N
-        btnVer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVer.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnVer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnVerMouseEntered(evt);
@@ -230,6 +244,36 @@ public class PanelAfiliados extends javax.swing.JPanel {
     public JTable getTablaAfiliados() {
         return tablaAfiliados;
     }
+
+    public boolean isBtnVerActivo() {
+        return btnVerActivo;
+    }
+
+    public boolean isBtnEditarActivo() {
+        return btnEditarActivo;
+    }
+
+    public boolean isBtnEliminarActivo() {
+        return btnEliminarActivo;
+    }
+
+    public JLabel getBtnCrear() {
+        return btnCrear;
+    }
+
+    public JLabel getBtnEditar() {
+        return btnEditar;
+    }
+
+    public JLabel getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public JLabel getBtnVer() {
+        return btnVer;
+    }
+    
+    
     
     
 

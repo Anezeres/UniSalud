@@ -41,7 +41,7 @@ public class ControllerDashboard {
             if(me.getSource() == vistaDashboard.getBtnAfiliados()){
                 PanelAfiliados panelAfiliados = new PanelAfiliados();
                 vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
-                ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados);
+                ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
             }
         }
 

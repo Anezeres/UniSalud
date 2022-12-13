@@ -7,6 +7,7 @@ package Controller;
 import Modelo.ModeloPrincipal;
 import Modelo.Usuario;
 import Vistas.PanelAfiliados;
+import Vistas.PanelUsuariosCRUD;
 import Vistas.VistaDashboard;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -20,10 +21,13 @@ public class ControllerAfiliados {
     
     private ModeloPrincipal modelo;
     private PanelAfiliados vistaAfiliados;
+    private VistaDashboard vistaDashboard;
+    
 
-    public ControllerAfiliados(ModeloPrincipal modelo, PanelAfiliados vista) {
+    public ControllerAfiliados(ModeloPrincipal modelo, PanelAfiliados vista, VistaDashboard dashboard) {
         this.modelo = modelo;
         this.vistaAfiliados = vista;
+        this.vistaDashboard = dashboard;
         
         agregarListenersBtnDashBoard();
         
@@ -35,6 +39,10 @@ public class ControllerAfiliados {
         DashboardListener listener = new DashboardListener();
         
         vistaAfiliados.addTablaAfiliadosListener(listener);
+        vistaAfiliados.addBtnVerListener(listener);
+        vistaAfiliados.addBtnEditarListener(listener);
+        vistaAfiliados.addBtnEliminarListener(listener);
+        vistaAfiliados.addBtnCrearListener(listener);
     }
     
     
@@ -57,13 +65,24 @@ public class ControllerAfiliados {
     }
     
     class DashboardListener implements MouseListener{
+        
+        private boolean elementoSeleccionado = false; 
 
         @Override
         public void mouseClicked(MouseEvent me) {
             if(me.getSource() == vistaAfiliados.getTablaAfiliados()){
                 vistaAfiliados.activarBotones();
-                System.out.println("Hola mundo");
-                
+                System.out.println(vistaAfiliados.getTablaAfiliados().getSelectedRow());
+                elementoSeleccionado = vistaAfiliados.getTablaAfiliados().getRowSelectionAllowed();
+            }
+            
+            if(elementoSeleccionado){
+                if(me.getSource() == vistaAfiliados.getBtnVer()){
+                    PanelUsuariosCRUD panelAfiliadosVer = new PanelUsuariosCRUD();
+                    vistaDashboard.realizarCambioPanelDashboard(panelAfiliadosVer);
+                    panelAfiliadosVer.ponerFondoCRUD("Ver");
+                    ControllerUsuariosCRUD afiliados = new ControllerUsuariosCRUD(modelo, panelAfiliadosVer, vistaDashboard);
+                }
             }
         }
 

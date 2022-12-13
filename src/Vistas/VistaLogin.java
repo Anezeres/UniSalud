@@ -86,7 +86,7 @@ public class VistaLogin extends javax.swing.JFrame {
         jPanel2.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, 350, 30));
 
         btnRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesLogin/00-RegistrarseGris-img.png"))); // NOI18N
-        btnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnRegistrarseMouseEntered(evt);
@@ -98,7 +98,7 @@ public class VistaLogin extends javax.swing.JFrame {
         jPanel2.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 660, -1, -1));
 
         btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesLogin/00-EntrarGris-img.png"))); // NOI18N
-        btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEntrarMouseEntered(evt);
