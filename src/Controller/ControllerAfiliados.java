@@ -67,12 +67,13 @@ public class ControllerAfiliados {
     class DashboardListener implements MouseListener{
         
         private boolean elementoSeleccionado = false; 
+        private int valorSeleccionado;
 
         @Override
         public void mouseClicked(MouseEvent me) {
             if(me.getSource() == vistaAfiliados.getTablaAfiliados()){
                 vistaAfiliados.activarBotones();
-                System.out.println(vistaAfiliados.getTablaAfiliados().getSelectedRow());
+                valorSeleccionado = vistaAfiliados.getTablaAfiliados().getSelectedRow();
                 elementoSeleccionado = vistaAfiliados.getTablaAfiliados().getRowSelectionAllowed();
             }
             
@@ -81,6 +82,21 @@ public class ControllerAfiliados {
                     PanelUsuariosCRUD panelAfiliadosVer = new PanelUsuariosCRUD();
                     vistaDashboard.realizarCambioPanelDashboard(panelAfiliadosVer);
                     panelAfiliadosVer.ponerFondoCRUD("Ver");
+                    List<Usuario> datosAfiliados = modelo.getInformacion().getAfiliados();
+                    Usuario afiliadoSeleccionado =  datosAfiliados.get(valorSeleccionado);
+                    
+                    String[] dato = new String[6];
+                    
+                    dato[0] = afiliadoSeleccionado.getNombre();
+                    dato[1] = afiliadoSeleccionado.getCedula();
+                    dato[2] = afiliadoSeleccionado.getTelefono();
+                    dato[3] = afiliadoSeleccionado.getEmail();
+                    dato[4] = afiliadoSeleccionado.getDireccion();
+                    dato[5] = afiliadoSeleccionado.getSexo();
+                    
+                    panelAfiliadosVer.ingresarInformacion(dato);
+                    panelAfiliadosVer.setDatosActuales(dato);
+                    
                     ControllerUsuariosCRUD afiliados = new ControllerUsuariosCRUD(modelo, panelAfiliadosVer, vistaDashboard);
                 }
             }

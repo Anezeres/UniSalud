@@ -66,8 +66,7 @@ public class PanelAfiliados extends javax.swing.JPanel {
         btnEliminarActivo = true;
         setBotonInactivo("Eliminar", btnEliminar);
         setBotonInactivo("Editar", btnEditar);
-        setBotonInactivo("Ver", btnVer);
-        
+        setBotonInactivo("Ver", btnVer);     
     }
     
     private void setBotonActivo(String boton, JLabel imagenBoton){
