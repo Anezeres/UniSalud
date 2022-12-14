@@ -62,6 +62,22 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
         setBotonInactivo("Cancelar", btnCancelar);
         setBotonInactivo("Aceptar", btnAceptar);
     }
+    
+    public void limpiarCampos(){
+        limpiarComponenteTexto(txtNombre);
+        limpiarComponenteTexto(txtCedula);
+        limpiarComponenteTexto(txtTelefono);
+        limpiarComponenteTexto(txtCorreo);
+        limpiarComponenteTexto(txtDireccion);
+    }
+    
+    public boolean validarCampos(){
+        boolean camposValidos = false;
+        if(!"".equals(txtNombre.getText()) && !"".equals(txtCedula.getText()) && !"".equals(txtCorreo.getText()) && !"".equals(txtDireccion.getText()) && !"".equals(txtTelefono.getText()) && cbxSexo.getSelectedIndex() != 0){
+            camposValidos = true;
+        }
+        return camposValidos;
+    }
      
     public void activarComponentes(){
         textoEditables = true;
@@ -339,19 +355,19 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
     }//GEN-LAST:event_txtDireccionActionPerformed
 
     private void txtCedulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCedulaMouseClicked
-        //limpiarComponenteTexto(txtCedula);
+        
     }//GEN-LAST:event_txtCedulaMouseClicked
 
     private void txtTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMouseClicked
-        //limpiarComponenteTexto(txtTelefono);
+        
     }//GEN-LAST:event_txtTelefonoMouseClicked
 
     private void txtCorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCorreoMouseClicked
-        //limpiarComponenteTexto(txtCorreo);
+        
     }//GEN-LAST:event_txtCorreoMouseClicked
 
     private void txtDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMouseClicked
-        //limpiarComponenteTexto(txtDireccion);
+        
     }//GEN-LAST:event_txtDireccionMouseClicked
 
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered

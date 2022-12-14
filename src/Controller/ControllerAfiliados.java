@@ -12,6 +12,7 @@ import Vistas.VistaDashboard;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -68,6 +69,20 @@ public class ControllerAfiliados {
         
         private boolean elementoSeleccionado = false; 
         private int valorSeleccionado;
+        
+        private void enviarInformacion(Usuario usuarioSeleccionado, PanelUsuariosCRUD panel){
+            String[] dato = new String[6];
+                    
+                    dato[0] = usuarioSeleccionado.getNombre();
+                    dato[1] = usuarioSeleccionado.getCedula();
+                    dato[2] = usuarioSeleccionado.getTelefono();
+                    dato[3] = usuarioSeleccionado.getEmail();
+                    dato[4] = usuarioSeleccionado.getDireccion();
+                    dato[5] = usuarioSeleccionado.getSexo();
+                    
+                    panel.ingresarInformacion(dato);
+                    panel.setDatosActuales(dato);
+        }
 
         @Override
         public void mouseClicked(MouseEvent me) {
@@ -82,24 +97,46 @@ public class ControllerAfiliados {
                     PanelUsuariosCRUD panelAfiliadosVer = new PanelUsuariosCRUD();
                     vistaDashboard.realizarCambioPanelDashboard(panelAfiliadosVer);
                     panelAfiliadosVer.ponerFondoCRUD("Ver");
+                    
                     List<Usuario> datosAfiliados = modelo.getInformacion().getAfiliados();
                     Usuario afiliadoSeleccionado =  datosAfiliados.get(valorSeleccionado);
                     
-                    String[] dato = new String[6];
-                    
-                    dato[0] = afiliadoSeleccionado.getNombre();
-                    dato[1] = afiliadoSeleccionado.getCedula();
-                    dato[2] = afiliadoSeleccionado.getTelefono();
-                    dato[3] = afiliadoSeleccionado.getEmail();
-                    dato[4] = afiliadoSeleccionado.getDireccion();
-                    dato[5] = afiliadoSeleccionado.getSexo();
-                    
-                    panelAfiliadosVer.ingresarInformacion(dato);
-                    panelAfiliadosVer.setDatosActuales(dato);
+                    enviarInformacion(afiliadoSeleccionado, panelAfiliadosVer);
                     
                     ControllerUsuariosCRUD afiliados = new ControllerUsuariosCRUD(modelo, panelAfiliadosVer, vistaDashboard);
+                    
+                }else if(me.getSource() == vistaAfiliados.getBtnEditar()){
+                    
+                    PanelUsuariosCRUD panelAfiliadosEditar = new PanelUsuariosCRUD();
+                    vistaDashboard.realizarCambioPanelDashboard(panelAfiliadosEditar);
+                    panelAfiliadosEditar.ponerFondoCRUD("Editar");
+                    panelAfiliadosEditar.activarBotones();
+                    panelAfiliadosEditar.activarComponentes();
+                    
+                    List<Usuario> datosAfiliados = modelo.getInformacion().getAfiliados();
+                    Usuario afiliadoSeleccionado =  datosAfiliados.get(valorSeleccionado);
+                    
+                    enviarInformacion(afiliadoSeleccionado, panelAfiliadosEditar);
+                    
+                    ControllerUsuariosCRUD afiliados = new ControllerUsuariosCRUD(modelo, panelAfiliadosEditar, vistaDashboard);
+                }else if(me.getSource() == vistaAfiliados.getBtnEliminar()){
+                    
+                    if (JOptionPane.showConfirmDialog(null, "¿Seguro que quieres eliminar este afiliado?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                        System.out.println("Eliminar Afiliado");
+                    }
                 }
-            }
+            }else if(me.getSource() == vistaAfiliados.getBtnCrear()){
+                    
+                    PanelUsuariosCRUD panelAfiliadosCrear = new PanelUsuariosCRUD();
+                    vistaDashboard.realizarCambioPanelDashboard(panelAfiliadosCrear);
+                    panelAfiliadosCrear.ponerFondoCRUD("Crear");
+                    panelAfiliadosCrear.activarBotones();
+                    panelAfiliadosCrear.activarComponentes();
+                    panelAfiliadosCrear.limpiarCampos();
+                    
+                    ControllerUsuariosCRUD afiliados = new ControllerUsuariosCRUD(modelo, panelAfiliadosCrear, vistaDashboard);
+                }
+            
         }
 
         @Override
@@ -117,6 +154,12 @@ public class ControllerAfiliados {
         @Override
         public void mouseExited(MouseEvent me) {
         }
+        
+        
+        
     }
+    
+    
+    
     
 }
