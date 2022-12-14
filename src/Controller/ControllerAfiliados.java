@@ -122,7 +122,13 @@ public class ControllerAfiliados {
                 }else if(me.getSource() == vistaAfiliados.getBtnEliminar()){
                     
                     if (JOptionPane.showConfirmDialog(null, "¿Seguro que quieres eliminar este afiliado?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                        System.out.println("Eliminar Afiliado");
+                        List<Usuario> datosAfiliados = modelo.getInformacion().getAfiliados();
+                        Usuario afiliadoSeleccionado =  datosAfiliados.get(valorSeleccionado);
+                        modelo.getInformacion().eliminarUsuario(afiliadoSeleccionado);
+                        
+                        PanelAfiliados panelAfiliados = new PanelAfiliados();
+                        vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
+                        ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
                     }
                 }
             }else if(me.getSource() == vistaAfiliados.getBtnCrear()){

@@ -64,9 +64,9 @@ public class ControllerUsuariosCRUD {
             }else if(me.getSource() == vistaAfiliados.getBtnAceptar()){
                 if(vistaAfiliados.validarCampos()){
                     if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere crear un afiliado con la información ingresada?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                    PanelAfiliados panelAfiliados = new PanelAfiliados();
-                    vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
-                    ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
+                        PanelAfiliados panelAfiliados = new PanelAfiliados();
+                        vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
+                        ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
                     }
                 }else{
                     if (JOptionPane.showConfirmDialog(null, "Debe completar todos los campos", "Mensaje", JOptionPane.CLOSED_OPTION) == JOptionPane.YES_OPTION) {
