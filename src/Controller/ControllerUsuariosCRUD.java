@@ -19,13 +19,13 @@ import javax.swing.JOptionPane;
 public class ControllerUsuariosCRUD {
     
     private ModeloPrincipal modelo;
-    private PanelUsuariosCRUD vistaAfiliados;
+    private PanelUsuariosCRUD vistaUsuario;
     private VistaDashboard vistaDashboard;
     
 
     public ControllerUsuariosCRUD(ModeloPrincipal modelo, PanelUsuariosCRUD vista, VistaDashboard dashboard) {
         this.modelo = modelo;
-        this.vistaAfiliados = vista;
+        this.vistaUsuario = vista;
         this.vistaDashboard = dashboard;
         
         agregarListenersBtnDashBoard();
@@ -35,25 +35,27 @@ public class ControllerUsuariosCRUD {
     private void agregarListenersBtnDashBoard(){
         DashboardListener listener = new DashboardListener();
         
-        vistaAfiliados.addBtnEditarListener(listener);
-        vistaAfiliados.addBtnAceptarListener(listener);
-        vistaAfiliados.addBtnCancelarListener(listener);
-        vistaAfiliados.addBtnVolverListener(listener);
+        vistaUsuario.addBtnEditarListener(listener);
+        vistaUsuario.addBtnAceptarListener(listener);
+        vistaUsuario.addBtnCancelarListener(listener);
+        vistaUsuario.addBtnVolverListener(listener);
     }
     
     class DashboardListener implements MouseListener{
 
         @Override
         public void mouseClicked(MouseEvent me) {
-            if(me.getSource() == vistaAfiliados.getBtnEditar()){
-                vistaAfiliados.activarBotones();
-                vistaAfiliados.ponerFondoCRUD("Editar");
-                vistaAfiliados.activarComponentes();
-            }else if(me.getSource() == vistaAfiliados.getBtnVolver()){
+            
+            if(me.getSource() == vistaUsuario.getBtnEditar()){
+                vistaUsuario.activarBotones();
+                vistaUsuario.ponerFondoCRUD("Editar");
+                vistaUsuario.activarComponentes();
+                
+            }else if(me.getSource() == vistaUsuario.getBtnVolver()){
                 PanelAfiliados panelAfiliados = new PanelAfiliados();
                 vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
                 ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
-            }else if(me.getSource() == vistaAfiliados.getBtnCancelar()){
+            }else if(me.getSource() == vistaUsuario.getBtnCancelar()){
                 if (JOptionPane.showConfirmDialog(null, "¿Seguro que cancelar la edición?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                     PanelAfiliados panelAfiliados = new PanelAfiliados();
                     vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
@@ -61,12 +63,22 @@ public class ControllerUsuariosCRUD {
              
                 }
                 
-            }else if(me.getSource() == vistaAfiliados.getBtnAceptar()){
-                if(vistaAfiliados.validarCampos()){
+            }else if(me.getSource() == vistaUsuario.getBtnAceptar()){
+                if(vistaUsuario.validarCampos()){
                     if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere crear un afiliado con la información ingresada?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                         PanelAfiliados panelAfiliados = new PanelAfiliados();
                         vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
                         ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
+                        
+                        String[] datos = vistaUsuario.obtenerInformacion();
+                        
+                        if("Crear".equals(vistaUsuario.getAccionActual())){
+                            
+                        }else if("Editar".equals(vistaUsuario.getAccionActual())){
+                            
+                        }
+                        
+                        
                     }
                 }else{
                     if (JOptionPane.showConfirmDialog(null, "Debe completar todos los campos", "Mensaje", JOptionPane.CLOSED_OPTION) == JOptionPane.YES_OPTION) {

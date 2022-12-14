@@ -28,6 +28,7 @@ public class Informacion {
     private ICitaDao citaDao;
     private ICuentaDao cuentaDao;
     private IUsuarioDao usuarioDao;
+    private Usuario usuarioActualInfo;
 
     public Informacion() {
         this.citaDao = new CitaDaoImplementation();
@@ -116,6 +117,32 @@ public class Informacion {
         agregarUsuario(nuevoUsuario);
     }
     
+    public void crearUsuario(String[] usuario, String rol){
+        String nombre = usuario[0];
+        String cedula = usuario[1];
+        String telefono = usuario[2]; 
+        String email = usuario[3];
+        String direccion = usuario[4];
+        String sexo = usuario[5];
+        
+        Usuario nuevoUsuario = new Usuario(cedula, nombre, telefono, email, direccion, sexo, rol);
+        
+        agregarUsuario(nuevoUsuario);
+    }
+    
+    public Usuario cambiarInfoUsuario(String[] datos, int idUsuario, String rol){
+        String nombre = datos[0];
+        String cedula = datos[1];
+        String telefono = datos[2];
+        String email = datos[3];
+        String direccion = datos[4];
+        String sexo = datos[5];
+        
+        Usuario nuevoUsuario = new Usuario(idUsuario ,cedula, nombre, telefono, email, direccion, sexo, rol);
+        
+        return nuevoUsuario;
+    }
+    
     public void cargarUsuarios(){
         cargarDatos("Usuarios");
     }
@@ -190,6 +217,16 @@ public class Informacion {
            }
         }
     }
+
+    public Usuario getUsuarioActualInfo() {
+        return usuarioActualInfo;
+    }
+
+    public void setUsuarioActualInfo(Usuario usuarioActualInfo) {
+        this.usuarioActualInfo = usuarioActualInfo;
+    }
+    
+    
     
     
     

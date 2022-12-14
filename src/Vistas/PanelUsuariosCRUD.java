@@ -23,8 +23,10 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
     DefaultTableModel modelo;
     private boolean btnAceptarActivo = false;
     private boolean btnCancelarActivo = false;
+    private boolean btnEditarActivo = false;
     private boolean textoEditables;
     private String[] datosActuales;
+    private String accionActual;
 
     /**
      * Creates new form PanelDashboard
@@ -38,6 +40,7 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
     public void ponerFondoCRUD(String accion){
         Icon fondoCRUD = new ImageIcon("src//Imagenes//UsuariosCRUD//00-"+accion+"Usuario-img.png"); 
         fondoAfiliados.setIcon(fondoCRUD);     
+        accionActual = accion;
     }
     
     public void addBtnEditarListener(MouseListener listener){
@@ -61,6 +64,11 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
         btnCancelarActivo = true;
         setBotonInactivo("Cancelar", btnCancelar);
         setBotonInactivo("Aceptar", btnAceptar);
+    }
+    
+    public void activarBtnEditar(){
+        btnEditarActivo = true;
+        setBotonInactivo("Editar", btnEditar);
     }
     
     public void limpiarCampos(){
@@ -113,16 +121,16 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
     public String[] obtenerInformacion(){
         String[] datos = new String[6];
         
-        txtNombre.getText();
-        txtCedula.getText();
-        txtTelefono.getText();
-        txtCorreo.getText();
-        txtDireccion.getText();
+        datos[0] = txtNombre.getText();
+        datos[1] = txtCedula.getText();
+        datos[2] = txtTelefono.getText();
+        datos[3] = txtCorreo.getText();
+        datos[4] = txtDireccion.getText();
         
         if(cbxSexo.getSelectedIndex() == 1){
-            
+            datos[5] = "Male";
         }else if(cbxSexo.getSelectedIndex() == 2){
-            
+            datos[5] = "Female";
         }
         return datos;
     }
@@ -133,7 +141,7 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
             imagenBoton.setIcon(btnActivo);
         }
         
-        if("Volver".equals(boton) || "Editar".equals(boton)){
+        if(btnEditarActivo && ("Volver".equals(boton) || "Editar".equals(boton))){
             Icon btnActivo = new ImageIcon("src//Imagenes//BotonesCRUD//00-"+boton+"Activo.png"); 
             imagenBoton.setIcon(btnActivo);
         }
@@ -147,7 +155,7 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
             imagenBoton.setIcon(btnInactivo);
         }
         
-        if("Volver".equals(boton) || "Editar".equals(boton)){
+        if(btnEditarActivo && ("Volver".equals(boton) || "Editar".equals(boton))){
             Icon btnInactivo = new ImageIcon("src//Imagenes//BotonesCRUD//00-"+boton+"Inactivo.png"); 
             imagenBoton.setIcon(btnInactivo);
         }
@@ -266,7 +274,7 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
         });
         add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 175, 210, 26));
 
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-EditarInactivo.png"))); // NOI18N
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-EditarDesactivado.png"))); // NOI18N
         btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -416,6 +424,12 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
     public JLabel getBtnVolver() {
         return btnVolver;
     }
+
+    public String getAccionActual() {
+        return accionActual;
+    }
+    
+    
     
     
     

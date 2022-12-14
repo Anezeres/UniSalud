@@ -100,6 +100,7 @@ public class ControllerAfiliados {
                     
                     List<Usuario> datosAfiliados = modelo.getInformacion().getAfiliados();
                     Usuario afiliadoSeleccionado =  datosAfiliados.get(valorSeleccionado);
+                    modelo.getInformacion().setUsuarioActualInfo(afiliadoSeleccionado);
                     
                     enviarInformacion(afiliadoSeleccionado, panelAfiliadosVer);
                     
@@ -115,6 +116,7 @@ public class ControllerAfiliados {
                     
                     List<Usuario> datosAfiliados = modelo.getInformacion().getAfiliados();
                     Usuario afiliadoSeleccionado =  datosAfiliados.get(valorSeleccionado);
+                    modelo.getInformacion().setUsuarioActualInfo(afiliadoSeleccionado);
                     
                     enviarInformacion(afiliadoSeleccionado, panelAfiliadosEditar);
                     
@@ -131,16 +133,17 @@ public class ControllerAfiliados {
                         ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
                     }
                 }
-            }else if(me.getSource() == vistaAfiliados.getBtnCrear()){
+            }
+            if(me.getSource() == vistaAfiliados.getBtnCrear()){
                     
-                    PanelUsuariosCRUD panelAfiliadosCrear = new PanelUsuariosCRUD();
-                    vistaDashboard.realizarCambioPanelDashboard(panelAfiliadosCrear);
-                    panelAfiliadosCrear.ponerFondoCRUD("Crear");
-                    panelAfiliadosCrear.activarBotones();
-                    panelAfiliadosCrear.activarComponentes();
-                    panelAfiliadosCrear.limpiarCampos();
+                PanelUsuariosCRUD panelAfiliadosCrear = new PanelUsuariosCRUD();
+                vistaDashboard.realizarCambioPanelDashboard(panelAfiliadosCrear);
+                panelAfiliadosCrear.ponerFondoCRUD("Crear");
+                panelAfiliadosCrear.activarBotones();
+                panelAfiliadosCrear.activarComponentes();
+                panelAfiliadosCrear.limpiarCampos();
                     
-                    ControllerUsuariosCRUD afiliados = new ControllerUsuariosCRUD(modelo, panelAfiliadosCrear, vistaDashboard);
+                ControllerUsuariosCRUD afiliados = new ControllerUsuariosCRUD(modelo, panelAfiliadosCrear, vistaDashboard);
                 }
             
         }
