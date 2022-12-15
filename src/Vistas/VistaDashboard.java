@@ -327,6 +327,7 @@ public class VistaDashboard extends javax.swing.JFrame {
 
     private void btnCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCitasMouseClicked
         mostrarBotonCitasActivado();
+        realizarCambioPanelDashboard(panelCitas);
         cambiarImagenPrincipal("Citas");
     }//GEN-LAST:event_btnCitasMouseClicked
 

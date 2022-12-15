@@ -62,10 +62,7 @@ public class ControllerUsuariosCRUD {
                 regresarVentana(vistaDashboard.getTipoAccionActual());
             }else if(me.getSource() == vistaUsuario.getBtnCancelar() && vistaUsuario.isBtnCancelarActivo()){
                 if (JOptionPane.showConfirmDialog(null, "¿Seguro que cancelar la edición?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                    PanelAfiliados panelAfiliados = new PanelAfiliados();
-                    vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
-                    ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
-             
+                    regresarVentana(vistaDashboard.getTipoAccionActual());
                 }
                 
             }else if(me.getSource() == vistaUsuario.getBtnAceptar() && vistaUsuario.isBtnAceptarActivo()){
@@ -97,10 +94,11 @@ public class ControllerUsuariosCRUD {
         }
         
         private void regresarVentana(String ventanaActual){
-            if(ventanaActual == "Afiliado"){
+            if("Afiliado".equals(ventanaActual)){
+                vistaDashboard.setTipoAccionActual("Afiliado");
                 PanelAfiliados panelAfiliados = new PanelAfiliados();
                 vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
-                ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);  
+                ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados ,vistaDashboard);
             }else if(ventanaActual == "Trabajador"){
                 vistaDashboard.setTipoAccionActual("Trabajador");
                 PanelTrabajadores panelTrabajadores = new PanelTrabajadores();
