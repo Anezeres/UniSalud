@@ -7,7 +7,7 @@ package Controller;
 import Modelo.ModeloPrincipal;
 import Modelo.Usuario;
 import Vistas.PanelAfiliados;
-import Vistas.PanelTrabajadores1;
+import Vistas.PanelTrabajadores;
 import Vistas.PanelUsuariosCRUD;
 import Vistas.VistaDashboard;
 import java.awt.event.MouseEvent;
@@ -22,11 +22,11 @@ import javax.swing.JOptionPane;
 public class ControllerTrabajadores {
     
     private ModeloPrincipal modelo;
-    private PanelTrabajadores1 vistaTrabajadores;
+    private PanelTrabajadores vistaTrabajadores;
     private VistaDashboard vistaDashboard;
     
 
-    public ControllerTrabajadores(ModeloPrincipal modelo, PanelTrabajadores1 vista, VistaDashboard dashboard) {
+    public ControllerTrabajadores(ModeloPrincipal modelo, PanelTrabajadores vista, VistaDashboard dashboard) {
         this.modelo = modelo;
         this.vistaTrabajadores = vista;
         this.vistaDashboard = dashboard;
@@ -130,7 +130,7 @@ public class ControllerTrabajadores {
                         Usuario afiliadoSeleccionado =  datosAfiliados.get(valorSeleccionado);
                         modelo.getInformacion().eliminarUsuario(afiliadoSeleccionado);
                         
-                        PanelTrabajadores1 panelTrabajadores = new PanelTrabajadores1();
+                        PanelTrabajadores panelTrabajadores = new PanelTrabajadores();
                         vistaDashboard.realizarCambioPanelDashboard(panelTrabajadores);
                         ControllerTrabajadores afiliados = new ControllerTrabajadores(modelo, panelTrabajadores,vistaDashboard);
                     }

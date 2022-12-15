@@ -20,7 +20,7 @@ public class VistaDashboard extends javax.swing.JFrame {
 
     private PanelDashboard panelDashboard = new PanelDashboard();
     private PanelAfiliados panelAfiliados = new PanelAfiliados();
-    private PanelTrabajadores1 panelTrabajadores = new PanelTrabajadores1();
+    private PanelTrabajadores panelTrabajadores = new PanelTrabajadores();
     private PanelCitas panelCitas = new PanelCitas();
     
     
