@@ -20,7 +20,7 @@ public class VistaDashboard extends javax.swing.JFrame {
 
     private PanelDashboard panelDashboard = new PanelDashboard();
     private PanelAfiliados panelAfiliados = new PanelAfiliados();
-    private PanelTrabajadores panelTrabajadores = new PanelTrabajadores();
+    private PanelTrabajadores1 panelTrabajadores = new PanelTrabajadores1();
     private PanelCitas panelCitas = new PanelCitas();
     
     
@@ -43,7 +43,9 @@ public class VistaDashboard extends javax.swing.JFrame {
         btnAfiliados.addMouseListener(listener);
     }
     
-    
+    public void addBtnTrabajadoresListener(MouseListener listener){
+        btnTrabajadores.addMouseListener(listener);
+    }
     
     public void realizarCambioPanelDashboard(JPanel contenidoPanel){
         ubicarPanelEnDashboard(contenidoPanel);
@@ -319,13 +321,12 @@ public class VistaDashboard extends javax.swing.JFrame {
 
     private void btnTrabajadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadoresMouseClicked
         mostrarBotonTrabajadoresActivado();
-        realizarCambioPanelDashboard(panelTrabajadores);
+        //realizarCambioPanelDashboard(panelTrabajadores);
         cambiarImagenPrincipal("Trabajadores");
     }//GEN-LAST:event_btnTrabajadoresMouseClicked
 
     private void btnCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCitasMouseClicked
         mostrarBotonCitasActivado();
-        realizarCambioPanelDashboard(panelCitas);
         cambiarImagenPrincipal("Citas");
     }//GEN-LAST:event_btnCitasMouseClicked
 
@@ -390,6 +391,10 @@ public class VistaDashboard extends javax.swing.JFrame {
     public JLabel getBtnAfiliados() {
         return btnAfiliados;
     }
+
+    public JLabel getBtnTrabajadores() {
+        return btnTrabajadores;
+    }  
 
     public String getTipoAccionActual() {
         return tipoAccionActual;

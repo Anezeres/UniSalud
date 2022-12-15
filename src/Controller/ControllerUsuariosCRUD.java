@@ -6,6 +6,7 @@ package Controller;
 
 import Modelo.ModeloPrincipal;
 import Vistas.PanelAfiliados;
+import Vistas.PanelTrabajadores1;
 import Vistas.PanelUsuariosCRUD;
 import Vistas.VistaDashboard;
 import java.awt.event.MouseEvent;
@@ -52,9 +53,13 @@ public class ControllerUsuariosCRUD {
                 vistaUsuario.activarComponentes();
                 
             }else if(me.getSource() == vistaUsuario.getBtnVolver()){
+                /*
                 PanelAfiliados panelAfiliados = new PanelAfiliados();
                 vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
                 ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
+                */
+                
+                regresarVentana(vistaDashboard.getTipoAccionActual());
             }else if(me.getSource() == vistaUsuario.getBtnCancelar() && vistaUsuario.isBtnCancelarActivo()){
                 if (JOptionPane.showConfirmDialog(null, "¿Seguro que cancelar la edición?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                     PanelAfiliados panelAfiliados = new PanelAfiliados();
@@ -75,10 +80,8 @@ public class ControllerUsuariosCRUD {
                            modelo.getInformacion().cambiarInfoUsuario(datos, modelo.getInformacion().getUsuarioActualInfo().getId(), vistaDashboard.getTipoAccionActual());
                         }
                         
-                        PanelAfiliados panelAfiliados = new PanelAfiliados();
-                        vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
-                        ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
-
+                        regresarVentana(vistaDashboard.getTipoAccionActual());
+                        
                     }
                 }else{
                     if (JOptionPane.showConfirmDialog(null, "Debe completar todos los campos", "Mensaje", JOptionPane.CLOSED_OPTION) == JOptionPane.YES_OPTION) {
@@ -91,6 +94,21 @@ public class ControllerUsuariosCRUD {
             
             
             
+        }
+        
+        private void regresarVentana(String ventanaActual){
+            if(ventanaActual == "Afiliado"){
+                PanelAfiliados panelAfiliados = new PanelAfiliados();
+                vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
+                ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);  
+            }else if(ventanaActual == "Trabajador"){
+                vistaDashboard.setTipoAccionActual("Trabajador");
+                PanelTrabajadores1 panelTrabajadores = new PanelTrabajadores1();
+                vistaDashboard.realizarCambioPanelDashboard(panelTrabajadores);
+                ControllerTrabajadores trabajadores = new ControllerTrabajadores(modelo, panelTrabajadores ,vistaDashboard);
+            
+                
+            }
         }
 
         @Override

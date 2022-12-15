@@ -6,6 +6,7 @@ package Controller;
 
 import Modelo.ModeloPrincipal;
 import Vistas.PanelAfiliados;
+import Vistas.PanelTrabajadores1;
 import Vistas.VistaDashboard;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -31,6 +32,7 @@ public class ControllerDashboard {
         DashboardListener listener = new DashboardListener();
         
         vistaDashboard.addBtnAfiliadosListener(listener);
+        vistaDashboard.addBtnTrabajadoresListener(listener);
     }
     
     
@@ -43,6 +45,12 @@ public class ControllerDashboard {
                 PanelAfiliados panelAfiliados = new PanelAfiliados();
                 vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
                 ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
+            }else if(me.getSource() == vistaDashboard.getBtnTrabajadores()){
+                
+                vistaDashboard.setTipoAccionActual("Trabajador");
+                PanelTrabajadores1 panelTrabajadores = new PanelTrabajadores1();
+                vistaDashboard.realizarCambioPanelDashboard(panelTrabajadores);
+                ControllerTrabajadores trabajadores = new ControllerTrabajadores(modelo, panelTrabajadores ,vistaDashboard);
             }
         }
 

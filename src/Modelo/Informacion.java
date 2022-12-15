@@ -49,6 +49,19 @@ public class Informacion {
         return  listaAfiliados;
     }
     
+    public List<Usuario> getTrabajadores(){
+        List<Usuario> listaTrabajadores = new LinkedList<>();
+        for (Usuario usuario : usuarioDao.getAllUsuarios()) {
+            if(!"Afiliado".equals(usuario.getRolUsuario())){
+                listaTrabajadores.add(usuario);
+            }
+        }
+        
+        
+        
+        return  listaTrabajadores;
+    }
+    
     /* Citas */
     
     public boolean agregarCita(Cita cita){
