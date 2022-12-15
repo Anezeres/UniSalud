@@ -46,11 +46,12 @@ public class UsuarioDaoImplementation implements IUsuarioDao{
     }
 
     @Override
-    public boolean updateUsuario(Usuario usuario) {
-        
+    public boolean updateUsuario(Usuario usuario, Usuario nuevoUsuario) {
+        System.out.println("Hola");
         if(usuarios.contains(usuario)){
+            
             int pos = usuarios.indexOf(usuario);
-            usuarios.set(pos, usuario);
+            usuarios.set(pos, nuevoUsuario);
             return true;
         }
         return false;

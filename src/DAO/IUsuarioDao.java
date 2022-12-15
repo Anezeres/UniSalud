@@ -17,7 +17,7 @@ public interface IUsuarioDao{
     public List<Usuario> getAllUsuarios();
     public Usuario getUsuario(int usuarioId);
     public boolean addUsuario(Usuario usuario);
-    public boolean updateUsuario(Usuario usuario);
+    public boolean updateUsuario(Usuario usuario, Usuario nuevoUsuario);
     public boolean deleteUsuario(Usuario usuario);
     
 }

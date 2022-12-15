@@ -97,6 +97,7 @@ public class ControllerAfiliados {
                     PanelUsuariosCRUD panelAfiliadosVer = new PanelUsuariosCRUD();
                     vistaDashboard.realizarCambioPanelDashboard(panelAfiliadosVer);
                     panelAfiliadosVer.ponerFondoCRUD("Ver");
+                    panelAfiliadosVer.activarBtnEditar();
                     
                     List<Usuario> datosAfiliados = modelo.getInformacion().getAfiliados();
                     Usuario afiliadoSeleccionado =  datosAfiliados.get(valorSeleccionado);

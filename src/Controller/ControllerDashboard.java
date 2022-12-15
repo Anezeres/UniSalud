@@ -39,6 +39,7 @@ public class ControllerDashboard {
         @Override
         public void mouseClicked(MouseEvent me) {
             if(me.getSource() == vistaDashboard.getBtnAfiliados()){
+                vistaDashboard.setTipoAccionActual("Afiliado");
                 PanelAfiliados panelAfiliados = new PanelAfiliados();
                 vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
                 ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);

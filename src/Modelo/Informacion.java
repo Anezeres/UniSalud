@@ -98,8 +98,8 @@ public class Informacion {
         return this.usuarioDao.deleteUsuario(usuario);
     }
     
-    public boolean actualizarUsuario(Usuario usuario){
-        return this.usuarioDao.updateUsuario(usuario);
+    public boolean actualizarUsuario(Usuario usuario, Usuario nuevoUsuario){
+        return this.usuarioDao.updateUsuario(usuario,  nuevoUsuario);
     }
     
     public void crearUsuarios(String[] usuarios){
@@ -130,7 +130,7 @@ public class Informacion {
         agregarUsuario(nuevoUsuario);
     }
     
-    public Usuario cambiarInfoUsuario(String[] datos, int idUsuario, String rol){
+    public void cambiarInfoUsuario(String[] datos, int idUsuario, String rol){
         String nombre = datos[0];
         String cedula = datos[1];
         String telefono = datos[2];
@@ -140,7 +140,7 @@ public class Informacion {
         
         Usuario nuevoUsuario = new Usuario(idUsuario ,cedula, nombre, telefono, email, direccion, sexo, rol);
         
-        return nuevoUsuario;
+        actualizarUsuario(usuarioActualInfo, nuevoUsuario);
     }
     
     public void cargarUsuarios(){

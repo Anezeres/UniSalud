@@ -46,7 +46,7 @@ public class ControllerUsuariosCRUD {
         @Override
         public void mouseClicked(MouseEvent me) {
             
-            if(me.getSource() == vistaUsuario.getBtnEditar()){
+            if(me.getSource() == vistaUsuario.getBtnEditar() && vistaUsuario.isBtnEditarActivo()){
                 vistaUsuario.activarBotones();
                 vistaUsuario.ponerFondoCRUD("Editar");
                 vistaUsuario.activarComponentes();
@@ -55,7 +55,7 @@ public class ControllerUsuariosCRUD {
                 PanelAfiliados panelAfiliados = new PanelAfiliados();
                 vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
                 ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
-            }else if(me.getSource() == vistaUsuario.getBtnCancelar()){
+            }else if(me.getSource() == vistaUsuario.getBtnCancelar() && vistaUsuario.isBtnCancelarActivo()){
                 if (JOptionPane.showConfirmDialog(null, "¿Seguro que cancelar la edición?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                     PanelAfiliados panelAfiliados = new PanelAfiliados();
                     vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
@@ -63,22 +63,22 @@ public class ControllerUsuariosCRUD {
              
                 }
                 
-            }else if(me.getSource() == vistaUsuario.getBtnAceptar()){
+            }else if(me.getSource() == vistaUsuario.getBtnAceptar() && vistaUsuario.isBtnAceptarActivo()){
                 if(vistaUsuario.validarCampos()){
                     if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere crear un afiliado con la información ingresada?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                        PanelAfiliados panelAfiliados = new PanelAfiliados();
-                        vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
-                        ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
                         
                         String[] datos = vistaUsuario.obtenerInformacion();
                         
                         if("Crear".equals(vistaUsuario.getAccionActual())){
-                            
+                            modelo.getInformacion().crearUsuario(datos, vistaDashboard.getTipoAccionActual());
                         }else if("Editar".equals(vistaUsuario.getAccionActual())){
-                            
+                           modelo.getInformacion().cambiarInfoUsuario(datos, modelo.getInformacion().getUsuarioActualInfo().getId(), vistaDashboard.getTipoAccionActual());
                         }
                         
-                        
+                        PanelAfiliados panelAfiliados = new PanelAfiliados();
+                        vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
+                        ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
+
                     }
                 }else{
                     if (JOptionPane.showConfirmDialog(null, "Debe completar todos los campos", "Mensaje", JOptionPane.CLOSED_OPTION) == JOptionPane.YES_OPTION) {

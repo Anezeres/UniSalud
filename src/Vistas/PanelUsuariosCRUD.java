@@ -136,12 +136,13 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
     }
     
     private void setBotonActivo(String boton, JLabel imagenBoton){
-        if(btnAceptarActivo || btnCancelarActivo){
+        if(imagenBoton == btnEditar && btnEditarActivo){
             Icon btnActivo = new ImageIcon("src//Imagenes//BotonesCRUD//00-"+boton+"Activo.png"); 
             imagenBoton.setIcon(btnActivo);
-        }
-        
-        if(btnEditarActivo && ("Volver".equals(boton) || "Editar".equals(boton))){
+        }else if(imagenBoton != btnEditar && (btnAceptarActivo || btnCancelarActivo)){
+            Icon btnActivo = new ImageIcon("src//Imagenes//BotonesCRUD//00-"+boton+"Activo.png"); 
+            imagenBoton.setIcon(btnActivo);
+        }else if(imagenBoton != btnEditar && ("Volver".equals(boton) || "Editar".equals(boton))){
             Icon btnActivo = new ImageIcon("src//Imagenes//BotonesCRUD//00-"+boton+"Activo.png"); 
             imagenBoton.setIcon(btnActivo);
         }
@@ -150,12 +151,14 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
     }
     
     private void setBotonInactivo(String boton, JLabel imagenBoton){
-        if(btnAceptarActivo || btnCancelarActivo){
+        
+        if(imagenBoton == btnEditar && btnEditarActivo){
             Icon btnInactivo = new ImageIcon("src//Imagenes//BotonesCRUD//00-"+boton+"Inactivo.png"); 
             imagenBoton.setIcon(btnInactivo);
-        }
-        
-        if(btnEditarActivo && ("Volver".equals(boton) || "Editar".equals(boton))){
+        }else if(imagenBoton != btnEditar && (btnAceptarActivo || btnCancelarActivo)){
+            Icon btnInactivo = new ImageIcon("src//Imagenes//BotonesCRUD//00-"+boton+"Inactivo.png"); 
+            imagenBoton.setIcon(btnInactivo);
+        }else if(imagenBoton != btnEditar && ("Volver".equals(boton) || "Editar".equals(boton))){
             Icon btnInactivo = new ImageIcon("src//Imagenes//BotonesCRUD//00-"+boton+"Inactivo.png"); 
             imagenBoton.setIcon(btnInactivo);
         }
@@ -428,6 +431,22 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
     public String getAccionActual() {
         return accionActual;
     }
+
+    public boolean isBtnEditarActivo() {
+        return btnEditarActivo;
+    }
+
+    public boolean isBtnAceptarActivo() {
+        return btnAceptarActivo;
+    }
+
+    public boolean isBtnCancelarActivo() {
+        return btnCancelarActivo;
+    }
+    
+    
+    
+    
     
     
     

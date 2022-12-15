@@ -29,6 +29,8 @@ public class VistaDashboard extends javax.swing.JFrame {
     private boolean btnTrabajadoresActivo = false;
     private boolean btnCitasActivo = false;
     
+    private String tipoAccionActual;
+    
     
     public VistaDashboard() {
         initComponents();
@@ -388,6 +390,16 @@ public class VistaDashboard extends javax.swing.JFrame {
     public JLabel getBtnAfiliados() {
         return btnAfiliados;
     }
+
+    public String getTipoAccionActual() {
+        return tipoAccionActual;
+    }
+
+    public void setTipoAccionActual(String tipoAccionActual) {
+        this.tipoAccionActual = tipoAccionActual;
+    }
+    
+    
     
     
     
