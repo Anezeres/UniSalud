@@ -41,6 +41,15 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
         Icon fondoCRUD = new ImageIcon("src//Imagenes//UsuariosCRUD//00-"+accion+"Usuario-img.png"); 
         fondoAfiliados.setIcon(fondoCRUD);     
         accionActual = accion;
+        txtOficio.setVisible(false);
+    }
+    
+    
+    public void ponerFondoCRUDTrabajadores(String accion){
+        Icon fondoCRUD = new ImageIcon("src//Imagenes//UsuariosCRUDTrabajadores//00-"+accion+"Usuario-img.png"); 
+        fondoAfiliados.setIcon(fondoCRUD);     
+        accionActual = accion;
+        txtOficio.setVisible(true);
     }
     
     public void addBtnEditarListener(MouseListener listener){
@@ -77,6 +86,7 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
         limpiarComponenteTexto(txtTelefono);
         limpiarComponenteTexto(txtCorreo);
         limpiarComponenteTexto(txtDireccion);
+        limpiarComponenteTexto(txtOficio);
     }
     
     public boolean validarCampos(){
@@ -101,6 +111,8 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
         txtDireccion.setForeground(Color.BLACK);
         cbxSexo.setEnabled(true);
         cbxSexo.setForeground(Color.BLACK);
+        txtOficio.setEnabled(true);
+        txtOficio.setForeground(Color.BLACK);
     }
     
     public void ingresarInformacion(String[] datos){
@@ -109,6 +121,23 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
         txtTelefono.setText(datos[2]);
         txtCorreo.setText(datos[3]);
         txtDireccion.setText(datos[4]);
+        //txtOficio.setText(datos[6]);
+        
+        if("Male".equals(datos[5])){
+            cbxSexo.setSelectedIndex(1);
+        }else if ("Female".equals(datos[5])){
+            cbxSexo.setSelectedIndex(2);
+        }
+        
+    }
+    
+    public void ingresarInformacionTrabajador(String[] datos){
+        txtNombre.setText(datos[0]);
+        txtCedula.setText(datos[1]);
+        txtTelefono.setText(datos[2]);
+        txtCorreo.setText(datos[3]);
+        txtDireccion.setText(datos[4]);
+        txtOficio.setText(datos[6]);
         
         if("Male".equals(datos[5])){
             cbxSexo.setSelectedIndex(1);
@@ -175,6 +204,7 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
     private void initComponents() {
 
         cbxSexo = new javax.swing.JComboBox<>();
+        txtOficio = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
@@ -196,6 +226,23 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
         cbxSexo.setBorder(null);
         cbxSexo.setEnabled(false);
         add(cbxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(602, 237, 211, 28));
+
+        txtOficio.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtOficio.setForeground(new java.awt.Color(255, 0, 0));
+        txtOficio.setBorder(null);
+        txtOficio.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtOficio.setEnabled(false);
+        txtOficio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtOficioMouseClicked(evt);
+            }
+        });
+        txtOficio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOficioActionPerformed(evt);
+            }
+        });
+        add(txtOficio, new org.netbeans.lib.awtextra.AbsoluteConstraints(602, 301, 210, 26));
 
         txtDireccion.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         txtDireccion.setForeground(new java.awt.Color(255, 0, 0));
@@ -325,7 +372,7 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
         });
         add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 210, 144, 55));
 
-        fondoAfiliados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuariosCRUD/00-VerUsuario-img.png"))); // NOI18N
+        fondoAfiliados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuariosCRUDTrabajadores/00-CrearUsuario-img.png"))); // NOI18N
         add(fondoAfiliados, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 1090, 510));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -396,6 +443,14 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
     private void btnEditarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseExited
         setBotonInactivo("Editar", btnEditar);
     }//GEN-LAST:event_btnEditarMouseExited
+
+    private void txtOficioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtOficioMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOficioMouseClicked
+
+    private void txtOficioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOficioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOficioActionPerformed
 
     private void limpiarComponenteTexto(JTextField texto){
         if(textoEditables){
@@ -471,6 +526,7 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtOficio;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

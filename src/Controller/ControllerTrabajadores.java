@@ -80,8 +80,9 @@ public class ControllerTrabajadores {
                     dato[3] = usuarioSeleccionado.getEmail();
                     dato[4] = usuarioSeleccionado.getDireccion();
                     dato[5] = usuarioSeleccionado.getSexo();
+                    dato[6] = usuarioSeleccionado.getRolUsuario();
                     
-                    panel.ingresarInformacion(dato);
+                    panel.ingresarInformacionTrabajador(dato);
                     panel.setDatosActuales(dato);
         }
 
@@ -97,10 +98,10 @@ public class ControllerTrabajadores {
                 if(me.getSource() == vistaTrabajadores.getBtnVer()){
                     PanelUsuariosCRUD panelAfiliadosVer = new PanelUsuariosCRUD();
                     vistaDashboard.realizarCambioPanelDashboard(panelAfiliadosVer);
-                    panelAfiliadosVer.ponerFondoCRUD("Ver");
+                    panelAfiliadosVer.ponerFondoCRUDTrabajadores("Ver");
                     panelAfiliadosVer.activarBtnEditar();
                     
-                    List<Usuario> datosAfiliados = modelo.getInformacion().getAfiliados();
+                    List<Usuario> datosAfiliados = modelo.getInformacion().getTrabajadores();
                     Usuario afiliadoSeleccionado =  datosAfiliados.get(valorSeleccionado);
                     modelo.getInformacion().setUsuarioActualInfo(afiliadoSeleccionado);
                     
@@ -112,11 +113,11 @@ public class ControllerTrabajadores {
                     
                     PanelUsuariosCRUD panelAfiliadosEditar = new PanelUsuariosCRUD();
                     vistaDashboard.realizarCambioPanelDashboard(panelAfiliadosEditar);
-                    panelAfiliadosEditar.ponerFondoCRUD("Editar");
+                    panelAfiliadosEditar.ponerFondoCRUDTrabajadores("Editar");
                     panelAfiliadosEditar.activarBotones();
                     panelAfiliadosEditar.activarComponentes();
                     
-                    List<Usuario> datosAfiliados = modelo.getInformacion().getAfiliados();
+                    List<Usuario> datosAfiliados = modelo.getInformacion().getTrabajadores();
                     Usuario afiliadoSeleccionado =  datosAfiliados.get(valorSeleccionado);
                     modelo.getInformacion().setUsuarioActualInfo(afiliadoSeleccionado);
                     
@@ -126,7 +127,7 @@ public class ControllerTrabajadores {
                 }else if(me.getSource() == vistaTrabajadores.getBtnEliminar()){
                     
                     if (JOptionPane.showConfirmDialog(null, "¿Seguro que quieres eliminar este afiliado?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                        List<Usuario> datosAfiliados = modelo.getInformacion().getAfiliados();
+                        List<Usuario> datosAfiliados = modelo.getInformacion().getTrabajadores();
                         Usuario afiliadoSeleccionado =  datosAfiliados.get(valorSeleccionado);
                         modelo.getInformacion().eliminarUsuario(afiliadoSeleccionado);
                         
@@ -140,7 +141,7 @@ public class ControllerTrabajadores {
                     
                 PanelUsuariosCRUD panelTrabajadoresCrear = new PanelUsuariosCRUD();
                 vistaDashboard.realizarCambioPanelDashboard(panelTrabajadoresCrear);
-                panelTrabajadoresCrear.ponerFondoCRUD("Crear");
+                panelTrabajadoresCrear.ponerFondoCRUDTrabajadores("Crear");
                 panelTrabajadoresCrear.activarBotones();
                 panelTrabajadoresCrear.activarComponentes();
                 panelTrabajadoresCrear.limpiarCampos();
