@@ -99,6 +99,10 @@ public class Informacion {
     
     /* Usuarios */
     
+    public Usuario getUsuario(int idUsuario){
+        return this.usuarioDao.getUsuario(idUsuario);
+    }
+    
     public boolean agregarUsuario(Usuario usuario){
         return this.usuarioDao.addUsuario(usuario);
     }

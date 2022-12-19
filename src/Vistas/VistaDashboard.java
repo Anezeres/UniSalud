@@ -47,6 +47,10 @@ public class VistaDashboard extends javax.swing.JFrame {
         btnTrabajadores.addMouseListener(listener);
     }
     
+    public void addBtnCitasListener(MouseListener listener){
+        btnCitas.addMouseListener(listener);
+    }
+    
     public void realizarCambioPanelDashboard(JPanel contenidoPanel){
         ubicarPanelEnDashboard(contenidoPanel);
         agregarPanelSeleccionado(contenidoPanel);
@@ -327,7 +331,7 @@ public class VistaDashboard extends javax.swing.JFrame {
 
     private void btnCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCitasMouseClicked
         mostrarBotonCitasActivado();
-        realizarCambioPanelDashboard(panelCitas);
+        //realizarCambioPanelDashboard(panelCitas);
         cambiarImagenPrincipal("Citas");
     }//GEN-LAST:event_btnCitasMouseClicked
 
@@ -396,6 +400,12 @@ public class VistaDashboard extends javax.swing.JFrame {
     public JLabel getBtnTrabajadores() {
         return btnTrabajadores;
     }  
+
+    public JLabel getBtnCitas() {
+        return btnCitas;
+    }
+    
+    
 
     public String getTipoAccionActual() {
         return tipoAccionActual;

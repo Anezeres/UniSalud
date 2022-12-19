@@ -48,18 +48,12 @@ public class ControllerUsuariosCRUD {
         public void mouseClicked(MouseEvent me) {
             
             if(me.getSource() == vistaUsuario.getBtnEditar() && vistaUsuario.isBtnEditarActivo()){
-                vistaUsuario.activarBotones();
-                vistaUsuario.ponerFondoCRUD("Editar");
-                vistaUsuario.activarComponentes();
+                activarVentanaEditar(vistaDashboard.getTipoAccionActual());
                 
             }else if(me.getSource() == vistaUsuario.getBtnVolver()){
-                /*
-                PanelAfiliados panelAfiliados = new PanelAfiliados();
-                vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
-                ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
-                */
                 
                 regresarVentana(vistaDashboard.getTipoAccionActual());
+                
             }else if(me.getSource() == vistaUsuario.getBtnCancelar() && vistaUsuario.isBtnCancelarActivo()){
                 if (JOptionPane.showConfirmDialog(null, "¿Seguro que cancelar la edición?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                     regresarVentana(vistaDashboard.getTipoAccionActual());
@@ -69,13 +63,7 @@ public class ControllerUsuariosCRUD {
                 if(vistaUsuario.validarCampos()){
                     if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere crear un afiliado con la información ingresada?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                         
-                        String[] datos = vistaUsuario.obtenerInformacion();
-                        
-                        if("Crear".equals(vistaUsuario.getAccionActual())){
-                            modelo.getInformacion().crearUsuario(datos, vistaDashboard.getTipoAccionActual());
-                        }else if("Editar".equals(vistaUsuario.getAccionActual())){
-                           modelo.getInformacion().cambiarInfoUsuario(datos, modelo.getInformacion().getUsuarioActualInfo().getId(), vistaDashboard.getTipoAccionActual());
-                        }
+                        accionAceptar(vistaDashboard.getTipoAccionActual());
                         
                         regresarVentana(vistaDashboard.getTipoAccionActual());
                         
@@ -99,13 +87,46 @@ public class ControllerUsuariosCRUD {
                 PanelAfiliados panelAfiliados = new PanelAfiliados();
                 vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
                 ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados ,vistaDashboard);
-            }else if(ventanaActual == "Trabajador"){
+            }else if("Trabajador".equals(ventanaActual)){
                 vistaDashboard.setTipoAccionActual("Trabajador");
                 PanelTrabajadores panelTrabajadores = new PanelTrabajadores();
                 vistaDashboard.realizarCambioPanelDashboard(panelTrabajadores);
                 ControllerTrabajadores trabajadores = new ControllerTrabajadores(modelo, panelTrabajadores ,vistaDashboard);
             
                 
+            }
+        }
+        
+        private void activarVentanaEditar(String ventanaActual){
+            if("Afiliado".equals(ventanaActual)){
+                vistaUsuario.activarBotones();
+                vistaUsuario.ponerFondoCRUD("Editar");
+                vistaUsuario.activarComponentes();
+            
+            }else if("Trabajador".equals(ventanaActual)){
+                vistaUsuario.activarBotones();
+                vistaUsuario.ponerFondoCRUDTrabajadores("Editar");
+                vistaUsuario.activarComponentes();
+            }  
+        }
+        
+        private void accionAceptar(String ventanaActual){
+            String[] datos = new String[0];
+            if("Afiliado".equals(ventanaActual)){
+                datos = vistaUsuario.obtenerInformacion();
+            
+            }else if("Trabajador".equals(ventanaActual)){
+                datos = vistaUsuario.obtenerInformacionTrabajador();
+            }
+            
+               
+            if("Crear".equals(vistaUsuario.getAccionActual())){
+                modelo.getInformacion().crearUsuario(datos, vistaDashboard.getTipoAccionActual());
+            }else if("Editar".equals(vistaUsuario.getAccionActual()) && "Afiliado".equals(ventanaActual) ){
+                modelo.getInformacion().cambiarInfoUsuario(datos, modelo.getInformacion().getUsuarioActualInfo().getId(), vistaDashboard.getTipoAccionActual());
+            }else if("Editar".equals(vistaUsuario.getAccionActual()) && "Trabajador".equals(ventanaActual) ){
+                modelo.getInformacion().cambiarInfoUsuario(datos, modelo.getInformacion().getUsuarioActualInfo().getId(), datos[6]);
+
             }
         }
 

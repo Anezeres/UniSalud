@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author RYZEN
  */
-public class PanelUsuariosCRUD extends javax.swing.JPanel {
+public class PanelCitasCRUD extends javax.swing.JPanel {
     
     DefaultTableModel modelo;
     private boolean btnAceptarActivo = false;
@@ -31,7 +31,7 @@ public class PanelUsuariosCRUD extends javax.swing.JPanel {
     /**
      * Creates new form PanelDashboard
      */
-    public PanelUsuariosCRUD() {
+    public PanelCitasCRUD() {
         initComponents();
         setSize(1086, 503);
 
