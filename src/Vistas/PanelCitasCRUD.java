@@ -41,15 +41,6 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
         Icon fondoCRUD = new ImageIcon("src//Imagenes//CitasCRUD//00-"+accion+"Cita-img.png"); 
         fondoAfiliados.setIcon(fondoCRUD);     
         accionActual = accion;
-        txtTrabajador.setVisible(false);
-    }
-    
-    
-    public void ponerFondoCRUDCitas(String accion){
-        Icon fondoCRUD = new ImageIcon("src//Imagenes//CitasCRUD//00-"+accion+"Cita-img.png"); 
-        fondoAfiliados.setIcon(fondoCRUD);     
-        accionActual = accion;
-        //txtTrabajador.setVisible(true);
     }
     
     public void addBtnEditarListener(MouseListener listener){
@@ -75,6 +66,28 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
         setBotonInactivo("Aceptar", btnAceptar);
     }
     
+    public void ocultarComboBox(){
+        cbxAfiliado.setVisible(false);
+        cbxHora.setVisible(false);
+        cbxHorario.setVisible(false);
+        cbxMinutos.setVisible(false);
+        cbxPiso.setVisible(false);
+        cbxTrabajador.setVisible(false);
+    }
+    
+    public void activarComboBox(){
+        cbxAfiliado.setVisible(true);
+        txtAfiliado.setVisible(false);
+        cbxHora.setVisible(true);
+        txtHora.setVisible(false);
+        cbxHorario.setVisible(true);
+        cbxMinutos.setVisible(true);
+        cbxPiso.setVisible(true);
+        txtPiso.setVisible(false);
+        cbxTrabajador.setVisible(true);
+        txtTrabajador.setVisible(false);
+    }
+    
     public void activarBtnEditar(){
         btnEditarActivo = true;
         setBotonInactivo("Editar", btnEditar);
@@ -87,15 +100,14 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
         limpiarComponenteTexto(txtSala);
         limpiarComponenteTexto(txtHora);
         limpiarComponenteTexto(txtTrabajador);
+        limpiarComponenteTexto(txtPiso);
     }
     
     public boolean validarCampos(){
         boolean camposValidos = false;
-        /*
-        if(!"".equals(txtFecha.getText()) && !"".equals(txtAfiliado.getText()) && !"".equals(txtSala.getText()) && !"".equals(txtHora.getText()) && !"".equals(txtServicio.getText()) && cbxSexo.getSelectedIndex() != 0){
+        if(!"".equals(txtFecha.getText()) && !"".equals(txtAfiliado.getText()) && !"".equals(txtServicio.getText()) && !"".equals(txtSala.getText()) && !"".equals(txtHora.getText()) && !"".equals(txtTrabajador.getText()) && !"".equals(txtPiso.getText()) ){
             camposValidos = true;
         }
-        */
         return camposValidos;
     }
      
@@ -103,17 +115,14 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
         textoEditables = true;
         txtFecha.setEnabled(true);
         txtFecha.setForeground(Color.BLACK);
-        txtAfiliado.setEnabled(true);
-        txtAfiliado.setForeground(Color.BLACK);
-        txtServicio.setEnabled(true);
-        txtServicio.setForeground(Color.BLACK);
+        txtAfiliado.setVisible(false);
+        
         txtSala.setEnabled(true);
         txtSala.setForeground(Color.BLACK);
-        txtHora.setEnabled(true);
-        txtHora.setForeground(Color.BLACK);
+        txtHora.setVisible(false);
+        txtPiso.setVisible(false);
         
-        txtTrabajador.setEnabled(true);
-        txtTrabajador.setForeground(Color.BLACK);
+        txtTrabajador.setVisible(false);
     }
     
     public void ingresarInformacion(String[] datos){
@@ -133,22 +142,6 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
         */
     }
     
-    public void ingresarInformacionTrabajador(String[] datos){
-        txtFecha.setText(datos[0]);
-        txtAfiliado.setText(datos[1]);
-        txtServicio.setText(datos[2]);
-        txtSala.setText(datos[3]);
-        txtHora.setText(datos[4]);
-        txtTrabajador.setText(datos[6]);
-        /*
-        if("Male".equals(datos[5])){
-            cbxSexo.setSelectedIndex(1);
-        }else if ("Female".equals(datos[5])){
-            cbxSexo.setSelectedIndex(2);
-        }
-        */
-    }
-    
     public String[] obtenerInformacion(){
         String[] datos = new String[6];
         
@@ -157,6 +150,9 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
         datos[2] = txtServicio.getText();
         datos[3] = txtSala.getText();
         datos[4] = txtHora.getText();
+        datos[5] = txtTrabajador.getText();
+        datos[6] = txtPiso.getText();
+
         /*
         if(cbxSexo.getSelectedIndex() == 1){
             datos[5] = "Male";
@@ -225,22 +221,43 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cbxHorario = new javax.swing.JComboBox<>();
+        cbxMinutos = new javax.swing.JComboBox<>();
+        cbxHora = new javax.swing.JComboBox<>();
+        cbxTrabajador = new javax.swing.JComboBox<>();
         txtTrabajador = new javax.swing.JTextField();
-        txtPiso = new javax.swing.JTextField();
-        txtHora = new javax.swing.JTextField();
         txtSala = new javax.swing.JTextField();
         txtServicio = new javax.swing.JTextField();
+        cbxAfiliado = new javax.swing.JComboBox<>();
         txtAfiliado = new javax.swing.JTextField();
+        cbxPiso = new javax.swing.JComboBox<>();
         txtFecha = new javax.swing.JTextField();
         btnEditar = new javax.swing.JLabel();
         btnVolver = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JLabel();
         fondoAfiliados = new javax.swing.JLabel();
+        txtPiso = new javax.swing.JTextField();
+        txtHora = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1086, 503));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cbxHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AM", "PM" }));
+        cbxHorario.setBorder(null);
+        add(cbxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(703, 175, 110, 26));
+
+        cbxMinutos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "10", "20", "30", "40", "50" }));
+        cbxMinutos.setBorder(null);
+        add(cbxMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 175, 60, 26));
+
+        cbxHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        cbxHora.setBorder(null);
+        add(cbxHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 175, 40, 26));
+
+        cbxTrabajador.setBorder(null);
+        add(cbxTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(602, 238, 210, 26));
 
         txtTrabajador.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         txtTrabajador.setForeground(new java.awt.Color(255, 0, 0));
@@ -258,40 +275,6 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
             }
         });
         add(txtTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(602, 238, 210, 26));
-
-        txtPiso.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        txtPiso.setForeground(new java.awt.Color(255, 0, 0));
-        txtPiso.setBorder(null);
-        txtPiso.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtPiso.setEnabled(false);
-        txtPiso.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtPisoMouseClicked(evt);
-            }
-        });
-        txtPiso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPisoActionPerformed(evt);
-            }
-        });
-        add(txtPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(597, 308, 210, 26));
-
-        txtHora.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        txtHora.setForeground(new java.awt.Color(255, 0, 0));
-        txtHora.setBorder(null);
-        txtHora.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtHora.setEnabled(false);
-        txtHora.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtHoraMouseClicked(evt);
-            }
-        });
-        txtHora.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHoraActionPerformed(evt);
-            }
-        });
-        add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 175, 210, 26));
 
         txtSala.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         txtSala.setForeground(new java.awt.Color(255, 0, 0));
@@ -327,6 +310,9 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
         });
         add(txtServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 307, 210, 26));
 
+        cbxAfiliado.setBorder(null);
+        add(cbxAfiliado, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 241, 210, 26));
+
         txtAfiliado.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         txtAfiliado.setForeground(new java.awt.Color(255, 0, 0));
         txtAfiliado.setBorder(null);
@@ -343,6 +329,10 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
             }
         });
         add(txtAfiliado, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 241, 210, 26));
+
+        cbxPiso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", " " }));
+        cbxPiso.setBorder(null);
+        add(cbxPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(597, 308, 210, 26));
 
         txtFecha.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         txtFecha.setForeground(new java.awt.Color(255, 0, 0));
@@ -406,6 +396,40 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
 
         fondoAfiliados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CitasCRUD/00-VerCita-img.png"))); // NOI18N
         add(fondoAfiliados, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 1090, 510));
+
+        txtPiso.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtPiso.setForeground(new java.awt.Color(255, 0, 0));
+        txtPiso.setBorder(null);
+        txtPiso.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtPiso.setEnabled(false);
+        txtPiso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPisoMouseClicked(evt);
+            }
+        });
+        txtPiso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPisoActionPerformed(evt);
+            }
+        });
+        add(txtPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(597, 308, 210, 26));
+
+        txtHora.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtHora.setForeground(new java.awt.Color(255, 0, 0));
+        txtHora.setBorder(null);
+        txtHora.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtHora.setEnabled(false);
+        txtHora.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtHoraMouseClicked(evt);
+            }
+        });
+        txtHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHoraActionPerformed(evt);
+            }
+        });
+        add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 175, 210, 26));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseEntered
@@ -560,6 +584,12 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
     private javax.swing.JLabel btnCancelar;
     private javax.swing.JLabel btnEditar;
     private javax.swing.JLabel btnVolver;
+    private javax.swing.JComboBox<String> cbxAfiliado;
+    private javax.swing.JComboBox<String> cbxHora;
+    private javax.swing.JComboBox<String> cbxHorario;
+    private javax.swing.JComboBox<String> cbxMinutos;
+    private javax.swing.JComboBox<String> cbxPiso;
+    private javax.swing.JComboBox<String> cbxTrabajador;
     private javax.swing.JLabel fondoAfiliados;
     private javax.swing.JTextField txtAfiliado;
     private javax.swing.JTextField txtFecha;

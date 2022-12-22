@@ -85,7 +85,7 @@ public class ControllerCitas {
                     dato[5] = modelo.getInformacion().getUsuario(citaSeleccionado.getIdTrabajador()).getNombre();
                     dato[6] = citaSeleccionado.getPiso();
                     
-                    panel.ingresarInformacionTrabajador(dato);
+                    panel.ingresarInformacion(dato);
                     panel.setDatosActuales(dato);
         }
 
@@ -103,6 +103,7 @@ public class ControllerCitas {
                     vistaDashboard.realizarCambioPanelDashboard(panelCitasVer);
                     panelCitasVer.ponerFondoCRUD("Ver");
                     panelCitasVer.activarBtnEditar();
+                    panelCitasVer.ocultarComboBox();
                     
                     List<Cita> datosCitas = modelo.getInformacion().getListadoCitas();
                     Cita citaSeleccionado =  datosCitas.get(valorSeleccionado);
@@ -119,6 +120,7 @@ public class ControllerCitas {
                     panelCitasEditar.ponerFondoCRUD("Editar");
                     panelCitasEditar.activarBotones();
                     panelCitasEditar.activarComponentes();
+                    panelCitasEditar.activarComboBox();
                     
                     List<Cita> datosCitas = modelo.getInformacion().getListadoCitas();
                     Cita citaSeleccionado =  datosCitas.get(valorSeleccionado);

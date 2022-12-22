@@ -63,7 +63,7 @@ public class ControllerCitasCRUD {
                 
             }else if(me.getSource() == vistaUsuario.getBtnAceptar() && vistaUsuario.isBtnAceptarActivo()){
                 if(vistaUsuario.validarCampos()){
-                    if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere crear un afiliado con la información ingresada?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere crear una cita con la información ingresada?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                         
                         accionAceptar(vistaDashboard.getTipoAccionActual());
                         
@@ -96,12 +96,7 @@ public class ControllerCitasCRUD {
         }
         
         private void activarVentanaEditar(String ventanaActual){
-            if("Afiliado".equals(ventanaActual)){
-                vistaUsuario.activarBotones();
-                vistaUsuario.ponerFondoCRUD("Editar");
-                vistaUsuario.activarComponentes();
-            
-            }else if("Trabajador".equals(ventanaActual)){
+            if("Cita".equals(ventanaActual)){
                 vistaUsuario.activarBotones();
                 //vistaUsuario.ponerFondoCRUDTrabajadores("Editar");
                 vistaUsuario.activarComponentes();
