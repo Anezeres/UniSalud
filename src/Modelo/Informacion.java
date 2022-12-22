@@ -29,6 +29,7 @@ public class Informacion {
     private ICuentaDao cuentaDao;
     private IUsuarioDao usuarioDao;
     private Usuario usuarioActualInfo;
+    private Cita citaActualInfo;
 
     public Informacion() {
         this.citaDao = new CitaDaoImplementation();
@@ -242,6 +243,16 @@ public class Informacion {
     public void setUsuarioActualInfo(Usuario usuarioActualInfo) {
         this.usuarioActualInfo = usuarioActualInfo;
     }
+
+    public Cita getCitaActualInfo() {
+        return citaActualInfo;
+    }
+
+    public void setCitaActualInfo(Cita citaActualInfo) {
+        this.citaActualInfo = citaActualInfo;
+    }
+    
+    
     
     
     

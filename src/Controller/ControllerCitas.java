@@ -9,6 +9,7 @@ import Modelo.ModeloPrincipal;
 import Modelo.Usuario;
 import Vistas.PanelAfiliados;
 import Vistas.PanelCitas;
+import Vistas.PanelCitasCRUD;
 import Vistas.PanelTrabajadores;
 import Vistas.PanelUsuariosCRUD;
 import Vistas.VistaDashboard;
@@ -73,16 +74,16 @@ public class ControllerCitas {
         private boolean elementoSeleccionado = false; 
         private int valorSeleccionado;
         
-        private void enviarInformacion(Usuario usuarioSeleccionado, PanelUsuariosCRUD panel){
+        private void enviarInformacion(Cita citaSeleccionado, PanelCitasCRUD panel){
             String[] dato = new String[7];
                     
-                    dato[0] = usuarioSeleccionado.getNombre();
-                    dato[1] = usuarioSeleccionado.getCedula();
-                    dato[2] = usuarioSeleccionado.getTelefono();
-                    dato[3] = usuarioSeleccionado.getEmail();
-                    dato[4] = usuarioSeleccionado.getDireccion();
-                    dato[5] = usuarioSeleccionado.getSexo();
-                    dato[6] = usuarioSeleccionado.getRolUsuario();
+                    dato[0] = citaSeleccionado.getFecha();
+                    dato[1] = modelo.getInformacion().getUsuario(citaSeleccionado.getIdAfiliado()).getNombre();
+                    dato[2] = modelo.getInformacion().getUsuario(citaSeleccionado.getIdTrabajador()).getRolUsuario();
+                    dato[3] = citaSeleccionado.getSala();
+                    dato[4] = citaSeleccionado.getHora();
+                    dato[5] = modelo.getInformacion().getUsuario(citaSeleccionado.getIdTrabajador()).getNombre();
+                    dato[6] = citaSeleccionado.getPiso();
                     
                     panel.ingresarInformacionTrabajador(dato);
                     panel.setDatosActuales(dato);
@@ -98,34 +99,34 @@ public class ControllerCitas {
             
             if(elementoSeleccionado){
                 if(me.getSource() == vistaCitas.getBtnVer()){
-                    PanelUsuariosCRUD panelAfiliadosVer = new PanelUsuariosCRUD();
-                    vistaDashboard.realizarCambioPanelDashboard(panelAfiliadosVer);
-                    panelAfiliadosVer.ponerFondoCRUDTrabajadores("Ver");
-                    panelAfiliadosVer.activarBtnEditar();
+                    PanelCitasCRUD panelCitasVer = new PanelCitasCRUD();
+                    vistaDashboard.realizarCambioPanelDashboard(panelCitasVer);
+                    panelCitasVer.ponerFondoCRUD("Ver");
+                    panelCitasVer.activarBtnEditar();
                     
-                    List<Usuario> datosAfiliados = modelo.getInformacion().getTrabajadores();
-                    Usuario afiliadoSeleccionado =  datosAfiliados.get(valorSeleccionado);
-                    modelo.getInformacion().setUsuarioActualInfo(afiliadoSeleccionado);
+                    List<Cita> datosCitas = modelo.getInformacion().getListadoCitas();
+                    Cita citaSeleccionado =  datosCitas.get(valorSeleccionado);
+                    modelo.getInformacion().setCitaActualInfo(citaSeleccionado);
                     
-                    enviarInformacion(afiliadoSeleccionado, panelAfiliadosVer);
+                    enviarInformacion(citaSeleccionado, panelCitasVer);
                     
-                    ControllerUsuariosCRUD afiliados = new ControllerUsuariosCRUD(modelo, panelAfiliadosVer, vistaDashboard);
+                    ControllerCitasCRUD afiliados = new ControllerCitasCRUD(modelo, panelCitasVer, vistaDashboard);
                     
                 }else if(me.getSource() == vistaCitas.getBtnEditar()){
                     
-                    PanelUsuariosCRUD panelAfiliadosEditar = new PanelUsuariosCRUD();
-                    vistaDashboard.realizarCambioPanelDashboard(panelAfiliadosEditar);
-                    panelAfiliadosEditar.ponerFondoCRUDTrabajadores("Editar");
-                    panelAfiliadosEditar.activarBotones();
-                    panelAfiliadosEditar.activarComponentes();
+                    PanelCitasCRUD panelCitasEditar = new PanelCitasCRUD();
+                    vistaDashboard.realizarCambioPanelDashboard(panelCitasEditar);
+                    panelCitasEditar.ponerFondoCRUD("Editar");
+                    panelCitasEditar.activarBotones();
+                    panelCitasEditar.activarComponentes();
                     
-                    List<Usuario> datosAfiliados = modelo.getInformacion().getTrabajadores();
-                    Usuario afiliadoSeleccionado =  datosAfiliados.get(valorSeleccionado);
-                    modelo.getInformacion().setUsuarioActualInfo(afiliadoSeleccionado);
+                    List<Cita> datosCitas = modelo.getInformacion().getListadoCitas();
+                    Cita citaSeleccionado =  datosCitas.get(valorSeleccionado);
+                    modelo.getInformacion().setCitaActualInfo(citaSeleccionado);
                     
-                    enviarInformacion(afiliadoSeleccionado, panelAfiliadosEditar);
+                    enviarInformacion(citaSeleccionado, panelCitasEditar);
                     
-                    ControllerUsuariosCRUD afiliados = new ControllerUsuariosCRUD(modelo, panelAfiliadosEditar, vistaDashboard);
+                    ControllerCitasCRUD citas = new ControllerCitasCRUD(modelo, panelCitasEditar, vistaDashboard);
                 }else if(me.getSource() == vistaCitas.getBtnEliminar()){
                     
                     if (JOptionPane.showConfirmDialog(null, "¿Seguro que quieres eliminar este afiliado?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {

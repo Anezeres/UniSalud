@@ -38,18 +38,18 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
     }
     
     public void ponerFondoCRUD(String accion){
-        Icon fondoCRUD = new ImageIcon("src//Imagenes//UsuariosCRUD//00-"+accion+"Usuario-img.png"); 
+        Icon fondoCRUD = new ImageIcon("src//Imagenes//CitasCRUD//00-"+accion+"Cita-img.png"); 
         fondoAfiliados.setIcon(fondoCRUD);     
         accionActual = accion;
-        txtOficio.setVisible(false);
+        txtTrabajador.setVisible(false);
     }
     
     
-    public void ponerFondoCRUDTrabajadores(String accion){
-        Icon fondoCRUD = new ImageIcon("src//Imagenes//UsuariosCRUDTrabajadores//00-"+accion+"Usuario-img.png"); 
+    public void ponerFondoCRUDCitas(String accion){
+        Icon fondoCRUD = new ImageIcon("src//Imagenes//CitasCRUD//00-"+accion+"Cita-img.png"); 
         fondoAfiliados.setIcon(fondoCRUD);     
         accionActual = accion;
-        txtOficio.setVisible(true);
+        //txtTrabajador.setVisible(true);
     }
     
     public void addBtnEditarListener(MouseListener listener){
@@ -81,105 +81,108 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
     }
     
     public void limpiarCampos(){
-        limpiarComponenteTexto(txtNombre);
-        limpiarComponenteTexto(txtCedula);
-        limpiarComponenteTexto(txtTelefono);
-        limpiarComponenteTexto(txtCorreo);
-        limpiarComponenteTexto(txtDireccion);
-        limpiarComponenteTexto(txtOficio);
+        limpiarComponenteTexto(txtFecha);
+        limpiarComponenteTexto(txtAfiliado);
+        limpiarComponenteTexto(txtServicio);
+        limpiarComponenteTexto(txtSala);
+        limpiarComponenteTexto(txtHora);
+        limpiarComponenteTexto(txtTrabajador);
     }
     
     public boolean validarCampos(){
         boolean camposValidos = false;
-        if(!"".equals(txtNombre.getText()) && !"".equals(txtCedula.getText()) && !"".equals(txtCorreo.getText()) && !"".equals(txtDireccion.getText()) && !"".equals(txtTelefono.getText()) && cbxSexo.getSelectedIndex() != 0){
+        /*
+        if(!"".equals(txtFecha.getText()) && !"".equals(txtAfiliado.getText()) && !"".equals(txtSala.getText()) && !"".equals(txtHora.getText()) && !"".equals(txtServicio.getText()) && cbxSexo.getSelectedIndex() != 0){
             camposValidos = true;
         }
+        */
         return camposValidos;
     }
      
     public void activarComponentes(){
         textoEditables = true;
-        txtNombre.setEnabled(true);
-        txtNombre.setForeground(Color.BLACK);
-        txtCedula.setEnabled(true);
-        txtCedula.setForeground(Color.BLACK);
-        txtTelefono.setEnabled(true);
-        txtTelefono.setForeground(Color.BLACK);
-        txtCorreo.setEnabled(true);
-        txtCorreo.setForeground(Color.BLACK);
-        txtDireccion.setEnabled(true);
-        txtDireccion.setForeground(Color.BLACK);
-        cbxSexo.setEnabled(true);
-        cbxSexo.setForeground(Color.BLACK);
-        txtOficio.setEnabled(true);
-        txtOficio.setForeground(Color.BLACK);
+        txtFecha.setEnabled(true);
+        txtFecha.setForeground(Color.BLACK);
+        txtAfiliado.setEnabled(true);
+        txtAfiliado.setForeground(Color.BLACK);
+        txtServicio.setEnabled(true);
+        txtServicio.setForeground(Color.BLACK);
+        txtSala.setEnabled(true);
+        txtSala.setForeground(Color.BLACK);
+        txtHora.setEnabled(true);
+        txtHora.setForeground(Color.BLACK);
+        
+        txtTrabajador.setEnabled(true);
+        txtTrabajador.setForeground(Color.BLACK);
     }
     
     public void ingresarInformacion(String[] datos){
-        txtNombre.setText(datos[0]);
-        txtCedula.setText(datos[1]);
-        txtTelefono.setText(datos[2]);
-        txtCorreo.setText(datos[3]);
-        txtDireccion.setText(datos[4]);
-        //txtOficio.setText(datos[6]);
-        
+        txtFecha.setText(datos[0]);
+        txtAfiliado.setText(datos[1]);
+        txtServicio.setText(datos[2]);
+        txtSala.setText(datos[3]);
+        txtHora.setText(datos[4]);
+        txtTrabajador.setText(datos[5]);
+        txtPiso.setText(datos[6]);
+        /*
         if("Male".equals(datos[5])){
             cbxSexo.setSelectedIndex(1);
         }else if ("Female".equals(datos[5])){
             cbxSexo.setSelectedIndex(2);
         }
-        
+        */
     }
     
     public void ingresarInformacionTrabajador(String[] datos){
-        txtNombre.setText(datos[0]);
-        txtCedula.setText(datos[1]);
-        txtTelefono.setText(datos[2]);
-        txtCorreo.setText(datos[3]);
-        txtDireccion.setText(datos[4]);
-        txtOficio.setText(datos[6]);
-        
+        txtFecha.setText(datos[0]);
+        txtAfiliado.setText(datos[1]);
+        txtServicio.setText(datos[2]);
+        txtSala.setText(datos[3]);
+        txtHora.setText(datos[4]);
+        txtTrabajador.setText(datos[6]);
+        /*
         if("Male".equals(datos[5])){
             cbxSexo.setSelectedIndex(1);
         }else if ("Female".equals(datos[5])){
             cbxSexo.setSelectedIndex(2);
         }
-        
+        */
     }
     
     public String[] obtenerInformacion(){
         String[] datos = new String[6];
         
-        datos[0] = txtNombre.getText();
-        datos[1] = txtCedula.getText();
-        datos[2] = txtTelefono.getText();
-        datos[3] = txtCorreo.getText();
-        datos[4] = txtDireccion.getText();
-        
+        datos[0] = txtFecha.getText();
+        datos[1] = txtAfiliado.getText();
+        datos[2] = txtServicio.getText();
+        datos[3] = txtSala.getText();
+        datos[4] = txtHora.getText();
+        /*
         if(cbxSexo.getSelectedIndex() == 1){
             datos[5] = "Male";
         }else if(cbxSexo.getSelectedIndex() == 2){
             datos[5] = "Female";
         }
+        */
         return datos;
     }
     
     public String[] obtenerInformacionTrabajador(){
         String[] datos = new String[7];
         
-        datos[0] = txtNombre.getText();
-        datos[1] = txtCedula.getText();
-        datos[2] = txtTelefono.getText();
-        datos[3] = txtCorreo.getText();
-        datos[4] = txtDireccion.getText();
-        
+        datos[0] = txtFecha.getText();
+        datos[1] = txtAfiliado.getText();
+        datos[2] = txtServicio.getText();
+        datos[3] = txtSala.getText();
+        datos[4] = txtHora.getText();
+        /*
         if(cbxSexo.getSelectedIndex() == 1){
             datos[5] = "Male";
         }else if(cbxSexo.getSelectedIndex() == 2){
             datos[5] = "Female";
         }
-        datos[6] = txtOficio.getText();
-        
+        datos[6] = txtTrabajador.getText();
+        */
         return datos;
     }
     
@@ -222,13 +225,13 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cbxSexo = new javax.swing.JComboBox<>();
-        txtOficio = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
-        txtCorreo = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
-        txtCedula = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
+        txtTrabajador = new javax.swing.JTextField();
+        txtPiso = new javax.swing.JTextField();
+        txtHora = new javax.swing.JTextField();
+        txtSala = new javax.swing.JTextField();
+        txtServicio = new javax.swing.JTextField();
+        txtAfiliado = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
         btnEditar = new javax.swing.JLabel();
         btnVolver = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JLabel();
@@ -239,109 +242,119 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1086, 503));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cbxSexo.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        cbxSexo.setForeground(new java.awt.Color(255, 0, 0));
-        cbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un valor...", "Masculino", "Femenino" }));
-        cbxSexo.setBorder(null);
-        cbxSexo.setEnabled(false);
-        add(cbxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(602, 237, 211, 28));
-
-        txtOficio.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        txtOficio.setForeground(new java.awt.Color(255, 0, 0));
-        txtOficio.setBorder(null);
-        txtOficio.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtOficio.setEnabled(false);
-        txtOficio.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtTrabajador.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtTrabajador.setForeground(new java.awt.Color(255, 0, 0));
+        txtTrabajador.setBorder(null);
+        txtTrabajador.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtTrabajador.setEnabled(false);
+        txtTrabajador.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtOficioMouseClicked(evt);
+                txtTrabajadorMouseClicked(evt);
             }
         });
-        txtOficio.addActionListener(new java.awt.event.ActionListener() {
+        txtTrabajador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtOficioActionPerformed(evt);
+                txtTrabajadorActionPerformed(evt);
             }
         });
-        add(txtOficio, new org.netbeans.lib.awtextra.AbsoluteConstraints(602, 301, 210, 26));
+        add(txtTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(602, 238, 210, 26));
 
-        txtDireccion.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        txtDireccion.setForeground(new java.awt.Color(255, 0, 0));
-        txtDireccion.setBorder(null);
-        txtDireccion.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtDireccion.setEnabled(false);
-        txtDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtPiso.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtPiso.setForeground(new java.awt.Color(255, 0, 0));
+        txtPiso.setBorder(null);
+        txtPiso.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtPiso.setEnabled(false);
+        txtPiso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtDireccionMouseClicked(evt);
+                txtPisoMouseClicked(evt);
             }
         });
-        txtDireccion.addActionListener(new java.awt.event.ActionListener() {
+        txtPiso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDireccionActionPerformed(evt);
+                txtPisoActionPerformed(evt);
             }
         });
-        add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 175, 210, 26));
+        add(txtPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(597, 308, 210, 26));
 
-        txtCorreo.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        txtCorreo.setForeground(new java.awt.Color(255, 0, 0));
-        txtCorreo.setBorder(null);
-        txtCorreo.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtCorreo.setEnabled(false);
-        txtCorreo.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtHora.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtHora.setForeground(new java.awt.Color(255, 0, 0));
+        txtHora.setBorder(null);
+        txtHora.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtHora.setEnabled(false);
+        txtHora.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtCorreoMouseClicked(evt);
+                txtHoraMouseClicked(evt);
             }
         });
-        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
+        txtHora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreoActionPerformed(evt);
+                txtHoraActionPerformed(evt);
             }
         });
-        add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 381, 210, 26));
+        add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 175, 210, 26));
 
-        txtTelefono.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        txtTelefono.setForeground(new java.awt.Color(255, 0, 0));
-        txtTelefono.setBorder(null);
-        txtTelefono.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtTelefono.setEnabled(false);
-        txtTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtSala.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtSala.setForeground(new java.awt.Color(255, 0, 0));
+        txtSala.setBorder(null);
+        txtSala.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtSala.setEnabled(false);
+        txtSala.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtTelefonoMouseClicked(evt);
+                txtSalaMouseClicked(evt);
             }
         });
-        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+        txtSala.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonoActionPerformed(evt);
+                txtSalaActionPerformed(evt);
             }
         });
-        add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 307, 210, 26));
+        add(txtSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 372, 210, 26));
 
-        txtCedula.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        txtCedula.setForeground(new java.awt.Color(255, 0, 0));
-        txtCedula.setBorder(null);
-        txtCedula.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtCedula.setEnabled(false);
-        txtCedula.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtServicio.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtServicio.setForeground(new java.awt.Color(255, 0, 0));
+        txtServicio.setBorder(null);
+        txtServicio.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtServicio.setEnabled(false);
+        txtServicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtCedulaMouseClicked(evt);
+                txtServicioMouseClicked(evt);
             }
         });
-        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+        txtServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCedulaActionPerformed(evt);
+                txtServicioActionPerformed(evt);
             }
         });
-        add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 241, 210, 26));
+        add(txtServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 307, 210, 26));
 
-        txtNombre.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        txtNombre.setForeground(new java.awt.Color(255, 0, 0));
-        txtNombre.setBorder(null);
-        txtNombre.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtNombre.setEnabled(false);
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
+        txtAfiliado.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtAfiliado.setForeground(new java.awt.Color(255, 0, 0));
+        txtAfiliado.setBorder(null);
+        txtAfiliado.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtAfiliado.setEnabled(false);
+        txtAfiliado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtAfiliadoMouseClicked(evt);
             }
         });
-        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 175, 210, 26));
+        txtAfiliado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAfiliadoActionPerformed(evt);
+            }
+        });
+        add(txtAfiliado, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 241, 210, 26));
+
+        txtFecha.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtFecha.setForeground(new java.awt.Color(255, 0, 0));
+        txtFecha.setBorder(null);
+        txtFecha.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtFecha.setEnabled(false);
+        txtFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaActionPerformed(evt);
+            }
+        });
+        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 175, 210, 26));
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesCRUD/00-EditarDesactivado.png"))); // NOI18N
         btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -391,7 +404,7 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
         });
         add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 210, 144, 55));
 
-        fondoAfiliados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuariosCRUDTrabajadores/00-CrearUsuario-img.png"))); // NOI18N
+        fondoAfiliados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CitasCRUD/00-VerCita-img.png"))); // NOI18N
         add(fondoAfiliados, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 1090, 510));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -411,41 +424,41 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
         setBotonInactivo("Cancelar", btnCancelar);
     }//GEN-LAST:event_btnCancelarMouseExited
 
-    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+    private void txtAfiliadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAfiliadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCedulaActionPerformed
+    }//GEN-LAST:event_txtAfiliadoActionPerformed
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
+    }//GEN-LAST:event_txtFechaActionPerformed
 
-    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+    private void txtServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtServicioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonoActionPerformed
+    }//GEN-LAST:event_txtServicioActionPerformed
 
-    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
+    private void txtSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreoActionPerformed
+    }//GEN-LAST:event_txtSalaActionPerformed
 
-    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
+    private void txtHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDireccionActionPerformed
+    }//GEN-LAST:event_txtHoraActionPerformed
 
-    private void txtCedulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCedulaMouseClicked
+    private void txtAfiliadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAfiliadoMouseClicked
         
-    }//GEN-LAST:event_txtCedulaMouseClicked
+    }//GEN-LAST:event_txtAfiliadoMouseClicked
 
-    private void txtTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMouseClicked
+    private void txtServicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtServicioMouseClicked
         
-    }//GEN-LAST:event_txtTelefonoMouseClicked
+    }//GEN-LAST:event_txtServicioMouseClicked
 
-    private void txtCorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCorreoMouseClicked
+    private void txtSalaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSalaMouseClicked
         
-    }//GEN-LAST:event_txtCorreoMouseClicked
+    }//GEN-LAST:event_txtSalaMouseClicked
 
-    private void txtDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMouseClicked
+    private void txtHoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtHoraMouseClicked
         
-    }//GEN-LAST:event_txtDireccionMouseClicked
+    }//GEN-LAST:event_txtHoraMouseClicked
 
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
         setBotonActivo("Volver", btnVolver);
@@ -463,13 +476,21 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
         setBotonInactivo("Editar", btnEditar);
     }//GEN-LAST:event_btnEditarMouseExited
 
-    private void txtOficioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtOficioMouseClicked
+    private void txtTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTrabajadorMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtOficioMouseClicked
+    }//GEN-LAST:event_txtTrabajadorMouseClicked
 
-    private void txtOficioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOficioActionPerformed
+    private void txtTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTrabajadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtOficioActionPerformed
+    }//GEN-LAST:event_txtTrabajadorActionPerformed
+
+    private void txtPisoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPisoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPisoMouseClicked
+
+    private void txtPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPisoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPisoActionPerformed
 
     private void limpiarComponenteTexto(JTextField texto){
         if(textoEditables){
@@ -539,13 +560,13 @@ public class PanelCitasCRUD extends javax.swing.JPanel {
     private javax.swing.JLabel btnCancelar;
     private javax.swing.JLabel btnEditar;
     private javax.swing.JLabel btnVolver;
-    private javax.swing.JComboBox<String> cbxSexo;
     private javax.swing.JLabel fondoAfiliados;
-    private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtOficio;
-    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtAfiliado;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtPiso;
+    private javax.swing.JTextField txtSala;
+    private javax.swing.JTextField txtServicio;
+    private javax.swing.JTextField txtTrabajador;
     // End of variables declaration//GEN-END:variables
 }
