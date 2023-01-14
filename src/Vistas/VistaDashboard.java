@@ -24,10 +24,11 @@ public class VistaDashboard extends javax.swing.JFrame {
     private PanelCitas panelCitas = new PanelCitas();
     
     
-    private boolean btnDashboardActivo = false;
-    private boolean btnAfiliadosActivo = false;
-    private boolean btnTrabajadoresActivo = false;
-    private boolean btnCitasActivo = false;
+    private boolean btnVenderActivo = false;
+    private boolean btnProductosActivo = false;
+    private boolean btnProveedoresActivo = false;
+    private boolean btnClientesActivo = false;
+    private boolean btnRegistrosActivo = false;
     
     private String tipoAccionActual;
     
@@ -40,15 +41,15 @@ public class VistaDashboard extends javax.swing.JFrame {
     }
     
     public void addBtnAfiliadosListener(MouseListener listener){
-        btnAfiliados.addMouseListener(listener);
+        btnProductos.addMouseListener(listener);
     }
     
     public void addBtnTrabajadoresListener(MouseListener listener){
-        btnTrabajadores.addMouseListener(listener);
+        btnProveedores.addMouseListener(listener);
     }
     
     public void addBtnCitasListener(MouseListener listener){
-        btnCitas.addMouseListener(listener);
+        btnClientes.addMouseListener(listener);
     }
     
     public void realizarCambioPanelDashboard(JPanel contenidoPanel){
@@ -69,32 +70,35 @@ public class VistaDashboard extends javax.swing.JFrame {
     }
     
     
-    private void setColorAzul(String boton, JLabel imagenBoton){
-        Icon btnCitasAzul = new ImageIcon("src//Imagenes//BotonesDashboard//00-Btn"+boton+"Azul-img.png"); 
-        imagenBoton.setIcon(btnCitasAzul);
+    private void setColorNaranja(String boton, JLabel imagenBoton){
+        Icon btnNaranja = new ImageIcon("src//Imagenes//BotonesDashboard//00-Btn"+boton+"Naranja-img.png"); 
+        imagenBoton.setIcon(btnNaranja);
         activarEstadoBoton(boton);
     }
     
-    private void setColorGris(String boton, JLabel imagenBoton){
-        Icon btnCitasGris = new ImageIcon("src//Imagenes//BotonesDashboard//00-Btn"+boton+"Gris-img.png");  
-        imagenBoton.setIcon(btnCitasGris);
+    private void setColorAmarillo(String boton, JLabel imagenBoton){
+        Icon btnAmarillo = new ImageIcon("src//Imagenes//BotonesDashboard//00-Btn"+boton+"Amarillo-img.png");  
+        imagenBoton.setIcon(btnAmarillo);
         desactivarEstadoBoton(boton);
     }
     
     private void activarEstadoBoton(String boton){
         if(null != boton)
             switch (boton) {
-                case "Dashboard":
-                    btnDashboardActivo = true;
+                case "Vender":
+                    btnVenderActivo = true;
                     break;
-                case "Afiliados":
-                    btnAfiliadosActivo = true;
+                case "Productos":
+                    btnProductosActivo = true;
                     break;
-                case "Trabajadores":
-                    btnTrabajadoresActivo = true;
+                case "Proveedores":
+                    btnProveedoresActivo = true;
                     break;
-                case "Citas":
-                    btnCitasActivo = true;
+                case "Clientes":
+                    btnClientesActivo = true;
+                    break;
+                case "Registros":
+                    btnRegistrosActivo = true;
                     break;
                 default:
                     break;
@@ -104,49 +108,64 @@ public class VistaDashboard extends javax.swing.JFrame {
     private void desactivarEstadoBoton(String boton){
         if(null != boton)
             switch (boton) {
-                case "Dashboard":
-                    btnDashboardActivo = false;
+                case "Vender":
+                    btnVenderActivo = false;
                     break;
-                case "Afiliados":
-                    btnAfiliadosActivo = false;
+                case "Productos":
+                    btnProductosActivo = false;
                     break;
-                case "Trabajadores":
-                    btnTrabajadoresActivo = false;
+                case "Proveedores":
+                    btnProveedoresActivo = false;
                     break;
-                case "Citas":
-                    btnCitasActivo = false;
+                case "Clientes":
+                    btnClientesActivo = false;
+                    break;
+                case "Registros":
+                    btnRegistrosActivo = false;
                     break;
                 default:
                     break;
         }
     }
     
-    private void mostrarBotonDashboardActivado(){
-        setColorAzul("Dashboard",btnDashboard);
-        setColorGris("Afiliados", btnAfiliados);
-        setColorGris("Trabajadores", btnTrabajadores);
-        setColorGris("Citas", btnCitas);
+    private void mostrarBotonVenderActivado(){
+        setColorNaranja("Vender",btnVender);
+        setColorAmarillo("Productos", btnProductos);
+        setColorAmarillo("Proveedores", btnProveedores);
+        setColorAmarillo("Clientes", btnClientes);
+        setColorAmarillo("Registros", btnRegistros);
     }
     
-    private void mostrarBotonAfiliadosActivado(){
-        setColorGris("Dashboard",btnDashboard);
-        setColorAzul("Afiliados", btnAfiliados);
-        setColorGris("Trabajadores", btnTrabajadores);
-        setColorGris("Citas", btnCitas);
+    private void mostrarBotonProductosActivado(){
+        setColorAmarillo("Vender",btnVender);
+        setColorNaranja("Productos", btnProductos);
+        setColorAmarillo("Proveedores", btnProveedores);
+        setColorAmarillo("Clientes", btnClientes);
+        setColorAmarillo("Registros", btnRegistros);
     }
     
-    private void mostrarBotonTrabajadoresActivado(){
-        setColorGris("Dashboard",btnDashboard);
-        setColorGris("Afiliados", btnAfiliados);
-        setColorAzul("Trabajadores", btnTrabajadores);
-        setColorGris("Citas", btnCitas);
+    private void mostrarBotonProveedoresActivado(){
+        setColorAmarillo("Vender",btnVender);
+        setColorAmarillo("Productos", btnProductos);
+        setColorNaranja("Proveedores", btnProveedores);
+        setColorAmarillo("Clientes", btnClientes);
+        setColorAmarillo("Registros", btnRegistros);
     }
     
-    private void mostrarBotonCitasActivado(){
-        setColorGris("Dashboard",btnDashboard);
-        setColorGris("Afiliados", btnAfiliados);
-        setColorGris("Trabajadores", btnTrabajadores);
-        setColorAzul("Citas", btnCitas);
+    private void mostrarBotonClientesActivado(){
+        setColorAmarillo("Vender",btnVender);
+        setColorAmarillo("Productos", btnProductos);
+        setColorAmarillo("Proveedores", btnProveedores);
+        setColorNaranja("Clientes", btnClientes);
+        setColorAmarillo("Registros", btnRegistros);
+    }
+    
+    private void mostrarBotonRegistrosActivado(){
+        setColorAmarillo("Vender",btnVender);
+        setColorAmarillo("Productos", btnProductos);
+        setColorAmarillo("Proveedores", btnProveedores);
+        setColorAmarillo("Clientes", btnClientes);
+        setColorNaranja("Registros", btnRegistros);
     }
     
     private void cambiarImagenPrincipal(String titulo){
@@ -160,10 +179,11 @@ public class VistaDashboard extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        btnCitas = new javax.swing.JLabel();
-        btnTrabajadores = new javax.swing.JLabel();
-        btnAfiliados = new javax.swing.JLabel();
-        btnDashboard = new javax.swing.JLabel();
+        btnRegistros = new javax.swing.JLabel();
+        btnClientes = new javax.swing.JLabel();
+        btnProveedores = new javax.swing.JLabel();
+        btnProductos = new javax.swing.JLabel();
+        btnVender = new javax.swing.JLabel();
         fondoDashboard = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -186,67 +206,82 @@ public class VistaDashboard extends javax.swing.JFrame {
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(277, 262, 1086, 503));
 
-        btnCitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesDashboard/00-BtnCitasGris-img.png"))); // NOI18N
-        btnCitas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCitas.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnRegistros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesDashboard/00-BtnRegistrosAmarillo-img.png"))); // NOI18N
+        btnRegistros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnRegistros.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCitasMouseClicked(evt);
+                btnRegistrosMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCitasMouseEntered(evt);
+                btnRegistrosMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCitasMouseExited(evt);
+                btnRegistrosMouseExited(evt);
             }
         });
-        jPanel2.add(btnCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, -1, -1));
+        jPanel2.add(btnRegistros, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, -1, -1));
 
-        btnTrabajadores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesDashboard/00-BtnTrabajadoresGris-img.png"))); // NOI18N
-        btnTrabajadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnTrabajadores.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesDashboard/00-BtnClientesAmarillo-img.png"))); // NOI18N
+        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnTrabajadoresMouseClicked(evt);
+                btnClientesMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnTrabajadoresMouseEntered(evt);
+                btnClientesMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnTrabajadoresMouseExited(evt);
+                btnClientesMouseExited(evt);
             }
         });
-        jPanel2.add(btnTrabajadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 400, -1, -1));
+        jPanel2.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, -1, -1));
 
-        btnAfiliados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesDashboard/00-BtnAfiliadosGris-img.png"))); // NOI18N
-        btnAfiliados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAfiliados.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesDashboard/00-BtnProveedoresAmarillo-img.png"))); // NOI18N
+        btnProveedores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAfiliadosMouseClicked(evt);
+                btnProveedoresMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAfiliadosMouseEntered(evt);
+                btnProveedoresMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAfiliadosMouseExited(evt);
+                btnProveedoresMouseExited(evt);
             }
         });
-        jPanel2.add(btnAfiliados, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 330, -1, -1));
+        jPanel2.add(btnProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 400, -1, -1));
 
-        btnDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesDashboard/00-BtnDashboardGris-img.png"))); // NOI18N
-        btnDashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesDashboard/00-BtnProductosAmarillo-img.png"))); // NOI18N
+        btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnDashboardMouseClicked(evt);
+                btnProductosMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnDashboardMouseEntered(evt);
+                btnProductosMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnDashboardMouseExited(evt);
+                btnProductosMouseExited(evt);
             }
         });
-        jPanel2.add(btnDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 262, -1, -1));
+        jPanel2.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 330, -1, -1));
 
-        fondoDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesDashboard/00-Dashboard-img.png"))); // NOI18N
+        btnVender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonesDashboard/00-BtnVenderAmarillo-img.png"))); // NOI18N
+        btnVender.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVender.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVenderMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVenderMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVenderMouseExited(evt);
+            }
+        });
+        jPanel2.add(btnVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 262, -1, -1));
+
+        fondoDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesDashboard/00-Vender-img.png"))); // NOI18N
         jPanel2.add(fondoDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 1370, 770));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -263,94 +298,114 @@ public class VistaDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDashboardMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDashboardMouseEntered
-        if(btnDashboardActivo == true){
-            setColorAzul("Dashboard", btnDashboard);
+    private void btnVenderMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVenderMouseEntered
+        if(btnVenderActivo == true){
+            setColorNaranja("Vender", btnVender);
         }
-    }//GEN-LAST:event_btnDashboardMouseEntered
+    }//GEN-LAST:event_btnVenderMouseEntered
 
-    private void btnAfiliadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAfiliadosMouseEntered
-        if(btnAfiliadosActivo == true){
-            setColorAzul("Afiliados", btnAfiliados);
+    private void btnProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseEntered
+        if(btnProductosActivo == true){
+            setColorNaranja("Productos", btnProductos);
         } 
-    }//GEN-LAST:event_btnAfiliadosMouseEntered
+    }//GEN-LAST:event_btnProductosMouseEntered
 
-    private void btnTrabajadoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadoresMouseEntered
-        if(btnTrabajadoresActivo == true){
-            setColorAzul("Trabajadores", btnTrabajadores);
+    private void btnProveedoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedoresMouseEntered
+        if(btnProveedoresActivo == true){
+            setColorNaranja("Proveedores", btnProveedores);
         }   
-    }//GEN-LAST:event_btnTrabajadoresMouseEntered
+    }//GEN-LAST:event_btnProveedoresMouseEntered
 
-    private void btnCitasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCitasMouseEntered
-        if(btnCitasActivo == true){
-            setColorAzul("Citas", btnCitas);
+    private void btnClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseEntered
+        if(btnClientesActivo == true){
+            setColorNaranja("Clientes", btnClientes);
         }  
-    }//GEN-LAST:event_btnCitasMouseEntered
+    }//GEN-LAST:event_btnClientesMouseEntered
 
-    private void btnAfiliadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAfiliadosMouseExited
-        if(validarEstadoBotones("Afiliados")){
-            setColorGris("Afiliados", btnAfiliados);
+    private void btnProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseExited
+        if(validarEstadoBotones("Productos")){
+            setColorAmarillo("Productos", btnProductos);
         }
-    }//GEN-LAST:event_btnAfiliadosMouseExited
+    }//GEN-LAST:event_btnProductosMouseExited
 
-    private void btnDashboardMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDashboardMouseExited
-        if(validarEstadoBotones("Dashboard")){
-            setColorGris("Dashboard", btnDashboard);
+    private void btnVenderMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVenderMouseExited
+        if(validarEstadoBotones("Vender")){
+            setColorAmarillo("Vender", btnVender);
         }
-    }//GEN-LAST:event_btnDashboardMouseExited
+    }//GEN-LAST:event_btnVenderMouseExited
 
-    private void btnTrabajadoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadoresMouseExited
-        if(validarEstadoBotones("Trabajadores")){
-            setColorGris("Trabajadores", btnTrabajadores);
+    private void btnProveedoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedoresMouseExited
+        if(validarEstadoBotones("Proveedores")){
+            setColorAmarillo("Proveedores", btnProveedores);
         }
-    }//GEN-LAST:event_btnTrabajadoresMouseExited
+    }//GEN-LAST:event_btnProveedoresMouseExited
 
-    private void btnCitasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCitasMouseExited
-        if(validarEstadoBotones("Citas")){
-            setColorGris("Citas", btnCitas);
+    private void btnClientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseExited
+        if(validarEstadoBotones("Clientes")){
+            setColorAmarillo("Clientes", btnClientes);
         }
-    }//GEN-LAST:event_btnCitasMouseExited
+    }//GEN-LAST:event_btnClientesMouseExited
 
-    private void btnDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDashboardMouseClicked
-        mostrarBotonDashboardActivado();
-        realizarCambioPanelDashboard(panelDashboard);
-        cambiarImagenPrincipal("Dashboard");
-    }//GEN-LAST:event_btnDashboardMouseClicked
+    private void btnVenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVenderMouseClicked
+        mostrarBotonVenderActivado();
+        //realizarCambioPanelDashboard(panelDashboard);
+        cambiarImagenPrincipal("Vender");
+    }//GEN-LAST:event_btnVenderMouseClicked
 
-    private void btnAfiliadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAfiliadosMouseClicked
-        mostrarBotonAfiliadosActivado();
+    private void btnProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseClicked
+        mostrarBotonProductosActivado();
         /*realizarCambioPanelDashboard(panelAfiliados);*/
-        cambiarImagenPrincipal("Afiliados");
-    }//GEN-LAST:event_btnAfiliadosMouseClicked
+        cambiarImagenPrincipal("Productos");
+    }//GEN-LAST:event_btnProductosMouseClicked
 
-    private void btnTrabajadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadoresMouseClicked
-        mostrarBotonTrabajadoresActivado();
+    private void btnProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedoresMouseClicked
+        mostrarBotonProveedoresActivado();
         //realizarCambioPanelDashboard(panelTrabajadores);
-        cambiarImagenPrincipal("Trabajadores");
-    }//GEN-LAST:event_btnTrabajadoresMouseClicked
+        cambiarImagenPrincipal("Proveedores");
+    }//GEN-LAST:event_btnProveedoresMouseClicked
 
-    private void btnCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCitasMouseClicked
-        mostrarBotonCitasActivado();
+    private void btnClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseClicked
+        mostrarBotonClientesActivado();
         //realizarCambioPanelDashboard(panelCitas);
-        cambiarImagenPrincipal("Citas");
-    }//GEN-LAST:event_btnCitasMouseClicked
+        cambiarImagenPrincipal("Clientes");
+    }//GEN-LAST:event_btnClientesMouseClicked
+
+    private void btnRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrosMouseClicked
+        mostrarBotonRegistrosActivado();
+        cambiarImagenPrincipal("Registros");
+    }//GEN-LAST:event_btnRegistrosMouseClicked
+
+    private void btnRegistrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrosMouseEntered
+        if(btnRegistrosActivo == true){
+            setColorNaranja("Registros", btnRegistros);
+        } 
+    }//GEN-LAST:event_btnRegistrosMouseEntered
+
+    private void btnRegistrosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrosMouseExited
+        if(validarEstadoBotones("Registros")){
+            setColorAmarillo("Registros", btnRegistros);
+        }
+    }//GEN-LAST:event_btnRegistrosMouseExited
 
     
     private boolean validarEstadoBotones(String boton){
         boolean respuesta = false;
         if(null != boton)
             switch (boton) {
-                case "Dashboard":
-                    respuesta = btnAfiliadosActivo || btnCitasActivo || btnTrabajadoresActivo;
+                case "Vender":
+                    respuesta = btnProductosActivo || btnRegistrosActivo || btnProveedoresActivo || btnClientesActivo;
                     break;
-                case "Afiliados":
-                    respuesta = btnDashboardActivo || btnCitasActivo || btnTrabajadoresActivo;
+                case "Productos":
+                    respuesta = btnVenderActivo || btnRegistrosActivo || btnProveedoresActivo || btnClientesActivo;
                     break;
-                case "Trabajadores":
-                    respuesta = btnDashboardActivo || btnCitasActivo || btnAfiliadosActivo;
+                case "Proveedores":
+                    respuesta = btnVenderActivo || btnRegistrosActivo || btnProductosActivo || btnClientesActivo;
                     break;
-                case "Citas":
-                    respuesta = btnDashboardActivo || btnTrabajadoresActivo || btnAfiliadosActivo;
+                case "Clientes":
+                    respuesta = btnVenderActivo || btnProveedoresActivo || btnProductosActivo || btnRegistrosActivo;
+                    break;
+                case "Registros":
+                    respuesta = btnVenderActivo || btnProveedoresActivo || btnProductosActivo || btnClientesActivo;
                     break;
                 default:
                     break;
@@ -394,15 +449,15 @@ public class VistaDashboard extends javax.swing.JFrame {
     }
 
     public JLabel getBtnAfiliados() {
-        return btnAfiliados;
+        return btnProductos;
     }
 
     public JLabel getBtnTrabajadores() {
-        return btnTrabajadores;
+        return btnProveedores;
     }  
 
     public JLabel getBtnCitas() {
-        return btnCitas;
+        return btnClientes;
     }
     
     
@@ -421,10 +476,11 @@ public class VistaDashboard extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnAfiliados;
-    private javax.swing.JLabel btnCitas;
-    private javax.swing.JLabel btnDashboard;
-    private javax.swing.JLabel btnTrabajadores;
+    private javax.swing.JLabel btnClientes;
+    private javax.swing.JLabel btnProductos;
+    private javax.swing.JLabel btnProveedores;
+    private javax.swing.JLabel btnRegistros;
+    private javax.swing.JLabel btnVender;
     private javax.swing.JLabel fondoDashboard;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

@@ -1,4 +1,4 @@
-package UniSaludPrincipal;
+package MaketPlacePrincipal;
 
 import Controller.ControllerPrincipal;
 import Modelo.Cita;
@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author RYZEN
  */
-public class UniSalud {
+public class MarketPlace {
 
     public static void main(String[] args) {
         
