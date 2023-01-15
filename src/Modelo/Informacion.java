@@ -4,11 +4,11 @@
  */
 package Modelo;
 
-import DAO.CitaDaoImplementation;
-import DAO.CuentaDaoImplementation;
-import DAO.ICitaDao;
-import DAO.ICuentaDao;
+import DAO.IProductoDao;
+import DAO.IProveedorDao;
 import DAO.IUsuarioDao;
+import DAO.ProductoDaoImplementation;
+import DAO.ProveedorDaoImplementation;
 import DAO.UsuarioDaoImplementation;
 import java.io.BufferedReader;
 import java.io.File;
@@ -25,78 +25,21 @@ import java.util.StringTokenizer;
  * @author RYZEN
  */
 public class Informacion {
-    private ICitaDao citaDao;
-    private ICuentaDao cuentaDao;
     private IUsuarioDao usuarioDao;
+    private IProductoDao productoDao;
+    private IProveedorDao proveedorDao;
     private Usuario usuarioActualInfo;
-    private Cita citaActualInfo;
+    private Proveedor proveedorActualInfo;
+    private Producto productoActualInfo;
 
     public Informacion() {
-        this.citaDao = new CitaDaoImplementation();
-        this.cuentaDao = new CuentaDaoImplementation();
         this.usuarioDao = new UsuarioDaoImplementation();
+        this.productoDao = new ProductoDaoImplementation();
+        this.proveedorDao = new ProveedorDaoImplementation();
     }
     
     /* Getters and Setters */
     
-    public List<Usuario> getAfiliados(){
-        List<Usuario> listaAfiliados = new LinkedList<>();
-        for (Usuario usuario : usuarioDao.getAllUsuarios()) {
-            if("Afiliado".equals(usuario.getRolUsuario())){
-                listaAfiliados.add(usuario);
-            }
-        }
-        
-        return  listaAfiliados;
-    }
-    
-    public List<Usuario> getTrabajadores(){
-        List<Usuario> listaTrabajadores = new LinkedList<>();
-        for (Usuario usuario : usuarioDao.getAllUsuarios()) {
-            if(!"Afiliado".equals(usuario.getRolUsuario())){
-                listaTrabajadores.add(usuario);
-            }
-        }
-        
-        
-        
-        return  listaTrabajadores;
-    }
-    
-    /* Citas */
-    
-    public boolean agregarCita(Cita cita){
-        return this.citaDao.addCita(cita);
-    }
-    
-    public List<Cita> getListadoCitas(){
-        return this.citaDao.getAllCitas();
-    }  
-    
-    public boolean eliminarCita(Cita cita){
-        return this.citaDao.deleteCita(cita);
-    }
-    
-    public boolean actualizarCita(Cita cita){
-        return this.citaDao.updateCita(cita);
-    }
-    
-    public void cargarCitas(){
-        cargarDatos("Citas");
-    }
-    
-    public void crearCitas(String[] citas){
-        int idCita = (int) Integer.parseInt(citas[0]);
-        String fecha = citas[1];
-        String hora = citas[2];
-        String piso = citas[3];
-        String sala = citas[4];
-        int idAfiliado = (int) Integer.parseInt(citas[5]);
-        int idTrabajador = (int) Integer.parseInt(citas[6]);
-        Cita nuevaCita = new Cita(idCita, fecha, hora, piso, sala, idAfiliado, idTrabajador);
-        
-        agregarCita(nuevaCita);
-    }
     
     /* Usuarios */
     
@@ -128,14 +71,13 @@ public class Informacion {
         String email = usuarios[4];
         String direccion = usuarios[5];
         String sexo = usuarios[6];
-        String rol = usuarios[7];
         
-        Usuario nuevoUsuario = new Usuario(idUsuario ,cedula, nombre, telefono, email, direccion, sexo, rol);
+        Usuario nuevoUsuario = new Usuario(idUsuario ,cedula, nombre, telefono, email, direccion, sexo);
         
         agregarUsuario(nuevoUsuario);
     }
     
-    public void crearUsuario(String[] usuario, String rol){
+    public void crearUsuario(String[] usuario){
         String nombre = usuario[0];
         String cedula = usuario[1];
         String telefono = usuario[2]; 
@@ -143,7 +85,7 @@ public class Informacion {
         String direccion = usuario[4];
         String sexo = usuario[5];
         
-        Usuario nuevoUsuario = new Usuario(cedula, nombre, telefono, email, direccion, sexo, rol);
+        Usuario nuevoUsuario = new Usuario(cedula, nombre, telefono, email, direccion, sexo);
         
         agregarUsuario(nuevoUsuario);
     }
@@ -156,33 +98,108 @@ public class Informacion {
         String direccion = datos[4];
         String sexo = datos[5];
         
-        Usuario nuevoUsuario = new Usuario(idUsuario ,cedula, nombre, telefono, email, direccion, sexo, rol);
+        Usuario nuevoUsuario = new Usuario(idUsuario ,cedula, nombre, telefono, email, direccion, sexo);
         
         actualizarUsuario(usuarioActualInfo, nuevoUsuario);
     }
+    
+    /* Proveedores */
+    
+    public Proveedor getProveedor(int idProveedor){
+        return this.proveedorDao.getProveedor(idProveedor);
+    }
+    
+    public boolean agregarProveedor(Proveedor proveedor){
+        return this.proveedorDao.addProveedor(proveedor);
+    }
+    
+    public List<Proveedor> getListadoProveedor(){
+        return  this.proveedorDao.getAllProveedores();
+    }  
+    
+    public boolean eliminarProveedor(Proveedor proveedor){
+        return this.proveedorDao.deleteProveedor(proveedor);
+    }
+    
+    public boolean actualizarProveedor(Proveedor proveedor, Proveedor nuevoProveedor){
+        return this.proveedorDao.updateProveedor(proveedor, nuevoProveedor);
+    }
+    
+    public void crearProveedores(String[] proveedores){
+        int idProveedor = (int) Integer.parseInt(proveedores[0]);
+        String nombre = proveedores[1];
+        
+        Proveedor nuevoProveedor = new Proveedor(idProveedor, nombre);
+        
+        agregarProveedor(nuevoProveedor);
+    }
+    
+    public void cambiarInfoProveedor(String[] datos, int idProveedor){
+        String nombre = datos[0];
+        
+        Proveedor nuevoProveedor = new Proveedor(idProveedor, nombre);
+        actualizarProveedor(proveedorActualInfo, nuevoProveedor);
+    }
+    
+    
+    /* Productos */
+    
+    public Proveedor getProducto(int idProveedor){
+        return this.proveedorDao.getProveedor(idProveedor);
+    }
+    
+    public boolean agregarProducto(Producto producto){
+        return this.productoDao.addProducto(producto);
+    }
+    
+    public List<Producto> getListadoProducto(){
+        return  this.productoDao.getAllProductos();
+    }  
+    
+    public boolean eliminarProducto(Producto producto){
+        return this.productoDao.deleteProducto(producto);
+    }
+    
+    public boolean actualizarProducto(Producto producto, Producto nuevoProducto){
+        return this.productoDao.updateProducto(producto, nuevoProducto);
+    }
+    
+    public void crearProductos(String[] productos){
+        int idProducto = (int) Integer.parseInt(productos[0]);
+        String nombre = productos[1];
+        float precio = (float) Float.parseFloat(productos[2]);
+        int unidades = (int) Integer.parseInt(productos[3]);
+        int idProveedor = (int) Integer.parseInt(productos[4]);
+        
+        Producto nuevoProducto = new Producto(idProducto, nombre, precio, unidades, idProveedor);
+        
+        agregarProducto(nuevoProducto);
+    }
+    
+    public void cambiarInfoProducto(String[] datos, int idProducto){
+        String nombre = datos[0];
+        float precio = (float) Float.parseFloat(datos[1]);
+        int unidades = (int) Integer.parseInt(datos[2]);
+        int idProveedor = (int) Integer.parseInt(datos[3]);
+        
+        Producto nuevoProducto = new Producto(idProducto, nombre, precio, unidades, idProveedor);
+        actualizarProducto(productoActualInfo, nuevoProducto);
+    }
+    
+    /* Cargado de Datos */
     
     public void cargarUsuarios(){
         cargarDatos("Usuarios");
     }
     
-    /* Cuentas */
-    
-    public boolean agregarCuenta(Cuenta cuenta){
-        return this.cuentaDao.addCuenta(cuenta);
+    public void cargarProveedores(){
+        cargarDatos("Proveedores");
     }
     
-    public List<Cuenta> getListadoCuentas(){
-        return  this.cuentaDao.getAllCuentas();
-    }  
-    
-    public boolean eliminarCuenta(Cuenta cuenta){
-        return this.cuentaDao.deleteCuenta(cuenta);
+    public void cargarProductos(){
+        cargarDatos("Productos");
     }
     
-    public boolean actualizarCuenta(Cuenta cuenta){
-        return this.cuentaDao.updateCuenta(cuenta);
-    }
-     
     /* Cargar Datos */
     
     public void cargarDatos(String datosArchivo){
@@ -212,10 +229,10 @@ public class Informacion {
 
               if("Usuarios".equals(datosArchivo)){
                   crearUsuarios(datos);
-              }
-
-              else if("Citas".equals(datosArchivo)){
-                  crearCitas(datos);
+              }else if("Productos".equals(datosArchivo)){
+                  crearProductos(datos);
+              }else if("Proveedores".equals(datosArchivo)){
+                  crearProveedores(datos);
               }
 
               System.out.println(linea);
@@ -244,13 +261,25 @@ public class Informacion {
         this.usuarioActualInfo = usuarioActualInfo;
     }
 
-    public Cita getCitaActualInfo() {
-        return citaActualInfo;
+    public Proveedor getProveedorActualInfo() {
+        return proveedorActualInfo;
     }
 
-    public void setCitaActualInfo(Cita citaActualInfo) {
-        this.citaActualInfo = citaActualInfo;
+    public void setProveedorActualInfo(Proveedor proveedorActualInfo) {
+        this.proveedorActualInfo = proveedorActualInfo;
     }
+
+    public Producto getProductoActualInfo() {
+        return productoActualInfo;
+    }
+
+    public void setProductoActualInfo(Producto productoActualInfo) {
+        this.productoActualInfo = productoActualInfo;
+    }
+    
+    
+    
+    
     
     
     

@@ -1,8 +1,9 @@
 package MaketPlacePrincipal;
 
 import Controller.ControllerPrincipal;
-import Modelo.Cita;
 import Modelo.ModeloPrincipal;
+import Modelo.Producto;
+import Modelo.Proveedor;
 import Modelo.Usuario;
 import Vistas.VistaLogin;
 import java.util.List;
@@ -22,18 +23,24 @@ public class MarketPlace {
         ControllerPrincipal controller = new ControllerPrincipal(modelo, vista);
         
         modelo.getInformacion().cargarUsuarios();
-        modelo.getInformacion().cargarCitas();
+        modelo.getInformacion().cargarProductos();
+        modelo.getInformacion().cargarProveedores();
         
         List<Usuario> usuarios = modelo.getInformacion().getListadoUsuario();
-        List<Cita> citas = modelo.getInformacion().getListadoCitas();
+        List<Proveedor> proveedores = modelo.getInformacion().getListadoProveedor();
+        List<Producto> productos = modelo.getInformacion().getListadoProducto();
         
-        
+        System.out.println("Usuarios...");
         for (Usuario usuario : usuarios) {
             System.out.println(usuario.toString());
         }
-        
-        for (Cita cita : citas) {
-            System.out.println(cita.toString());
+        System.out.println("Proveedores...");
+        for (Proveedor proveedor : proveedores) {
+            System.out.println(proveedor.toString());
+        }
+        System.out.println("Productos...");
+        for (Producto producto : productos) {
+            System.out.println(producto.toString());
         }
         
     }

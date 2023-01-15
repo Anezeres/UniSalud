@@ -46,18 +46,18 @@ public class ControllerDashboard {
                 vistaDashboard.setTipoAccionActual("Afiliado");
                 PanelAfiliados panelAfiliados = new PanelAfiliados();
                 vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
-                ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
+                //ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
             }else if(me.getSource() == vistaDashboard.getBtnTrabajadores()){
                 
                 vistaDashboard.setTipoAccionActual("Trabajador");
                 PanelTrabajadores panelTrabajadores = new PanelTrabajadores();
                 vistaDashboard.realizarCambioPanelDashboard(panelTrabajadores);
-                ControllerTrabajadores trabajadores = new ControllerTrabajadores(modelo, panelTrabajadores ,vistaDashboard);
+                //ControllerTrabajadores trabajadores = new ControllerTrabajadores(modelo, panelTrabajadores ,vistaDashboard);
             }else if(me.getSource() == vistaDashboard.getBtnCitas()){
                 vistaDashboard.setTipoAccionActual("Cita");
                 PanelCitas panelCitas = new PanelCitas();
                 vistaDashboard.realizarCambioPanelDashboard(panelCitas);
-                ControllerCitas citas = new ControllerCitas(modelo, panelCitas ,vistaDashboard);
+                //ControllerCitas citas = new ControllerCitas(modelo, panelCitas ,vistaDashboard);
             }
         }
 

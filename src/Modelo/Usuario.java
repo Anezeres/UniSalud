@@ -17,9 +17,8 @@ public class Usuario {
     private String email;
     private String direccion;
     private String sexo;
-    private final String rolUsuario;
 
-    public Usuario(String cedula, String nombre, String telefono, String email, String direccion, String sexo, String rolUsuario) {
+    public Usuario(String cedula, String nombre, String telefono, String email, String direccion, String sexo) {
         this.idUsuario = numero++;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -27,11 +26,10 @@ public class Usuario {
         this.email = email;
         this.direccion = direccion;
         this.sexo = sexo;
-        this.rolUsuario = rolUsuario;
         
     }
 
-    public Usuario(int id, String cedula, String nombre, String telefono, String email, String direccion, String sexo, String rolUsuario) {
+    public Usuario(int id, String cedula, String nombre, String telefono, String email, String direccion, String sexo) {
         numero++;
         this.idUsuario = id;
         this.cedula = cedula;
@@ -40,7 +38,6 @@ public class Usuario {
         this.email = email;
         this.direccion = direccion;
         this.sexo = sexo;
-        this.rolUsuario = rolUsuario;
     }
     
     
@@ -107,15 +104,12 @@ public class Usuario {
         this.sexo = sexo;
     }
 
-    public String getRolUsuario() {
-        return rolUsuario;
-    }
     
     
 
     @Override
     public String toString() {
-        return "Usuario{" + "idUsuario=" + idUsuario + ", cedula=" + cedula + ", nombre=" + nombre + ", telefono=" + telefono + ", email=" + email + ", direccion=" + direccion + ", sexo=" + sexo + ", rolUsuario=" + rolUsuario + '}';
+        return "Usuario{" + "idUsuario=" + idUsuario + ", cedula=" + cedula + ", nombre=" + nombre + ", telefono=" + telefono + ", email=" + email + ", direccion=" + direccion + ", sexo=" + sexo + '}';
     }
     
     

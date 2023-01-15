@@ -82,6 +82,7 @@ public class ControllerUsuariosCRUD {
         }
         
         private void regresarVentana(String ventanaActual){
+            /*
             if("Afiliado".equals(ventanaActual)){
                 vistaDashboard.setTipoAccionActual("Afiliado");
                 PanelAfiliados panelAfiliados = new PanelAfiliados();
@@ -95,6 +96,7 @@ public class ControllerUsuariosCRUD {
             
                 
             }
+*/
         }
         
         private void activarVentanaEditar(String ventanaActual){
@@ -121,7 +123,7 @@ public class ControllerUsuariosCRUD {
             
                
             if("Crear".equals(vistaUsuario.getAccionActual())){
-                modelo.getInformacion().crearUsuario(datos, vistaDashboard.getTipoAccionActual());
+                modelo.getInformacion().crearUsuario(datos);
             }else if("Editar".equals(vistaUsuario.getAccionActual()) && "Afiliado".equals(ventanaActual) ){
                 modelo.getInformacion().cambiarInfoUsuario(datos, modelo.getInformacion().getUsuarioActualInfo().getId(), vistaDashboard.getTipoAccionActual());
             }else if("Editar".equals(vistaUsuario.getAccionActual()) && "Trabajador".equals(ventanaActual) ){

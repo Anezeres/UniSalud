@@ -47,7 +47,7 @@ public class UsuarioDaoImplementation implements IUsuarioDao{
 
     @Override
     public boolean updateUsuario(Usuario usuario, Usuario nuevoUsuario) {
-        System.out.println("Hola");
+        
         if(usuarios.contains(usuario)){
             
             int pos = usuarios.indexOf(usuario);

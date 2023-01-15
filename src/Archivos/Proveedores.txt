@@ -1,0 +1,15 @@
+1;Lockman-Spinka
+2;Abbott; Pacocha and Turcotte
+3;McKenzie; Gaylord and Jacobs
+4;Hilll Crona and Anderson
+5;Greenfelder Hudson and Jacobson
+6;Smitham-Padberg
+7;Reichel-Krajcik
+8;Halvorson-Sporer
+9;Roberts; DuBuque and Predovic
+10;Simonis-Ferry
+11;Ledner
+12;Konopelski-O'Keefe
+13;Bauch LLC
+14;Dietrich-Feil
+15;Farrell-D'Amore
