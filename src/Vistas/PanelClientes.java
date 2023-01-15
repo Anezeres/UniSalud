@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author RYZEN
  */
-public class PanelCitas extends javax.swing.JPanel {
+public class PanelClientes extends javax.swing.JPanel {
     
     DefaultTableModel modelo;
     private boolean btnVerActivo = false;
@@ -26,11 +26,11 @@ public class PanelCitas extends javax.swing.JPanel {
     /**
      * Creates new form PanelDashboard
      */
-    public PanelCitas() {
+    public PanelClientes() {
         initComponents();
         setSize(1086, 503);
         
-        modelo = (DefaultTableModel) tablaCitas.getModel();
+        modelo = (DefaultTableModel) tablaClientes.getModel();
 
     }
     
@@ -40,8 +40,8 @@ public class PanelCitas extends javax.swing.JPanel {
         modelo.addRow(datos);
     }
     
-    public void addTablaTrabajadoresListener(MouseListener listener){
-        tablaCitas.addMouseListener(listener);
+    public void addTablaClientesListener(MouseListener listener){
+        tablaClientes.addMouseListener(listener);
     }
     
     public void addBtnVerListener(MouseListener listener){
@@ -107,7 +107,7 @@ public class PanelCitas extends javax.swing.JPanel {
 
         btnCrear = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaCitas = new javax.swing.JTable();
+        tablaClientes = new javax.swing.JTable();
         btnEliminar = new javax.swing.JLabel();
         btnEditar = new javax.swing.JLabel();
         btnVer = new javax.swing.JLabel();
@@ -129,19 +129,19 @@ public class PanelCitas extends javax.swing.JPanel {
         });
         add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 350, 144, 55));
 
-        tablaCitas.setModel(new javax.swing.table.DefaultTableModel(
+        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Fecha", "Hora", "Trabajador", "Afiliado", "Servicio", "Piso", "Sala"
+                "Cedula", "Nombre", "Telefono", "Email", "Dirección", "Sexo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -152,20 +152,18 @@ public class PanelCitas extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tablaCitas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tablaCitas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tablaCitas.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tablaCitas);
-        if (tablaCitas.getColumnModel().getColumnCount() > 0) {
-            tablaCitas.getColumnModel().getColumn(0).setResizable(false);
-            tablaCitas.getColumnModel().getColumn(1).setResizable(false);
-            tablaCitas.getColumnModel().getColumn(2).setResizable(false);
-            tablaCitas.getColumnModel().getColumn(3).setResizable(false);
-            tablaCitas.getColumnModel().getColumn(4).setResizable(false);
-            tablaCitas.getColumnModel().getColumn(5).setResizable(false);
-            tablaCitas.getColumnModel().getColumn(5).setPreferredWidth(5);
-            tablaCitas.getColumnModel().getColumn(6).setResizable(false);
-            tablaCitas.getColumnModel().getColumn(6).setPreferredWidth(5);
+        tablaClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tablaClientes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tablaClientes.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablaClientes);
+        if (tablaClientes.getColumnModel().getColumnCount() > 0) {
+            tablaClientes.getColumnModel().getColumn(0).setResizable(false);
+            tablaClientes.getColumnModel().getColumn(1).setResizable(false);
+            tablaClientes.getColumnModel().getColumn(2).setResizable(false);
+            tablaClientes.getColumnModel().getColumn(3).setResizable(false);
+            tablaClientes.getColumnModel().getColumn(4).setResizable(false);
+            tablaClientes.getColumnModel().getColumn(5).setResizable(false);
+            tablaClientes.getColumnModel().getColumn(5).setPreferredWidth(5);
         }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 790, 380));
@@ -242,8 +240,8 @@ public class PanelCitas extends javax.swing.JPanel {
         setBotonInactivo("Crear", btnCrear);
     }//GEN-LAST:event_btnCrearMouseExited
 
-    public JTable getTablaTrabajadores() {
-        return tablaCitas;
+    public JTable getTablaClientes() {
+        return tablaClientes;
     }
 
     public boolean isBtnVerActivo() {
@@ -288,6 +286,6 @@ public class PanelCitas extends javax.swing.JPanel {
     private javax.swing.JLabel btnVer;
     private javax.swing.JLabel fondoTrabajadores;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaCitas;
+    private javax.swing.JTable tablaClientes;
     // End of variables declaration//GEN-END:variables
 }

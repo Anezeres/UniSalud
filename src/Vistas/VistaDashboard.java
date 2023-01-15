@@ -18,10 +18,10 @@ import javax.swing.JPanel;
  */
 public class VistaDashboard extends javax.swing.JFrame {
 
-    private PanelVentas panelDashboard = new PanelVentas();
-    private PanelAfiliados panelAfiliados = new PanelAfiliados();
-    private PanelTrabajadores panelTrabajadores = new PanelTrabajadores();
-    private PanelCitas panelCitas = new PanelCitas();
+    private PanelVender panelDashboard = new PanelVender();
+    private PanelProductos panelAfiliados = new PanelProductos();
+    private PanelProveedores panelTrabajadores = new PanelProveedores();
+    private PanelClientes panelCitas = new PanelClientes();
     
     
     private boolean btnVenderActivo = false;
@@ -40,16 +40,24 @@ public class VistaDashboard extends javax.swing.JFrame {
         setSize(1363, 765);
     }
     
-    public void addBtnAfiliadosListener(MouseListener listener){
+    public void addBtnProductosListener(MouseListener listener){
         btnProductos.addMouseListener(listener);
     }
     
-    public void addBtnTrabajadoresListener(MouseListener listener){
+    public void addBtnProveedoresListener(MouseListener listener){
         btnProveedores.addMouseListener(listener);
     }
     
-    public void addBtnCitasListener(MouseListener listener){
+    public void addBtnClientesListener(MouseListener listener){
         btnClientes.addMouseListener(listener);
+    }
+    
+    public void addBtnVenderListener(MouseListener listener){
+        btnVender.addMouseListener(listener);
+    }
+    
+    public void addBtnRegistrosListener(MouseListener listener){
+        btnRegistros.addMouseListener(listener);
     }
     
     public void realizarCambioPanelDashboard(JPanel contenidoPanel){
@@ -448,16 +456,24 @@ public class VistaDashboard extends javax.swing.JFrame {
         });
     }
 
-    public JLabel getBtnAfiliados() {
+    public JLabel getBtnProductos() {
         return btnProductos;
     }
 
-    public JLabel getBtnTrabajadores() {
+    public JLabel getBtnProveedores() {
         return btnProveedores;
     }  
 
-    public JLabel getBtnCitas() {
+    public JLabel getBtnClientes() {
         return btnClientes;
+    }
+
+    public JLabel getBtnRegistros() {
+        return btnRegistros;
+    }
+
+    public JLabel getBtnVender() {
+        return btnVender;
     }
     
     

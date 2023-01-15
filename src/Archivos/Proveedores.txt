@@ -1,15 +1,15 @@
-1;Lockman-Spinka
-2;Abbott; Pacocha and Turcotte
-3;McKenzie; Gaylord and Jacobs
-4;Hilll Crona and Anderson
-5;Greenfelder Hudson and Jacobson
-6;Smitham-Padberg
-7;Reichel-Krajcik
-8;Halvorson-Sporer
-9;Roberts; DuBuque and Predovic
-10;Simonis-Ferry
-11;Ledner
-12;Konopelski-O'Keefe
-13;Bauch LLC
-14;Dietrich-Feil
-15;Farrell-D'Amore
+1;Schimmel Inc;(624) 7097349;18 Eastlawn Drive;Technology
+2;Bernhard Pagac and Beatty;(917) 2016681;40 Rutledge Crossing;n/a
+3;Fahey-Trantow;(632) 8011905;45 Division Crossing;Finance
+4;Bergstrom Inc;(463) 9444531;7 Upham Crossing;n/a
+5;Terry-Reynolds;(508) 1156208;3 Beilfuss Alley;n/a
+6;Schuppe Stracke and Donnelly;(146) 5966917;06321 East Pass;Finance
+7;Stroman Inc;(855) 8939581;2 Mariners Cove Crossing;Capital Goods
+8;Purdy LLC;(473) 1943337;49427 Stephen Alley;Technology
+9;Bauch Windler and Kris;(469) 6760445;09186 Manufacturers Parkway;n/a
+10;Gulgowski LLC;(629) 3307167;18 Prairie Rose Circle;Health Care
+11;Toy-Connelly;(807) 9279672;942 Pierstorff Alley;n/a
+12;O'Kon-Mills;(739) 4533930;6383 Northport Crossing;Basic Industries
+13;Stroman Jast and Marks;(913) 5075318;3 Hanson Drive;Consumer Services
+14;McClure-Kuvalis;(846) 7260675;60 Colorado Circle;Public Utilities
+15;Barton-Shanahan;(511) 3565616;1924 Oakridge Crossing;Transportation

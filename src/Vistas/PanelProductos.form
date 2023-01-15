@@ -32,7 +32,7 @@
           <Image iconType="3" name="/Imagenes/BotonesCRUD/00-CrearInactivo.png"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor Por defecto"/>
+          <Color id="Default Cursor"/>
         </Property>
       </Properties>
       <Events>
@@ -60,13 +60,11 @@
         <Component class="javax.swing.JTable" name="tablaAfiliados">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="6" rowCount="0">
-                <Column editable="false" title="Cedula" type="java.lang.String"/>
+              <Table columnCount="4" rowCount="0">
                 <Column editable="false" title="Nombre" type="java.lang.String"/>
-                <Column editable="false" title="Tel&#xe9;fono" type="java.lang.String"/>
-                <Column editable="false" title="Correo" type="java.lang.String"/>
-                <Column editable="false" title="Direcci&#xf3;n" type="java.lang.String"/>
-                <Column editable="false" title="Sexo" type="java.lang.String"/>
+                <Column editable="false" title="Precio" type="java.lang.String"/>
+                <Column editable="false" title="Unidades Disponibles" type="java.lang.String"/>
+                <Column editable="false" title="Proveedor" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -91,20 +89,10 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="5" resizable="false">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
               </TableColumnModel>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Por defecto"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="selectionMode" type="int" value="0"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -120,7 +108,7 @@
           <Image iconType="3" name="/Imagenes/BotonesCRUD/00-EliminarDesactivado.png"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor Por defecto"/>
+          <Color id="Default Cursor"/>
         </Property>
       </Properties>
       <Events>
@@ -139,7 +127,7 @@
           <Image iconType="3" name="/Imagenes/BotonesCRUD/00-EditarDesactivado.png"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor Por defecto"/>
+          <Color id="Default Cursor"/>
         </Property>
       </Properties>
       <Events>
@@ -158,7 +146,7 @@
           <Image iconType="3" name="/Imagenes/BotonesCRUD/00-VerDesactivado.png"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor Por defecto"/>
+          <Color id="Default Cursor"/>
         </Property>
       </Properties>
       <Events>

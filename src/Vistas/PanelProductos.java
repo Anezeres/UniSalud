@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author RYZEN
  */
-public class PanelAfiliados extends javax.swing.JPanel {
+public class PanelProductos extends javax.swing.JPanel {
     
     DefaultTableModel modelo;
     private boolean btnVerActivo = false;
@@ -26,7 +26,7 @@ public class PanelAfiliados extends javax.swing.JPanel {
     /**
      * Creates new form PanelDashboard
      */
-    public PanelAfiliados() {
+    public PanelProductos() {
         initComponents();
         setSize(1086, 503);
         
@@ -40,7 +40,7 @@ public class PanelAfiliados extends javax.swing.JPanel {
         modelo.addRow(datos);
     }
     
-    public void addTablaAfiliadosListener(MouseListener listener){
+    public void addTablaProductosListener(MouseListener listener){
         tablaAfiliados.addMouseListener(listener);
     }
     
@@ -134,14 +134,14 @@ public class PanelAfiliados extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Cedula", "Nombre", "Teléfono", "Correo", "Dirección", "Sexo"
+                "Nombre", "Precio", "Unidades Disponibles", "Proveedor"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -161,9 +161,6 @@ public class PanelAfiliados extends javax.swing.JPanel {
             tablaAfiliados.getColumnModel().getColumn(1).setResizable(false);
             tablaAfiliados.getColumnModel().getColumn(2).setResizable(false);
             tablaAfiliados.getColumnModel().getColumn(3).setResizable(false);
-            tablaAfiliados.getColumnModel().getColumn(4).setResizable(false);
-            tablaAfiliados.getColumnModel().getColumn(5).setResizable(false);
-            tablaAfiliados.getColumnModel().getColumn(5).setPreferredWidth(5);
         }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 790, 380));

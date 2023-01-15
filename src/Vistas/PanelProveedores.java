@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author RYZEN
  */
-public class PanelTrabajadores extends javax.swing.JPanel {
+public class PanelProveedores extends javax.swing.JPanel {
     
     DefaultTableModel modelo;
     private boolean btnVerActivo = false;
@@ -26,7 +26,7 @@ public class PanelTrabajadores extends javax.swing.JPanel {
     /**
      * Creates new form PanelDashboard
      */
-    public PanelTrabajadores() {
+    public PanelProveedores() {
         initComponents();
         setSize(1086, 503);
         
@@ -40,7 +40,7 @@ public class PanelTrabajadores extends javax.swing.JPanel {
         modelo.addRow(datos);
     }
     
-    public void addTablaTrabajadoresListener(MouseListener listener){
+    public void addTablaProveedoresListener(MouseListener listener){
         tablaTrabajadores.addMouseListener(listener);
     }
     
@@ -134,14 +134,14 @@ public class PanelTrabajadores extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Cedula", "Nombre", "Teléfono", "Correo", "Dirección", "Sexo", "Oficio"
+                "Nombre", "Teléfono", "Dirección", "Stok"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -161,10 +161,7 @@ public class PanelTrabajadores extends javax.swing.JPanel {
             tablaTrabajadores.getColumnModel().getColumn(1).setResizable(false);
             tablaTrabajadores.getColumnModel().getColumn(2).setResizable(false);
             tablaTrabajadores.getColumnModel().getColumn(3).setResizable(false);
-            tablaTrabajadores.getColumnModel().getColumn(4).setResizable(false);
-            tablaTrabajadores.getColumnModel().getColumn(5).setResizable(false);
-            tablaTrabajadores.getColumnModel().getColumn(5).setPreferredWidth(5);
-            tablaTrabajadores.getColumnModel().getColumn(6).setResizable(false);
+            tablaTrabajadores.getColumnModel().getColumn(3).setPreferredWidth(5);
         }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 790, 380));

@@ -128,16 +128,23 @@ public class Informacion {
     public void crearProveedores(String[] proveedores){
         int idProveedor = (int) Integer.parseInt(proveedores[0]);
         String nombre = proveedores[1];
+        String telefono = proveedores[2];
+        String direccion = proveedores[3];
+        String stok = proveedores[4];
+   
         
-        Proveedor nuevoProveedor = new Proveedor(idProveedor, nombre);
+        Proveedor nuevoProveedor = new Proveedor(idProveedor, nombre, telefono, direccion, stok);
         
         agregarProveedor(nuevoProveedor);
     }
     
     public void cambiarInfoProveedor(String[] datos, int idProveedor){
         String nombre = datos[0];
+        String telefono = datos[1];
+        String direccion = datos[2];
+        String stok = datos[3];
         
-        Proveedor nuevoProveedor = new Proveedor(idProveedor, nombre);
+        Proveedor nuevoProveedor = new Proveedor(idProveedor, nombre, telefono, direccion, stok);
         actualizarProveedor(proveedorActualInfo, nuevoProveedor);
     }
     

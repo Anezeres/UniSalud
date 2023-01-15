@@ -5,8 +5,8 @@
 package Controller;
 
 import Modelo.ModeloPrincipal;
-import Vistas.PanelAfiliados;
-import Vistas.PanelTrabajadores;
+import Vistas.PanelProductos;
+import Vistas.PanelProveedores;
 import Vistas.PanelUsuariosCRUD;
 import Vistas.VistaDashboard;
 import java.awt.event.MouseEvent;

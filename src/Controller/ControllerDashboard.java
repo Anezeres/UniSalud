@@ -5,9 +5,10 @@
 package Controller;
 
 import Modelo.ModeloPrincipal;
-import Vistas.PanelAfiliados;
-import Vistas.PanelCitas;
-import Vistas.PanelTrabajadores;
+import Vistas.PanelProductos;
+import Vistas.PanelClientes;
+import Vistas.PanelProveedores;
+import Vistas.PanelVender;
 import Vistas.VistaDashboard;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -32,9 +33,11 @@ public class ControllerDashboard {
     private void agregarListenersBtnDashBoard(){
         DashboardListener listener = new DashboardListener();
         
-        vistaDashboard.addBtnAfiliadosListener(listener);
-        vistaDashboard.addBtnTrabajadoresListener(listener);
-        vistaDashboard.addBtnCitasListener(listener);
+        vistaDashboard.addBtnProductosListener(listener);
+        vistaDashboard.addBtnProveedoresListener(listener);
+        vistaDashboard.addBtnClientesListener(listener);
+        vistaDashboard.addBtnVenderListener(listener);
+        vistaDashboard.addBtnRegistrosListener(listener);
     }
     
     
@@ -42,21 +45,26 @@ public class ControllerDashboard {
 
         @Override
         public void mouseClicked(MouseEvent me) {
-            if(me.getSource() == vistaDashboard.getBtnAfiliados()){
-                vistaDashboard.setTipoAccionActual("Afiliado");
-                PanelAfiliados panelAfiliados = new PanelAfiliados();
-                vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
-                //ControllerAfiliados afiliados = new ControllerAfiliados(modelo, panelAfiliados,vistaDashboard);
-            }else if(me.getSource() == vistaDashboard.getBtnTrabajadores()){
+            if(me.getSource() == vistaDashboard.getBtnProductos()){
+                vistaDashboard.setTipoAccionActual("Producto");
+                PanelProductos panelProductos = new PanelProductos();
+                vistaDashboard.realizarCambioPanelDashboard(panelProductos);
+                ControllerProductos productos = new ControllerProductos(modelo, panelProductos, vistaDashboard);
+            }else if(me.getSource() == vistaDashboard.getBtnProveedores()){
                 
-                vistaDashboard.setTipoAccionActual("Trabajador");
-                PanelTrabajadores panelTrabajadores = new PanelTrabajadores();
-                vistaDashboard.realizarCambioPanelDashboard(panelTrabajadores);
-                //ControllerTrabajadores trabajadores = new ControllerTrabajadores(modelo, panelTrabajadores ,vistaDashboard);
-            }else if(me.getSource() == vistaDashboard.getBtnCitas()){
-                vistaDashboard.setTipoAccionActual("Cita");
-                PanelCitas panelCitas = new PanelCitas();
-                vistaDashboard.realizarCambioPanelDashboard(panelCitas);
+                vistaDashboard.setTipoAccionActual("Proveedor");
+                PanelProveedores panelProveedores = new PanelProveedores();
+                vistaDashboard.realizarCambioPanelDashboard(panelProveedores);
+                ControllerProveedores proveedores = new ControllerProveedores(modelo, panelProveedores, vistaDashboard);
+            }else if(me.getSource() == vistaDashboard.getBtnClientes()){
+                vistaDashboard.setTipoAccionActual("Clientes");
+                PanelClientes panelClientes = new PanelClientes();
+                vistaDashboard.realizarCambioPanelDashboard(panelClientes);
+                ControllerUsuarios clientes  = new ControllerUsuarios(modelo, panelClientes ,vistaDashboard);
+            }else if(me.getSource() == vistaDashboard.getBtnVender()){
+                vistaDashboard.setTipoAccionActual("Vender");
+                PanelVender panelVender = new PanelVender();
+                vistaDashboard.realizarCambioPanelDashboard(panelVender);
                 //ControllerCitas citas = new ControllerCitas(modelo, panelCitas ,vistaDashboard);
             }
         }

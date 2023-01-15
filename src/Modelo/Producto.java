@@ -10,6 +10,7 @@ package Modelo;
  */
 public class Producto {
     
+    private static int numero;
     private final int idProducto;
     private String nombre;
     private float precioProducto;
@@ -22,7 +23,19 @@ public class Producto {
         this.precioProducto = precioProducto;
         this.unidades = unidades;
         this.idProveedor = idProveedor;
+        numero++;
     }
+
+    public Producto(String nombre, float precioProducto, int unidades, int idProveedor) {
+        
+        this.nombre = nombre;
+        this.precioProducto = precioProducto;
+        this.unidades = unidades;
+        this.idProveedor = idProveedor;
+        this.idProducto = numero++;
+    }
+    
+    
     
     
     /* Getters and Setters */

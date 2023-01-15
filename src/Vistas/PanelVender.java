@@ -11,20 +11,24 @@ import javax.swing.DefaultListModel;
  *
  * @author RYZEN
  */
-public class PanelVentas extends javax.swing.JPanel {
+public class PanelVender extends javax.swing.JPanel {
 
     DefaultListModel modelo;
     DefaultListModel modeloCompra;
     /**
      * Creates new form PanelDashboard
      */
-    public PanelVentas() {
+    public PanelVender() {
         initComponents();
+        
+        setVisible(true);
         setSize(1086, 503);
+        /*
         modelo = new DefaultListModel();
         listaProductos.setModel(modelo);
         modeloCompra = new DefaultListModel();
         listaCompras.setModel(modeloCompra);
+        */
     }
     
     public void vaciarListaCompras()
