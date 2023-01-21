@@ -47,7 +47,7 @@ public class ControllerProveedores {
         vistaProveedor.addBtnCrearListener(listener);
     }
     
-     private void llenarTabla(){
+    private void llenarTabla(){
         List<Proveedor> proveedores = modelo.getInformacion().getListadoProveedor();
         String[] dato = new String[6];
         

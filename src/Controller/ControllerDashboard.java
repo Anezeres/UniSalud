@@ -8,6 +8,7 @@ import Modelo.ModeloPrincipal;
 import Vistas.PanelProductos;
 import Vistas.PanelClientes;
 import Vistas.PanelProveedores;
+import Vistas.PanelRegistros;
 import Vistas.PanelVender;
 import Vistas.VistaDashboard;
 import java.awt.event.MouseEvent;
@@ -65,7 +66,13 @@ public class ControllerDashboard {
                 vistaDashboard.setTipoAccionActual("Vender");
                 PanelVender panelVender = new PanelVender();
                 vistaDashboard.realizarCambioPanelDashboard(panelVender);
+                ControllerVender vender = new ControllerVender(modelo, panelVender, vistaDashboard);
                 //ControllerCitas citas = new ControllerCitas(modelo, panelCitas ,vistaDashboard);
+            }else if(me.getSource() == vistaDashboard.getBtnRegistros()){
+                vistaDashboard.setTipoAccionActual("Registro");
+                PanelRegistros panelRegistro = new PanelRegistros();
+                vistaDashboard.realizarCambioPanelDashboard(panelRegistro);
+                ControllerRegistros registro = new ControllerRegistros(modelo, panelRegistro, vistaDashboard);
             }
         }
 

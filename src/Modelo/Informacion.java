@@ -6,9 +6,11 @@ package Modelo;
 
 import DAO.IProductoDao;
 import DAO.IProveedorDao;
+import DAO.IRegistroDao;
 import DAO.IUsuarioDao;
 import DAO.ProductoDaoImplementation;
 import DAO.ProveedorDaoImplementation;
+import DAO.RegistroDaoImplementation;
 import DAO.UsuarioDaoImplementation;
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,14 +30,19 @@ public class Informacion {
     private IUsuarioDao usuarioDao;
     private IProductoDao productoDao;
     private IProveedorDao proveedorDao;
+    private IRegistroDao registroDao;
     private Usuario usuarioActualInfo;
     private Proveedor proveedorActualInfo;
     private Producto productoActualInfo;
+    private List<Registro> registroVentaActual;
+
 
     public Informacion() {
         this.usuarioDao = new UsuarioDaoImplementation();
         this.productoDao = new ProductoDaoImplementation();
         this.proveedorDao = new ProveedorDaoImplementation();
+        this.registroDao = new RegistroDaoImplementation();
+        registroVentaActual = new LinkedList<>();
     }
     
     /* Getters and Setters */
@@ -193,6 +200,49 @@ public class Informacion {
         actualizarProducto(productoActualInfo, nuevoProducto);
     }
     
+    /* Registros */
+    
+    public Registro getRegistro(int idRegistro){
+        return this.registroDao.getRegistro(idRegistro);
+    }
+    
+    public boolean agregarRegistro(Registro registro){
+        return this.registroDao.addRegistro(registro);
+    }
+    
+    public List<Registro> getListadoRegistro(){
+        return  this.registroDao.getAllRegistros();
+    }  
+    
+    public boolean eliminarRegistro(Registro registro){
+        return this.registroDao.deleteRegistro(registro);
+    }
+    
+    public boolean actualizarRegistro(Registro registro, Registro nuevoRegistro){
+        return this.registroDao.updateRegistro(registro, nuevoRegistro);
+    }
+    
+    public Registro crearRegistro(String[] dato){
+        String nombre = dato[0];
+        float precioVenta = Float.parseFloat(dato[1]);
+        int unidades = Integer.parseInt(dato[2]);
+        float total = precioVenta * unidades;
+        
+        Registro nuevoRegistro = new Registro(nombre, precioVenta, unidades, total);
+        return nuevoRegistro;
+    }
+    
+    public void agregarDatoRegistroActual(Registro nuevoRegistro){
+        registroVentaActual.add(nuevoRegistro);
+    }
+    
+    public void aceptarCompraRegistros(){
+        for(Registro registro: registroVentaActual){
+            agregarRegistro(registro);
+        }
+        registroVentaActual.clear();
+    }
+    
     /* Cargado de Datos */
     
     public void cargarUsuarios(){
@@ -283,6 +333,16 @@ public class Informacion {
     public void setProductoActualInfo(Producto productoActualInfo) {
         this.productoActualInfo = productoActualInfo;
     }
+
+    public List<Registro> getRegistroVentaActual() {
+        return registroVentaActual;
+    }
+    
+    public void eliminarRegistroVentaActual(int index){
+        registroVentaActual.remove(index);
+    }
+    
+    
     
     
     
