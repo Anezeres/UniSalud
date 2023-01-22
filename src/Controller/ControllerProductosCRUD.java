@@ -39,6 +39,15 @@ public class ControllerProductosCRUD {
         
     }
     
+    public ControllerProductosCRUD(ModeloPrincipal modelo, PanelProductosCRUD vista, VistaDashboard dashboard, String dato) {
+        this.modelo = modelo;
+        this.vistaProductos = vista;
+        this.vistaDashboard = dashboard;
+        
+        agregarListenersBtnDashBoard();
+        
+    }
+    
     public void llenarComboBoxProveedores(){
         List<Proveedor> proveedores = modelo.getInformacion().getListadoProveedor();
         String[] dato = new String[proveedores.size()];

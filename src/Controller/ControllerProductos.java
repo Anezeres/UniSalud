@@ -105,7 +105,7 @@ public class ControllerProductos {
                     
                     enviarInformacion(productoSeleccionado, panelProductosVer);
                     
-                    ControllerProductosCRUD producto = new ControllerProductosCRUD(modelo, panelProductosVer, vistaDashboard);
+                    ControllerProductosCRUD producto = new ControllerProductosCRUD(modelo, panelProductosVer, vistaDashboard, "");
                     
                 }else if(me.getSource() == vistaProductos.getBtnEditar()){
                     
