@@ -30,7 +30,7 @@ public class PanelProductos extends javax.swing.JPanel {
         initComponents();
         setSize(1086, 503);
         
-        modelo = (DefaultTableModel) tablaAfiliados.getModel();
+        modelo = (DefaultTableModel) tablaProductos.getModel();
 
     }
     
@@ -41,7 +41,7 @@ public class PanelProductos extends javax.swing.JPanel {
     }
     
     public void addTablaProductosListener(MouseListener listener){
-        tablaAfiliados.addMouseListener(listener);
+        tablaProductos.addMouseListener(listener);
     }
     
     public void addBtnVerListener(MouseListener listener){
@@ -107,7 +107,7 @@ public class PanelProductos extends javax.swing.JPanel {
 
         btnCrear = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaAfiliados = new javax.swing.JTable();
+        tablaProductos = new javax.swing.JTable();
         btnEliminar = new javax.swing.JLabel();
         btnEditar = new javax.swing.JLabel();
         btnVer = new javax.swing.JLabel();
@@ -129,7 +129,7 @@ public class PanelProductos extends javax.swing.JPanel {
         });
         add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 350, 144, 55));
 
-        tablaAfiliados.setModel(new javax.swing.table.DefaultTableModel(
+        tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -152,15 +152,15 @@ public class PanelProductos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tablaAfiliados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tablaAfiliados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tablaAfiliados.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tablaAfiliados);
-        if (tablaAfiliados.getColumnModel().getColumnCount() > 0) {
-            tablaAfiliados.getColumnModel().getColumn(0).setResizable(false);
-            tablaAfiliados.getColumnModel().getColumn(1).setResizable(false);
-            tablaAfiliados.getColumnModel().getColumn(2).setResizable(false);
-            tablaAfiliados.getColumnModel().getColumn(3).setResizable(false);
+        tablaProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tablaProductos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tablaProductos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablaProductos);
+        if (tablaProductos.getColumnModel().getColumnCount() > 0) {
+            tablaProductos.getColumnModel().getColumn(0).setResizable(false);
+            tablaProductos.getColumnModel().getColumn(1).setResizable(false);
+            tablaProductos.getColumnModel().getColumn(2).setResizable(false);
+            tablaProductos.getColumnModel().getColumn(3).setResizable(false);
         }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 790, 380));
@@ -237,8 +237,8 @@ public class PanelProductos extends javax.swing.JPanel {
         setBotonInactivo("Crear", btnCrear);
     }//GEN-LAST:event_btnCrearMouseExited
 
-    public JTable getTablaAfiliados() {
-        return tablaAfiliados;
+    public JTable getTablaProductos() {
+        return tablaProductos;
     }
 
     public boolean isBtnVerActivo() {
@@ -283,6 +283,6 @@ public class PanelProductos extends javax.swing.JPanel {
     private javax.swing.JLabel btnVer;
     private javax.swing.JLabel fondoAfiliados;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaAfiliados;
+    private javax.swing.JTable tablaProductos;
     // End of variables declaration//GEN-END:variables
 }

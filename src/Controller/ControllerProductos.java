@@ -6,9 +6,12 @@ package Controller;
 
 import Modelo.ModeloPrincipal;
 import Modelo.Producto;
+import Modelo.Proveedor;
 import Modelo.Usuario;
 import Vistas.PanelClientes;
 import Vistas.PanelProductos;
+import Vistas.PanelProductosCRUD;
+import Vistas.PanelProveedores;
 import Vistas.PanelUsuariosCRUD;
 import Vistas.VistaDashboard;
 import java.awt.event.MouseEvent;
@@ -65,9 +68,85 @@ public class ControllerProductos {
     }
     
     class DashboardListener implements MouseListener{
+        
+        private boolean elementoSeleccionado = false; 
+        private int valorSeleccionado;
+        
+        private void enviarInformacion(Producto productoSeleccionado, PanelProductosCRUD panel){
+            String[] dato = new String[6];
+                    
+            dato[0] = productoSeleccionado.getNombre();
+            dato[1] = productoSeleccionado.getPrecioProducto() + "";
+            dato[2] = productoSeleccionado.getUnidades() + "";
+            dato[3] = modelo.getInformacion().getProveedor(productoSeleccionado.getIdProveedor()).getNombreProveedor();
+                    
+            panel.ingresarInformacion(dato);
+            panel.setDatosActuales(dato);
+        }
       
         @Override
         public void mouseClicked(MouseEvent me) {
+            if(me.getSource() == vistaProductos.getTablaProductos()){
+                vistaProductos.activarBotones();
+                valorSeleccionado = vistaProductos.getTablaProductos().getSelectedRow();
+                elementoSeleccionado = vistaProductos.getTablaProductos().getRowSelectionAllowed();
+            }
+            
+            if(elementoSeleccionado){
+                if(me.getSource() == vistaProductos.getBtnVer()){
+                    PanelProductosCRUD panelProductosVer = new PanelProductosCRUD();
+                    vistaDashboard.realizarCambioPanelDashboard(panelProductosVer);
+                    panelProductosVer.ponerFondoCRUD("Ver");
+                    panelProductosVer.activarBtnEditar();
+                    
+                    List<Producto> datosProductos = modelo.getInformacion().getListadoProducto();
+                    Producto productoSeleccionado =  datosProductos.get(valorSeleccionado);
+                    modelo.getInformacion().setProductoActualInfo(productoSeleccionado);
+                    
+                    enviarInformacion(productoSeleccionado, panelProductosVer);
+                    
+                    ControllerProductosCRUD producto = new ControllerProductosCRUD(modelo, panelProductosVer, vistaDashboard);
+                    
+                }else if(me.getSource() == vistaProductos.getBtnEditar()){
+                    
+                    PanelProductosCRUD panelProductoEditar = new PanelProductosCRUD();
+                    vistaDashboard.realizarCambioPanelDashboard(panelProductoEditar);
+                    panelProductoEditar.ponerFondoCRUD("Editar");
+                    panelProductoEditar.activarBotones();
+                    panelProductoEditar.activarComponentes();
+                    
+                    List<Producto> datosProductos = modelo.getInformacion().getListadoProducto();
+                    Producto proveedorSeleccionado = datosProductos.get(valorSeleccionado);
+                    modelo.getInformacion().setProductoActualInfo(proveedorSeleccionado);
+                    
+                    enviarInformacion(proveedorSeleccionado, panelProductoEditar);
+                    
+                    ControllerProductosCRUD producto = new ControllerProductosCRUD(modelo, panelProductoEditar, vistaDashboard);
+                    
+                }else if(me.getSource() == vistaProductos.getBtnEliminar()){
+                    
+                    if (JOptionPane.showConfirmDialog(null, "¿Seguro que quieres eliminar este usuario?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                        List<Producto> datosProductos = modelo.getInformacion().getListadoProducto();
+                        Producto productoSeleccionado = datosProductos.get(valorSeleccionado);
+                        
+                        modelo.getInformacion().eliminarProducto(productoSeleccionado);
+                        
+                        PanelProductos panelProductos = new PanelProductos();
+                        vistaDashboard.realizarCambioPanelDashboard(panelProductos);
+                        ControllerProductos productos = new ControllerProductos(modelo, panelProductos, vistaDashboard);
+                    }
+                }
+            }if(me.getSource() == vistaProductos.getBtnCrear()){
+                    
+                PanelProductosCRUD panelProductosCrear = new PanelProductosCRUD();
+                vistaDashboard.realizarCambioPanelDashboard(panelProductosCrear);
+                panelProductosCrear.ponerFondoCRUD("Crear");
+                panelProductosCrear.activarBotones();
+                panelProductosCrear.activarComponentes();
+                panelProductosCrear.limpiarCampos();
+                
+                ControllerProductosCRUD productos = new ControllerProductosCRUD(modelo, panelProductosCrear, vistaDashboard);
+            }
             
         }
 

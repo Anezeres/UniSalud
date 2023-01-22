@@ -30,7 +30,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         initComponents();
         setSize(1086, 503);
         
-        modelo = (DefaultTableModel) tablaTrabajadores.getModel();
+        modelo = (DefaultTableModel) tablaProveedores.getModel();
 
     }
     
@@ -41,7 +41,7 @@ public class PanelProveedores extends javax.swing.JPanel {
     }
     
     public void addTablaProveedoresListener(MouseListener listener){
-        tablaTrabajadores.addMouseListener(listener);
+        tablaProveedores.addMouseListener(listener);
     }
     
     public void addBtnVerListener(MouseListener listener){
@@ -107,7 +107,7 @@ public class PanelProveedores extends javax.swing.JPanel {
 
         btnCrear = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaTrabajadores = new javax.swing.JTable();
+        tablaProveedores = new javax.swing.JTable();
         btnEliminar = new javax.swing.JLabel();
         btnEditar = new javax.swing.JLabel();
         btnVer = new javax.swing.JLabel();
@@ -129,7 +129,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         });
         add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 350, 144, 55));
 
-        tablaTrabajadores.setModel(new javax.swing.table.DefaultTableModel(
+        tablaProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -152,16 +152,16 @@ public class PanelProveedores extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tablaTrabajadores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tablaTrabajadores.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tablaTrabajadores.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tablaTrabajadores);
-        if (tablaTrabajadores.getColumnModel().getColumnCount() > 0) {
-            tablaTrabajadores.getColumnModel().getColumn(0).setResizable(false);
-            tablaTrabajadores.getColumnModel().getColumn(1).setResizable(false);
-            tablaTrabajadores.getColumnModel().getColumn(2).setResizable(false);
-            tablaTrabajadores.getColumnModel().getColumn(3).setResizable(false);
-            tablaTrabajadores.getColumnModel().getColumn(3).setPreferredWidth(5);
+        tablaProveedores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tablaProveedores.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tablaProveedores.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablaProveedores);
+        if (tablaProveedores.getColumnModel().getColumnCount() > 0) {
+            tablaProveedores.getColumnModel().getColumn(0).setResizable(false);
+            tablaProveedores.getColumnModel().getColumn(1).setResizable(false);
+            tablaProveedores.getColumnModel().getColumn(2).setResizable(false);
+            tablaProveedores.getColumnModel().getColumn(3).setResizable(false);
+            tablaProveedores.getColumnModel().getColumn(3).setPreferredWidth(5);
         }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 790, 380));
@@ -238,8 +238,8 @@ public class PanelProveedores extends javax.swing.JPanel {
         setBotonInactivo("Crear", btnCrear);
     }//GEN-LAST:event_btnCrearMouseExited
 
-    public JTable getTablaTrabajadores() {
-        return tablaTrabajadores;
+    public JTable getTablaProveedores() {
+        return tablaProveedores;
     }
 
     public boolean isBtnVerActivo() {
@@ -284,6 +284,6 @@ public class PanelProveedores extends javax.swing.JPanel {
     private javax.swing.JLabel btnVer;
     private javax.swing.JLabel fondoTrabajadores;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaTrabajadores;
+    private javax.swing.JTable tablaProveedores;
     // End of variables declaration//GEN-END:variables
 }

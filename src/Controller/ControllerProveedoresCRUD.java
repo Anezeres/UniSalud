@@ -6,8 +6,8 @@ package Controller;
 
 import Modelo.ModeloPrincipal;
 import Vistas.PanelClientes;
-import Vistas.PanelProductos;
 import Vistas.PanelProveedores;
+import Vistas.PanelProveedoresCRUD;
 import Vistas.PanelUsuariosCRUD;
 import Vistas.VistaDashboard;
 import java.awt.event.MouseEvent;
@@ -18,16 +18,16 @@ import javax.swing.JOptionPane;
  *
  * @author RYZEN
  */
-public class ControllerUsuariosCRUD {
+public class ControllerProveedoresCRUD {
     
     private ModeloPrincipal modelo;
-    private PanelUsuariosCRUD vistaUsuario;
+    private PanelProveedoresCRUD vistaProveedor;
     private VistaDashboard vistaDashboard;
     
 
-    public ControllerUsuariosCRUD(ModeloPrincipal modelo, PanelUsuariosCRUD vista, VistaDashboard dashboard) {
+    public ControllerProveedoresCRUD(ModeloPrincipal modelo, PanelProveedoresCRUD vista, VistaDashboard dashboard) {
         this.modelo = modelo;
-        this.vistaUsuario = vista;
+        this.vistaProveedor = vista;
         this.vistaDashboard = dashboard;
         
         agregarListenersBtnDashBoard();
@@ -37,10 +37,10 @@ public class ControllerUsuariosCRUD {
     private void agregarListenersBtnDashBoard(){
         DashboardListener listener = new DashboardListener();
         
-        vistaUsuario.addBtnEditarListener(listener);
-        vistaUsuario.addBtnAceptarListener(listener);
-        vistaUsuario.addBtnCancelarListener(listener);
-        vistaUsuario.addBtnVolverListener(listener);
+        vistaProveedor.addBtnEditarListener(listener);
+        vistaProveedor.addBtnAceptarListener(listener);
+        vistaProveedor.addBtnCancelarListener(listener);
+        vistaProveedor.addBtnVolverListener(listener);
     }
     
     class DashboardListener implements MouseListener{
@@ -48,20 +48,20 @@ public class ControllerUsuariosCRUD {
         @Override
         public void mouseClicked(MouseEvent me) {
             
-            if(me.getSource() == vistaUsuario.getBtnEditar() && vistaUsuario.isBtnEditarActivo()){
+            if(me.getSource() == vistaProveedor.getBtnEditar() && vistaProveedor.isBtnEditarActivo()){
                 activarVentanaEditar(vistaDashboard.getTipoAccionActual());
                 
-            }else if(me.getSource() == vistaUsuario.getBtnVolver()){
+            }else if(me.getSource() == vistaProveedor.getBtnVolver()){
                 
                 regresarVentana(vistaDashboard.getTipoAccionActual());
                 
-            }else if(me.getSource() == vistaUsuario.getBtnCancelar() && vistaUsuario.isBtnCancelarActivo()){
+            }else if(me.getSource() == vistaProveedor.getBtnCancelar() && vistaProveedor.isBtnCancelarActivo()){
                 if (JOptionPane.showConfirmDialog(null, "¿Seguro que cancelar la edición?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                     regresarVentana(vistaDashboard.getTipoAccionActual());
                 }
                 
-            }else if(me.getSource() == vistaUsuario.getBtnAceptar() && vistaUsuario.isBtnAceptarActivo()){
-                if(vistaUsuario.validarCampos()){
+            }else if(me.getSource() == vistaProveedor.getBtnAceptar() && vistaProveedor.isBtnAceptarActivo()){
+                if(vistaProveedor.validarCampos()){
                     if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere crear un afiliado con la información ingresada?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                         
                         accionAceptar(vistaDashboard.getTipoAccionActual());
@@ -84,29 +84,29 @@ public class ControllerUsuariosCRUD {
         
         private void regresarVentana(String ventanaActual){
             
-            vistaDashboard.setTipoAccionActual("Afiliado");
-            PanelClientes panelAfiliados = new PanelClientes();
-            vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
-            ControllerUsuarios afiliados = new ControllerUsuarios(modelo, panelAfiliados ,vistaDashboard);
+            vistaDashboard.setTipoAccionActual("Proveedor");
+            PanelProveedores proveedor = new PanelProveedores();
+            vistaDashboard.realizarCambioPanelDashboard(proveedor);
+            ControllerProveedores proveedores = new ControllerProveedores(modelo, proveedor, vistaDashboard);
             
         }
         
         private void activarVentanaEditar(String ventanaActual){
-            vistaUsuario.activarBotones();
-            vistaUsuario.ponerFondoCRUD("Editar");
-            vistaUsuario.activarComponentes();
+            vistaProveedor.activarBotones();
+            vistaProveedor.ponerFondoCRUD("Editar");
+            vistaProveedor.activarComponentes();
             
         }
         
         private void accionAceptar(String ventanaActual){
             String[] datos = new String[0];
-            datos = vistaUsuario.obtenerInformacion();
+            datos = vistaProveedor.obtenerInformacion();
 
                
-            if("Crear".equals(vistaUsuario.getAccionActual())){
+            if("Crear".equals(vistaProveedor.getAccionActual())){
                 modelo.getInformacion().crearUsuario(datos);
-            }else if("Editar".equals(vistaUsuario.getAccionActual())){
-                modelo.getInformacion().cambiarInfoUsuario(datos, modelo.getInformacion().getUsuarioActualInfo().getId(), vistaDashboard.getTipoAccionActual());
+            }else if("Editar".equals(vistaProveedor.getAccionActual())){
+                modelo.getInformacion().cambiarInfoProveedor(datos, modelo.getInformacion().getProveedorActualInfo().getIdProveedor());
             }
         }
 

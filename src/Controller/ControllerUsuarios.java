@@ -119,7 +119,7 @@ public class ControllerUsuarios {private ModeloPrincipal modelo;
                     
                     enviarInformacion(afiliadoSeleccionado, panelAfiliadosEditar);
                     
-                    //ControllerUsuariosCRUD afiliados = new ControllerUsuariosCRUD(modelo, panelAfiliadosEditar, vistaDashboard);
+                    ControllerUsuariosCRUD afiliados = new ControllerUsuariosCRUD(modelo, panelAfiliadosEditar, vistaDashboard);
                     
                 }else if(me.getSource() == vistaClientes.getBtnEliminar()){
                     
@@ -144,7 +144,7 @@ public class ControllerUsuarios {private ModeloPrincipal modelo;
                 panelAfiliadosCrear.limpiarCampos();
                     
                 ControllerUsuariosCRUD afiliados = new ControllerUsuariosCRUD(modelo, panelAfiliadosCrear, vistaDashboard);
-                }
+            }
             
         }
 

@@ -5,42 +5,61 @@
 package Controller;
 
 import Modelo.ModeloPrincipal;
+import Modelo.Proveedor;
 import Vistas.PanelClientes;
 import Vistas.PanelProductos;
+import Vistas.PanelProductosCRUD;
 import Vistas.PanelProveedores;
+import Vistas.PanelProveedoresCRUD;
 import Vistas.PanelUsuariosCRUD;
 import Vistas.VistaDashboard;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author RYZEN
  */
-public class ControllerUsuariosCRUD {
+public class ControllerProductosCRUD {
     
     private ModeloPrincipal modelo;
-    private PanelUsuariosCRUD vistaUsuario;
+    private PanelProductosCRUD vistaProductos;
     private VistaDashboard vistaDashboard;
     
 
-    public ControllerUsuariosCRUD(ModeloPrincipal modelo, PanelUsuariosCRUD vista, VistaDashboard dashboard) {
+    public ControllerProductosCRUD(ModeloPrincipal modelo, PanelProductosCRUD vista, VistaDashboard dashboard) {
         this.modelo = modelo;
-        this.vistaUsuario = vista;
+        this.vistaProductos = vista;
         this.vistaDashboard = dashboard;
         
         agregarListenersBtnDashBoard();
+        llenarComboBoxProveedores();
         
+    }
+    
+    public void llenarComboBoxProveedores(){
+        List<Proveedor> proveedores = modelo.getInformacion().getListadoProveedor();
+        String[] dato = new String[proveedores.size()];
+        
+        int i = 0;
+        for (Proveedor proveedor : proveedores) {
+            dato[i] = proveedor.getNombreProveedor() + "";
+            i++;
+            
+        }
+                
+        vistaProductos.llenarComboProveedores(dato);
     }
     
     private void agregarListenersBtnDashBoard(){
         DashboardListener listener = new DashboardListener();
         
-        vistaUsuario.addBtnEditarListener(listener);
-        vistaUsuario.addBtnAceptarListener(listener);
-        vistaUsuario.addBtnCancelarListener(listener);
-        vistaUsuario.addBtnVolverListener(listener);
+        vistaProductos.addBtnEditarListener(listener);
+        vistaProductos.addBtnAceptarListener(listener);
+        vistaProductos.addBtnCancelarListener(listener);
+        vistaProductos.addBtnVolverListener(listener);
     }
     
     class DashboardListener implements MouseListener{
@@ -48,21 +67,21 @@ public class ControllerUsuariosCRUD {
         @Override
         public void mouseClicked(MouseEvent me) {
             
-            if(me.getSource() == vistaUsuario.getBtnEditar() && vistaUsuario.isBtnEditarActivo()){
+            if(me.getSource() == vistaProductos.getBtnEditar() && vistaProductos.isBtnEditarActivo()){
                 activarVentanaEditar(vistaDashboard.getTipoAccionActual());
                 
-            }else if(me.getSource() == vistaUsuario.getBtnVolver()){
+            }else if(me.getSource() == vistaProductos.getBtnVolver()){
                 
                 regresarVentana(vistaDashboard.getTipoAccionActual());
                 
-            }else if(me.getSource() == vistaUsuario.getBtnCancelar() && vistaUsuario.isBtnCancelarActivo()){
+            }else if(me.getSource() == vistaProductos.getBtnCancelar() && vistaProductos.isBtnCancelarActivo()){
                 if (JOptionPane.showConfirmDialog(null, "¿Seguro que cancelar la edición?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                     regresarVentana(vistaDashboard.getTipoAccionActual());
                 }
                 
-            }else if(me.getSource() == vistaUsuario.getBtnAceptar() && vistaUsuario.isBtnAceptarActivo()){
-                if(vistaUsuario.validarCampos()){
-                    if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere crear un afiliado con la información ingresada?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            }else if(me.getSource() == vistaProductos.getBtnAceptar() && vistaProductos.isBtnAceptarActivo()){
+                if(vistaProductos.validarCampos()){
+                    if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere crear un producto con la información ingresada?", "Mensaje", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                         
                         accionAceptar(vistaDashboard.getTipoAccionActual());
                         
@@ -84,29 +103,29 @@ public class ControllerUsuariosCRUD {
         
         private void regresarVentana(String ventanaActual){
             
-            vistaDashboard.setTipoAccionActual("Afiliado");
-            PanelClientes panelAfiliados = new PanelClientes();
-            vistaDashboard.realizarCambioPanelDashboard(panelAfiliados);
-            ControllerUsuarios afiliados = new ControllerUsuarios(modelo, panelAfiliados ,vistaDashboard);
+            vistaDashboard.setTipoAccionActual("Producto");
+            PanelProductos producto = new PanelProductos();
+            vistaDashboard.realizarCambioPanelDashboard(producto);
+            ControllerProductos productos = new ControllerProductos(modelo, producto, vistaDashboard);
             
         }
         
         private void activarVentanaEditar(String ventanaActual){
-            vistaUsuario.activarBotones();
-            vistaUsuario.ponerFondoCRUD("Editar");
-            vistaUsuario.activarComponentes();
+            vistaProductos.activarBotones();
+            vistaProductos.ponerFondoCRUD("Editar");
+            vistaProductos.activarComponentes();
             
         }
         
         private void accionAceptar(String ventanaActual){
             String[] datos = new String[0];
-            datos = vistaUsuario.obtenerInformacion();
+            datos = vistaProductos.obtenerInformacion();
 
                
-            if("Crear".equals(vistaUsuario.getAccionActual())){
+            if("Crear".equals(vistaProductos.getAccionActual())){
                 modelo.getInformacion().crearUsuario(datos);
-            }else if("Editar".equals(vistaUsuario.getAccionActual())){
-                modelo.getInformacion().cambiarInfoUsuario(datos, modelo.getInformacion().getUsuarioActualInfo().getId(), vistaDashboard.getTipoAccionActual());
+            }else if("Editar".equals(vistaProductos.getAccionActual())){
+                modelo.getInformacion().cambiarInfoProducto(datos, modelo.getInformacion().getProductoActualInfo().getIdProducto());
             }
         }
 
